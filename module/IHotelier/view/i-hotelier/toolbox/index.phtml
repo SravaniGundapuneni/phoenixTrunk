@@ -1,0 +1,103 @@
+<div class="row">
+	<div class="columns small-12">
+		<h2>Booking Settings</h2>
+		<form id="ihotelier_settings_form">
+			<div class="row">
+				<div class="columns small-3">
+					<label for="hotel_id" class="inline">Hotel ID (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="hotel_id" value="<?=$hotelId;?>" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="company_name_code" class="inline">Company Name Code (Channel Identifier - alpha only)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="company_name_code" value="<?=$companyNameCode;?>" pattern="[a-zA-Z]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="requestorid_id" class="inline">Requestor ID (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="requestorid_id" value="<?=$requestorIDID;?>" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="requestorid_type" class="inline">Requestor ID Type (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="requestorid_type" value="<?=$requestorIDType;?>" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="bookingchannel_type" class="inline">Booking Channel Type (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="bookingchannel_type" value="<?=$bookingChannelType;?>" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="fallback_rate" class="inline">Fallback Rate (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="fallback_rate" value="<?=$fallbackRate;?>" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="lookahead_days" class="inline">Lookahead Days (integer)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="lookahead_days" value="<?=$lookaheadDays;?>" max="90" pattern="[0-9]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="messageID" class="inline">MessageID (alpha/underscore)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="message_id" value="<?=$messageID;?>" max="90" pattern="[a-zA-Z_]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="header_username" class="inline">Header Username (alpha)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="header_username" value="<?=$headerUsername;?>" max="90" pattern="[a-zA-Z]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label for="header_password" class="inline">Header Password (alpha)</label>
+				</div>
+				<div class="columns small-9">
+					<input type="text" id="header_password" value="<?=$headerPassword;?>" max="90" pattern="[a-zA-Z]+" required />
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-3">
+					<label class="inline">Data Source<label>
+				</div>
+				<div class="columns small-9">
+					<input type="radio" name="data_source" value="ihotelier" id="ihotelier_data" <?php if ($dataSource === 'ihotelier') { ?>checked="checked"<?php } ?> required />
+					<label for="ihotelier_data">IHotelier</label>
+					<input type="radio" name="data_source" value="dlm" id="dlm_data" <?php if ($dataSource === 'dlm') { ?>checked="checked"<?php } ?> required />
+					<label for="dlm_data">DLM</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns small-9 small-offset-3">
+					<input type="submit" value="Save" class="button primary" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

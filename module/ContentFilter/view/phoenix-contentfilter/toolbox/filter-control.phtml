@@ -1,0 +1,47 @@
+<?php //echo var_dump($this->res); ?>
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+
+			<thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="40px">Room Code <?php// echo $this->url('toolbox', array('action' => 'addItem')); //echo $this->url($this->route,); ?> </th>
+                        <th width="20px">Room Name</th>
+						<th width="40px">Id</th>
+						<th width="40px">Room Description</th>
+                        <th width="40px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php 
+					//var_dump($res);
+					foreach ($this->res as $res)
+					{
+					
+					?>
+					    <tr>
+                        <td width="20px"></td>
+                        <td width="40px"> <?php echo $res['code']; ?> </td>
+                        <td width="20px"> <?php echo $res['name']; ?> </td>
+						<td width="40px"> <?php echo $res['id']; ?> </td>
+						<td width="40px"> <?php echo $res['description']; ?></td>
+                        <td width="40px"> <?php echo $res['status']; ?></td>
+                        </tr>
+					<?
+					
+					}
+				?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

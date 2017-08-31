@@ -1,0 +1,29 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+    </div>
+    <div class="editListContent">
+        <br/>
+
+        <?php $formAction = $this->url($this->toolboxRoute,$this->formAction); ?>
+        <?php $this->form->setAttribute('action', $formAction)->prepare(); ?>
+
+        <?php if ($this->hasErrors) echo $this->formElementErrors($this->form); ?>
+
+        <?php echo $this->form()->openTag($this->form); ?>
+        <?php foreach ($this->form as $index => $valForm)
+        {
+            if ($valForm instanceof \Zend\Form\Element\Hidden)
+            {
+                echo $this->formHidden($valForm);
+            }
+            else
+            {
+                echo '<p>' . $this->formLabel($valForm) . $this->formElement($valForm) . '</p>';
+            }
+        } ?>
+        <?php echo $this->form()->closeTag(); ?>
+
+        <?= $taskResult ?>
+    </div>
+</div>

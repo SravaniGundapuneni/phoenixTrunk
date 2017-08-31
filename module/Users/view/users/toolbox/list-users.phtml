@@ -1,0 +1,49 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?php echo $this->partial('users/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <?php if (isset($userEdited) && $userEdited):?>
+                <p>User <?=$userEdited?> has been edited</p>
+            <?php elseif (isset($userDeleted) && $userDeleted):?>
+                <p>User <?=strip_tags($userDeleted)?> has been deleted</p>
+            <?php elseif (isset($userChangedPassword) && $userChangedPassword):?>
+                <p>The password has been changed for user <?=strip_tags($userChangedPassword)?></p>
+            <?php endif ?>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="140px">Username</th>
+                        <th width="180px">Display Name</th>
+                        <th width="auto">Email</th>
+                        <?php if ($currentUser['scope'] == 'global'):?>
+                            <th width="auto">Scope</th>
+                        <?php endif;?>
+                        <th width="230px">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($items as $valUser): ?>
+                        <?php $subsite = $this->getHelperPluginManager()->getServiceLocator()->get('Application')->getMvcEvent()->getRouteMatch()->getParam('subsite', ''); ?>
+                        <?php $subsitePath = ($subsite != '') ? '' . $subsite : ''; ?>
+                        <tr>
+                            <td><input type="checkbox" name="items[]" value="<?= $valUser->getId() ?>" /></td>
+                            <td><a href="<?=$this->url('users-toolbox', array('subsite' => $subsiteRoute, 'action' => 'changeProfile')) . "/{$valUser->getId()}";?>"><?=$valUser->getUsername()?></td>
+                            <td><?=utf8_encode($valUser->getGivenName())?></td>
+                            <td><?=$valUser->getEmail()?></td>
+                            <?php if ($currentUser['scope'] == 'global'):?>                            
+                                <td><?=ucfirst($valUser->getScope());?></td>
+                            <?php endif;?>
+                            <td><?= $this->simpleMenu($optionsLinks, "/{$valUser->getId()}") ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

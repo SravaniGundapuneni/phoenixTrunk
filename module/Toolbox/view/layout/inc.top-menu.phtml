@@ -1,0 +1,89 @@
+<?php
+    // build widget folder library
+    function getWidgets() {
+        
+            
+            $dir = PHOENIX_PATH . "/widget/";
+            
+            // Open a known directory, and proceed to read its contents
+            if (is_dir($dir)) 
+            {
+                    if ($dh = opendir($dir)) 
+                    {
+                            while (($file = readdir($dh)) !== false) 
+                            {
+
+                                    if($file != '.' AND $file != '..' AND filetype($dir . $file) == 'dir') {
+                                            // open the widget directory
+                                            $widgetDirectory = $dir . $file;
+                                            
+                                            if (is_dir($widgetDirectory) AND ($widgetDirectory !== PHOENIX_PATH.'/widget/Vendor')) {
+                                                    // get widget config file     
+                                                    $widgetConfig[] = include $widgetDirectory . '/config/widget.config.php';
+                                            }
+                                    }
+
+                            }
+
+                            closedir($dh);
+
+                    }
+
+            }
+            return $widgetConfig;
+    }
+    
+    $widgets = getWidgets();
+?>
+
+<div class="widget-menu row">
+    <?php
+        // show widget groups and indivddual widgets within them
+        foreach($widgets as $individualWidget) 
+        {
+                $widgetName = $individualWidget["defaults"]['widgetName'];
+                $widgetFolderLocation = $individualWidget["defaults"]['widgetFolder'];
+    ?>
+                <div id="draggable-<?=$widgetFolderLocation?>" data-widgetType="<?=strtolower($individualWidget["defaults"]['widgetType'])?>" class="draggable ui-widget-content columns large-2 medium-6 small-12" style="outline: 1px solid red;" >
+                      <p style="text-align: center; font-weight: bold;"><small><?=$widgetName?></small><br /><img src="<?=$this->toolboxIncludeUrl . 'module/Toolbox/view/layout/img/widget.png'?>" style="max-width: 75%;" /></p>
+                </div>
+
+    <?php
+        }
+    ?>
+    </div>
+</div>
+  
+<div class="loadingEditor loadScreenWidgetOverlay">
+    <div>
+        Widget is being saved!
+        <br>
+        <span>please wait...</span>
+    </div>
+</div>
+  
+<div class="loadingEditor loadScreenWidgetDeleteOverlay">
+    <div>
+        Widget is being deleted!
+        <br>
+        <span>please wait...</span>
+    </div>
+</div>
+  
+<div class="loadingEditor loadScreenFileOverlay">
+    <div>
+        Files are being loaded!
+        <br>
+        <span>please wait...</span>
+    </div>
+</div>
+
+<div class="loadingEditor loadScreenFileSaveOverlay">
+    <div>
+        Files are being saved!
+        <br>
+        <span>please wait...</span>
+    </div>
+</div>
+
+<!--style="position:relative; display: inline-block; width : 125px !impotant; height : 125px !impotant; border: 2px solid #c0c0c0;float: left;margin: auto 5px;"-->

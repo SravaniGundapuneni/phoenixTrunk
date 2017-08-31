@@ -1,0 +1,131 @@
+#fileManager {
+	border : 1px solid #dedede;
+}
+
+#fileExplorer {
+	background-color : #ffffff;
+	border-right     : 1px solid lightgray;
+	display          : block;
+	height           : 458px;
+	overflow         : scroll;
+	padding-bottom   : 5px;
+	padding-left     : 5px;
+	padding-top      : 5px;
+	z-index          : 10;
+}
+
+#explorerRoot {
+	display : block !important;	
+}
+
+.fileHeaderBar {
+	background-color : #313163;
+	margin           : 0;
+	padding          : 8px 0px 8px;
+	text-transform   : uppercase;
+}
+
+.fileHeading {
+	color         : white;
+	float         : left;
+	font-size     : 12px;
+	line-height   : 20px;
+	padding-left  : 8px;
+	padding-top   : 3px;
+}
+
+#cropRatioDropdown-menu li:first-child,
+#cropPresetDropdown-menu li:first-child {
+	display : none;
+}
+
+.closeFileManager {
+	display     : none;
+}
+
+#attachmentDialog .closeFileManager {
+	color         : #ffffff;
+	cursor        : pointer;
+	display       : inline;
+	float         : right;	
+	padding-right : 10px;
+	padding-top   : 4px;
+}
+
+#attachmentDialog .closeFileManager .fa-close {
+	font-size : 18px;
+}
+
+.selectedAttachment {
+	background-color : #e2974d !important;
+}
+
+#fileManagerWrapper {
+	display : none;
+}
+
+#fileManagerLoading p {
+	text-align : center;
+}
+
+#fileManagerLoadingSpinner {
+	font-size : 50px;
+}
+
+#fileManagerLoadingText {
+	font-style  : italic;
+	font-weight : bold;
+}
+
+#fileManagerSearchBox {
+	border-radius : 0px;
+	display       : block;
+	float         : right;
+	height        : 28px;
+	margin-bottom : 0px;
+	margin-right  : 7px;
+	margin-top    : 1px;
+	padding-left  : 0px;
+	width         : 250px;
+}
+
+#fileManagerSearchButton {
+	background-color : #007b94;
+	color            : #efefef;
+	float            : right;
+	margin-right     : 6px;
+	padding-bottom   : 3px;
+	padding-top      : 3px;
+	text-align       : center;
+	width            : 68px;
+}
+
+#fileExplorerTab {
+	background-color : #ffa500;
+	border-bottom-right-radius : 20px;
+	border-top-right-radius    : 20px;
+	cursor           : pointer;
+	font-size        : 36px;
+	height           : 54px;
+	margin-left      : -1px;
+	padding-top      : 0px;
+	position         : absolute;
+	opacity          : 0.75;
+	overflow-x       : hidden;
+	overflow-y       : hidden;
+	text-align       : center;
+	top              : 205px;
+	width            : 57px;
+	z-index          : 20;
+}
+
+.ui-widget-overlay {
+	background       : none              !important;
+	background-color : #000000           !important;
+	filter           : alpha(opacity=75) !important;
+	opacity          : 0.75              !important;
+}
+
+.ie #drop {
+	border : 0px !important;
+}

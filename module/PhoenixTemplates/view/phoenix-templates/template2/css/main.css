@@ -1,0 +1,431 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 19, 2014, 3:00:46 PM
+    Author     : rvahora
+    Template   : 2
+*/
+
+/* ---------------- OVERRIDE BROWSER DEFAULT TYPOGRAPHY ---------------- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.1rem;
+	color:#333333;
+}
+h1 {
+	margin: 1.6rem 0rem 0rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:.8rem;
+}
+h2, h3 {
+	margin:0 auto .3rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.9rem;
+}
+h3 {
+	font-size:1.4rem;
+}	
+h4 {
+	margin: 1.2rem 0rem 0rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.1rem;
+}
+h5 {
+	margin: 1.2rem 0rem 1.2rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 0.9rem;
+}
+h6 {
+	margin: 1.2rem 0rem 1.2rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 0.8rem;
+}
+p,
+li {
+	line-height: 1.2;
+}
+p {
+	font-size: 1rem;
+	margin:.8rem 0;
+}
+li > p {
+	margin-top:.2rem;
+}
+ol, ul {
+	margin: 0;
+	list-style-type: square;
+}
+img {
+	border: 0 none;
+}
+th {
+	font-weight: normal;
+	text-align: right;
+	padding-right: 0.5rem;
+}
+td {
+	text-align: center;
+}
+form,
+button,
+input,
+select,
+textarea {
+	margin: 0;
+}
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: bold;
+}
+sup {
+	font-size: 0.74rem;
+	/* avoid increased line-box height */
+	vertical-align: top;
+	position: relative;
+	top: -0.1rem;
+}
+
+/*.row {
+    max-width: 75rem; 
+}*/
+
+/* Colors
+-----------------------*/
+
+/* BACKGROUNDS */
+body, #header-bg, #holder, #footer {
+	background: #FFFFFF !important;
+}
+#main-visual {
+	background-color: #727272;
+}
+.bg-extra-light {
+	background: #f9f9f9;
+}
+.bg-medium-light {
+    background: #F4F4F4;
+}
+.bg-light {
+	background: #E2E2E2 !important;
+}
+.bg-intermidate {
+	background: #d4d2d2;
+}
+.bg-dark {
+	background: #555555;
+}
+
+/* SEMI TRANSPARENT */
+#header {
+	background: rgba(255,255,255,.7);
+}
+#menu-mobile .menu{
+	background: rgba(255,255,255,.9);
+}
+#main-visual .slide-caption {
+	background: rgba(0,0,0,.7);
+}
+
+/* SEMI TRANSPARENT IE 7-8*/
+.ie7 #header, .ie8 #header{
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AAFFFFFF', endColorstr='#AAFFFFFF')"; 
+}
+.ie7 #main-visual .slide-caption,.ie8 #main-visual .slide-caption,
+.ie7 .best-rate, .ie8 .best-rate {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#AA000000', endColorstr='#AA000000')"; 
+}
+.ie7 .booking-form-wrapper,.ie8 .booking-form-wrapper{
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#DD000000', endColorstr='#DD000000')"; 
+}
+.ie7 .menu .menuLevel2-wrapper,.ie8 .menu .menuLevel2-wrapper{
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#EE555555', endColorstr='#EE555555')"; 
+}
+
+/* FONT COLORS */
+body, p, a,h1, h2, h3 {
+	color: black;
+}
+
+.middle-color{}
+.dark-color{}
+.extra-dark-color{}
+.breadcrumb-color{}
+
+#main-content p {
+ 	color: #404040;
+}
+
+.dark-middle-color {
+	color: #6C6C6C !important;
+}
+.light-color {
+	color: #d4d2d2 !important;
+}
+
+.white-color,
+.toolbox-link,
+#main-visual .slide-caption,
+.page-selector:hover,
+.page-selector.active,
+.flexFormSubmitBlock button{
+	color: #FFF !important;
+}
+.flexFormBlockLabel, .mandatory-text{
+	color:#424242;
+}
+
+
+/* BORDERS */
+.dark-color-border {
+	border-color: #555555 !important;
+}
+.intermidate-border {
+	border-color: #A4A2A2;
+}
+.middle-color-border, .multipageSimple-3col .thirdColumn {
+	border-color: #d9d8d8 !important;
+}
+.light-color-border {
+	border-color: #d4d2d2 !important;
+}
+.flexInputSimple, .flexInputTextarea, .flexInputSelect, .flexFormInputBlock .selector, input.flexInputDate {
+	border:1px solid #e7e7e7;
+}
+.footer-bar,.footer-separator {
+	border-color:#c8c8c8;
+}
+
+/* Document Styles
+-----------------------*/
+
+/* READ MORE */
+.full-content,
+.intro-readless{
+	display: none;
+}
+
+/* GENERAL LAYOUT */
+.bg, 
+.flexFormSubmitBlock  button, .flexFormFieldHTML input,
+.list-icon ul li:before, .text-container ul li:before,
+.isMultiPurpose .contentBlock ul li:before {
+  background: url(../images/images_sprite.png);
+  background-image: url(../images/images_sprite.svg), none;	
+}
+
+a:focus{
+    outline:0; /*removes the dotted border*/
+}
+.list-icon ul, .isMultiPurpose .contentBlock ul{
+	position: relative;
+}
+.list-icon ul li, .isMultiPurpose .contentBlock ul li{
+	position: relative;
+	/* TODO  : see if it fits with all subpages*/
+	/*margin-bottom: 10px;
+	line-height: 20px;*/
+    line-height: 2em;
+    margin-bottom: 1px;
+}
+.list-icon ul li:before, .text-container ul li:before, .isMultiPurpose .contentBlock ul li:before{
+	position: absolute;
+  	background-position: -353px -82px;
+  	content: ' ';
+	left: -25px;
+	top: 5px;
+	width: 20px;
+	height: 20px;
+}
+
+.text-container ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.text-container ul li:before{
+	position: relative;
+	float: left;
+	left: inherit;
+  	background-position: -54px -128px;
+	width: 18px;
+}
+.text-container ul li{
+	line-height: 1.5em;
+}
+
+.bg-transp{
+	background: transparent;
+}
+
+.checkbox{
+	width: 18px;
+	height: 17px;
+}
+.checkbox.bg{
+	background-position: -28px -613px;
+}
+.checkbox.bg.active{
+	background-position: -27px -582px;
+}
+
+/* Header Styles
+-----------------------*/
+
+div#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 48px;
+	transition: all 0.3s ease-out;
+	z-index: 4;
+}
+.ie7 #header,.ie8 #header {
+	z-index: auto;
+}
+
+div#branding {
+	position: absolute;
+	width: 280px;
+	height: 172px;
+	top: 0;
+	left: 50px;
+	z-index: 3;
+}
+	div#branding span.bg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: url(../images/logo.png);
+		background-image: url(../images/logo.svg), none;
+		background-repeat: no-repeat;
+	}
+
+.header-elem {
+	float: right;
+	min-height: 30px;
+}
+
+/* Footer Styles
+-----------------------*/
+
+#footer {
+	position: relative;
+	width: 100%;
+}
+
+/* Text Styles
+-----------------------*/
+
+/** FONT FAMILY **/
+body, button, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400; 
+}
+
+div.selector, div.selector select {
+	font-family: 'Open Sans', sans-serif!important;
+}
+/** TOOLBOX FONTS **/
+#condorAddBody, .dijitDialog, .toolbox-link {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.f-light {
+	font-weight: 300;
+}
+.f-normal {
+	font-weight: 400;
+}
+.f-semibold {
+	font-weight: 600;
+}
+.f-bold {
+	font-weight: 700;
+}
+
+/** TEXT TRANSFORM **/
+.uppercase {
+	text-transform: uppercase;
+}
+.no-text-transform {
+	text-transform: none;
+}
+/** TEXT DECORATION **/
+.no-text-decoration {
+	text-decoration: none;
+}
+
+/** TEXT MODIFICATION **/
+h1 {
+	font-weight: 300;
+	font-size: 1.5em;
+}
+h2 {
+	font-size: 1.375em;
+}
+h3 {
+	font-size: 1.25em;
+}
+
+#page_home h1 {
+	font-size: 1.875em;
+}
+
+#main-content,
+#holder div.selector select,
+#footer h3 {
+	font-size: 0.875em;
+	font-weight: 400;
+}
+
+/* Header Integration
+------------------------ */
+
+.contain-to-grid.fixed {
+	background-color: rgba(255,255,255,.7);
+	height: 48px;
+}
+
+.contain-to-grid.fixed .row {
+	max-width: 100%;
+}
+
+.contain-to-grid.fixed + .row {
+	max-width: 100%;
+}
+
+div[data-draggedwidget="CorporateLogo"] {
+	z-index: 1;
+}
+
+div[data-draggedwidget="Booking"] {
+	position: absolute;
+	z-index: 50
+}
+
+div[data-draggedwidget="Booking"]:not(.minified) {
+	max-height: 74px;
+	top: 385px;
+	left: 50%;
+}
+
+div[data-draggedwidget="Booking"].minified {
+	top: 94px;
+	right: 50px;
+	width: 310px;
+}
+
+div[data-draggedwidget="HeroImageWidget"] {
+	height: 900px;
+	z-index: -1;
+}

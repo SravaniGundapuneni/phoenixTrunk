@@ -1,0 +1,40 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="140px">Event</th>
+                        <th width="auto">Description</th>
+                        <th>Status</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                    <?php foreach ($this->items as $event) { ?>
+                    <tr class="ui-state-default" data-itemId="<?= $event->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $event->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('phoenixEvents-toolbox', array('action'=>'editItem', 'subsite' => $subsiteRoute, 'itemId'=>$event->getId())) ?>">
+                                <?= $event->getEventName() ?>
+                            </a>
+                        </td>
+                        <td><?= $event->getEventDescription() ?></td>
+                        <td><?= $this->displayStatus($event->getStatus()) ?></td>
+                        <td><?= $event->getEventStart() ?></td>
+                         <td><?= $event->getEventEnd() ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

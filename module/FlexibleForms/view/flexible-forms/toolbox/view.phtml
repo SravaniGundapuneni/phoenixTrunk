@@ -1,0 +1,65 @@
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">View Submissions <?=$formTitle?></div>
+        
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+
+                    <tr>
+                         <?php
+                            if ($userValue==1){
+                                ?>
+                            <th width="20px"></th>
+                            <?php
+                            }
+                            ?>
+                       
+                        <?php
+                        foreach ($field as $index => $fields):
+                            ?>
+                            <th width="auto"><?php echo $fields['displayName'] ?></th>
+                        <?php endforeach ?>
+                    </tr>
+
+
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($items as $index => $item):
+                        //print_r($item['itemId']);
+                        $item_values = explode(",.,.,", $item['value']);
+                        ?>
+                        <tr>
+                            <?php
+                            if ($userValue==1){
+                                ?>
+                            <td><input type="checkbox" name="items[]" value="<?= $item['itemId'] ?>" /></td>
+                            <?php
+                            }
+                            ?>
+                            
+
+                            <?php
+                            for ($i = 0; $i < count($item_values); $i++) {
+                                ?>
+
+                                <td><?= $item_values[$i] ?></td>
+
+
+                                <?php
+                            }
+                        endforeach
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>

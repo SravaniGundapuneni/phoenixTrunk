@@ -1,0 +1,204 @@
+<style>
+    #socialToolbar {
+        margin-left: 5px;
+    }
+    #socialToolbar td {
+        padding: 5px;
+    }
+    #socialToolbar td:first-child {
+        width: 160px;
+    }
+    #socialToolbar td:nth-child(2) {
+        width: 70%;
+    }
+    #editBox .editItemContent #socialToolbar td > input[type="text"],
+    #editBox .editItemContent #socialToolbar td > select {
+        width: 100%;
+    }
+    #socialToolbar input[type="radio"],
+    #socialToolbar input[type="checkbox"] {
+        position: relative;
+        top: -2px;
+    }
+    #socialToolbar td:nth-child(3) input[type="checkbox"] {
+        left: 20px;
+    }
+    #socialToolbar label {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>
+
+<div id="editBox">
+    <div id="editItemHeader" class="editItemHeader">
+        <h2 id="editItemHeaderTitle"><?= $title ?></h2>
+        <div id="editItemLangSelect" class="editItemLangSelect">
+            <span>LANGUAGE VERSION&nbsp;</span>
+            <select id="languageSelect" name="languageSelect">
+                <option selected="selected" value="en">English - English</option>
+                <option value="es">Spanish - español</option>
+            </select>
+        </div>
+        <?= $this->partial('list-module/helpers/edit-item-actions')?>
+    </div>
+
+    <div class="editItemContent" style='padding:0 10px'>
+        <?= $this->form()->openTag($form) ?>
+            <table>
+                <tr><td><h5 colspan="3">General Settings</h5></tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('toolbarEnabled')) ?> </td>
+                    <td><?= $this->formElement($form->get('toolbarEnabled')) ?></td>
+                    <td><?= $this->formElement($form->get('id')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('layout')) ?> </td>
+                    <td><?= $this->formElement($form->get('layout')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('smFacebook')) ?></td>
+                    <td><?= $this->formElement($form->get('smFacebook')) ?></td>
+                    <td><?= $this->formElement($form->get('smFacebookEnabled')) ?></td>
+                </tr>
+
+                <tr>
+                    <td>Show:</td>
+                    <td><?= $this->formElement($form->get('showStreamOrFaces')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('smTwitter')) ?></td>
+                    <td><?= $this->formElement($form->get('smTwitter')) ?></td>
+                    <td><?= $this->formElement($form->get('smTwitterEnabled')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('smYouTube')) ?></td>
+                    <td><?= $this->formElement($form->get('smYouTube')) ?></td>
+                    <td><?= $this->formElement($form->get('smYouTubeEnabled')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('smTripAdivsor')) ?></td>
+                    <td><?= $this->formElement($form->get('smTripAdivsor')) ?></td>
+                    <td><?= $this->formElement($form->get('smTripAdivsorEnabled')) ?></td>
+                </tr>
+
+                <tr><td colspan="3"><h5>Layout Settings</h5></td></tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('iconPreset')) ?></td>
+                    <td><?= $this->formElement($form->get('iconPreset')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('toolbarLayout')) ?></td>
+                    <td><?= $this->formElement($form->get('toolbarLayout')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('colorScheme')) ?></td>
+                    <td><?= $this->formElement($form->get('colorScheme')) ?></td>
+                <tr>
+                    <td><?= $this->formLabel($form->get('gradientTop')) ?></td>
+                    <td><?= $this->formElement($form->get('gradientTop')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('gradientBottom')) ?></td>
+                    <td><?= $this->formElement($form->get('gradientBottom')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('layoutFont')) ?></td>
+                    <td><?= $this->formElement($form->get('layoutFont')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('layoutBorders')) ?></td>
+                    <td><?= $this->formElement($form->get('layoutBorders')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('rounded')) ?></td>
+                    <td><?= $this->formElement($form->get('rounded')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('extended')) ?></td>
+                    <td><?= $this->formElement($form->get('extended')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('showLabel')) ?></td>
+                    <td><?= $this->formElement($form->get('showLabel')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('shareTooltip')) ?></td>
+                    <td><?= $this->formElement($form->get('shareTooltip')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('onlyIcons')) ?></td>
+                    <td><?= $this->formElement($form->get('onlyIcons')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('toolbarSize')) ?></td>
+                    <td><?= $this->formElement($form->get('toolbarSize')) ?></td>
+                </tr>
+
+                <tr><td colspan="3"><h5>Share Buttons Toolbar Settings</h5></td></tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('butTwitter')) ?></td>
+                    <td><?= $this->formElement($form->get('butTwitter')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('butPinterest')) ?></td>
+                    <td><?= $this->formElement($form->get('butPinterest')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('butGoogle')) ?></td>
+                    <td><?= $this->formElement($form->get('butGoogle')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('butFacebook')) ?></td>
+                    <td><?= $this->formElement($form->get('butFacebook')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('butEmail')) ?></td>
+                    <td><?= $this->formElement($form->get('butEmail')) ?></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><h5>Image Sharing Button Settings</h5></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('imgTwitter')) ?></td>
+                    <td><?= $this->formElement($form->get('imgTwitter')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('imgGoogle')) ?></td>
+                    <td><?= $this->formElement($form->get('imgGoogle')) ?></td>
+                </tr>
+
+                <tr>
+                    <td><?= $this->formLabel($form->get('imgFacebook')) ?> </td>
+                    <td><?= $this->formElement($form->get('imgFacebook')) ?></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+</div>

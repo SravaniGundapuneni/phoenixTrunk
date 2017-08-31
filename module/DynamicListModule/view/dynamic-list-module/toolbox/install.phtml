@@ -1,0 +1,52 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select a Module to Install/Submit to Repo</div>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="80px">Status</th>
+                        <th width="auto">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($items as $index=>$module): ?>
+                    <tr>
+                        <td></td>
+                        <td>
+                                <?= $module->name ?>
+                        </td>
+                        <td><?= $module->status ?></td>
+                        <td>
+                            <?php
+                                $dontDisplayLink = false;
+                                switch ($module->status):
+                                    case 'Not Installed':
+                                        $url = $siteroot . 'sockets/dynamicListModule/installModule/' .$module->id;
+                                        $label = 'Install';                                    
+                                        break;
+                                    case 'Local Only':
+                                    case 'Modified Locally':
+                                        $url = $siteroot . 'sockets/dynamicListModule/pushModule/' .$module->id;
+                                        $label = 'Push to Repo';
+                                        break;
+                                    default:
+                                        $dontDisplayLink = true;
+                                endswitch;
+                            ?>
+                            <? if (!$dontDisplayLink):?>
+                                <a href="<?=$url?>"><?=$label?></a>
+                            <? endif;?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div id="cropDialog" title="Cropping dialog" class="mmDialog">
+	<div id="dialogImageContainer">
+	<!--
+		<div id="dialogImageZoom">
+			<div id="zoomHeading">Image Zoom</div>
+			<div id="zoomOut" class="zoomControl">
+				<i class="fa fa-search-minus"></i>
+			</div>
+			<div id="zoomIn" class="zoomControl">
+				<i class="fa fa-search-plus"></i>
+			</div>
+		</div>
+	-->
+		<div id="dialogImage">
+			<img id="cropbox" src=""/>
+		</div>		
+	</div>
+	<div id="dialogOptionsContainer">
+		<div id="dialogDropdowns">
+			<select id="cropRatioDropdown" class="cropDropdown">
+				<option value="0" class="default" selected="selected" style="display:none">Use Crop Ratio</option>
+				<?=$this->cropRatioHelper();?>
+			</select>
+			<span class="betweenDropdownText">or</span>
+			<select id="cropPresetDropdown" class="cropDropdown">
+				<option value="0" class="default" selected="selected" style="display:none">Use Crop Preset Size</option>
+				<?=$this->cropPresetHelper();?>
+			</select>
+		</div>
+		<div id="cropSize">
+			<div id="targetSize">Target Size: <span id="targetX">0</span>px x <span id="targetY">0</span>px</div>
+			<div id="originalSize">Original Size: <span id="originalX">X</span>px x <span id="originalY">Y</span>px</div>
+		</div>
+	</div>
+	<input type="hidden" id="x" name="x" />
+	<input type="hidden" id="y" name="y" />
+	<input type="hidden" id="w" name="w" />
+	<input type="hidden" id="h" name="h" />
+</div>

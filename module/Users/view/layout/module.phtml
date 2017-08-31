@@ -1,0 +1,28 @@
+<?php 
+if ($subsite) {
+    $subsite = substr($subsite, 1);
+}
+
+if (empty($title)) {
+	$title = 'Manage Users';
+}
+?>
+<?php echo $this->inlineScript()->appendScript($this->listUpdateStatusScript());?>
+
+<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/jquery.simplePagination.js'); ?>
+<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/list-module.js'); ?>
+
+<div id="moduleName" class="breadcrumb"><?php echo $this->escapeHtml($title); ?></div>
+<div id="taskMenu">
+    <ul id="taskMenu">
+        <li class="<?php echo ($this->currentTask=='newUser'?'currentTask':''); ?>"><a href="<?php echo $this->url('users-toolbox', array('action' => 'newUser', 'subsite' => $subsite));?>">Add Users</a></li>
+        <li class="<?php echo ($this->currentTask=='listUsers'?'currentTask':''); ?>"><a href="<?php echo $this->url('users-toolbox', array('subsite' => $subsite));?>">Manage Users</a></li>
+        <li class="<?php echo ($this->currentTask=='ignore-for-now'?'currentTask':''); ?>"><a href="<?php echo $this->url('users-groups-toolbox', array('action' => 'editList', 'langCode' => 'en', 'subsite' => $subsite));?>">User Groups</a></li>
+        <li class="<?php echo ($this->currentTask=='ignore-for-now'?'currentTask':''); ?>"><a href="<?php echo $this->url('users-groups-toolbox', array('action' => 'addItem', 'langCode' => 'en', 'subsite' => $subsite));?>">Add Group</a></li>
+        <li><a target='_blank' href="http://training.travelclick.com/help/Toolbox_Online_Help/Default_CSH.htm#2500">Help</a></li>
+    </ul>&nbsp;
+</div>
+<div id="contentFloated">
+    <?php echo $taskContent; ?>
+</div>

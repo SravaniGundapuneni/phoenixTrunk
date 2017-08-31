@@ -1,0 +1,3 @@
+/*this is the header js file
+The only code that should be placed here is JavaScript or JQuery calls that need to be initialiazed before the page has loaded.
+*/

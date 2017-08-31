@@ -1,0 +1,314 @@
+<?php
+
+/**
+ * @package     PhoenixToolbar
+ * @copyright   Copyright (c) 2014 TravelClick, Inc (http://www.travelclick.com)
+ * @license     All Rights Reserved
+ * @version     Release: 1.14
+ * @since       File available since release 1.14
+ * @author      Saurabh Shirgaonkar <sshirgaonkar@travelclick.com>
+ * @filename    index.phtml
+ */
+
+?>
+    
+	<?php
+	$form = $this->form;
+	$form->prepare();
+	$form->setAttribute('action', $this->url(NULL,
+	array('controller'=>'Toolbox', 'action' => '')));
+	$form->setAttribute('method','post');
+	echo $this->form()->openTag($form);	
+	//$title="Manage Items";
+	?>
+
+	
+    <?
+	if (empty($title)) {
+	$title = 'Social Toolbar';
+    }
+    ?>
+	
+	
+    <?php echo $this->inlineScript()->appendScript($this->listUpdateStatusScript());?>
+	<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+	<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/jquery.simplePagination.js'); ?>
+	<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/list-module.js'); ?>
+	
+
+    <div id="moduleName" class="breadcrumb"><?php echo $this->escapeHtml($title); ?></div>
+
+<div id="contentFloated">
+    <?php // echo $taskContent; ?>
+	
+	<!-- CODE FOR THE TABLE STARTS -->
+	<table border="0" width="100%" align="center" cellpadding="3" cellspacing="30" style="font-family:'Times New Roman';"> 
+
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+	
+			
+		    <!-- ROW SUBHEADING STARTS -->
+			<!--
+			<tr>
+			        <td> 
+					<dd><?php //echo "Social Media Settings"; ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd> &nbsp; &nbsp; 					
+				    </dd>
+					</td>
+			</tr> 
+			-->	
+			<!-- ROW SUBHEADING ENDS -->
+			
+			
+			<!-- ROW 1 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarEnabled')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarEnabled')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarEnabled')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 1 ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- ROW 2 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarMinimize')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarMinimize')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarMinimize')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 2 ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- ROW 3 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('facebookUrl')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('facebookUrl')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('facebookUrl')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 3 ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- ROW 4 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('twitterUrl')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('twitterUrl')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('twitterUrl')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 4 ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- ROW 5 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarLayout')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarLayout')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarLayout')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 5 ENDS -->
+			
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			
+			<!-- ROW 5 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarColor')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarColor')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarColor')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 5 ENDS -->
+			
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+			
+			<!-- ROW 6 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarColor')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarColor')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarColor')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 6 ENDS -->
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->
+		
+			<!-- ROW 7 STARTS -->
+			<tr>
+			        <td> 
+					<dd><?php echo $this->formLabel($form->get('toolbarColor')); ?></dd>					
+					</td>
+					<td align="left" width="100%">
+					<dd>					
+					<?php echo $this->formElement($form->get('toolbarColor')); ?> <?php //echo sprintf($this->translate('current value: %s'), $this->asseticsEnvironment); ?></dd>
+					<dd> <?php echo $this->formElementErrors($form->get('toolbarColor')); ?> </dd>
+					</td>
+			</tr>	
+			<!-- ROW 7 ENDS -->
+			
+			
+			
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS -->			
+			
+			<!--RESET AND SUBMIT BUTTON CODE STARTS-->
+			<tr>
+
+			<td>	
+			&nbsp; &nbsp; 
+			</td>
+			
+			<td>
+			<dd>  <?php echo $this->formElement($form->get('reset')); ?> 
+				  <?php echo $this->formElementErrors($form->get('reset')); ?> 
+			
+				  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+			
+				  <?php echo $this->formElement($form->get('submit')); ?> 
+				  <?php echo $this->formElementErrors($form->get('submit')); ?> </dd>
+			</td>
+			
+			</tr>
+			<!--RESET AND SUBMIT BUTTON CODE ENDS-->
+
+			<!-- BLANK LINE STARTS -->
+			<tr>	
+					<td align="center" colspan="2">
+					&nbsp; &nbsp;
+					</td>	
+			</tr>
+			<!-- BLANK LINE ENDS --> 
+				 
+			<!-- HIDDEN COMPONENT CODE STARTS -->
+			<tr>
+
+			<td>	
+			<dt>  <?php //echo $this->formLabel($form->get('fileinput')); ?> </dt>
+			</td>
+			
+			<td>
+			<dd>  <?php echo $this->formElement($form->get('id')); ?> </dd>
+			<dd>  <?php echo $this->formElementErrors($form->get('id')); ?> </dd>
+			</td>
+			
+			</tr>
+			<!--HIDDEN COMPONENT CODE ENDS-->
+			
+                 
+			<tr>	 
+            <td>
+			
+			</td>
+			
+			<td>
+			<?php echo $this->data; ?>  
+			</td>
+			</tr>
+
+			
+    </table>
+    <!-- CODE FOR THE TABLE ENDS -->	
+	
+	
+	
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

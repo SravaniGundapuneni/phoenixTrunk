@@ -1,0 +1,13 @@
+
+
+<div class="editItemOptionsList">
+	<?php
+	foreach ($this->editItemOptions as $key => $option):
+		?>
+		<div id="edit-<?= $option ?>" data-action="<?= $option ?>" class="editItemOption">
+			<img src="<?php echo $this->toolboxIncludeUrl; ?>module/ListModule/view/layout/img/editItem-<?= $option ?>.png">
+			<span><?= $key ?></span>
+		</div>
+	<?php endforeach; ?>
+	&nbsp;
+</div>

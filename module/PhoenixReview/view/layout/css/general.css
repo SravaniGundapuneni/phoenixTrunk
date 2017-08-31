@@ -1,0 +1,122 @@
+
+#loginBox {
+    width:290px;
+    height:196px;
+    margin:160px auto 20px auto;
+    background:url('../img/loginBack.png') repeat-x;
+    position:relative;
+}
+
+
+#resetBox {
+    width:290px;
+    height:196px;
+    margin:80px auto 10px auto;
+    background:url('../img/loginReset.png') repeat-x;
+    position:relative;
+}
+
+#loginError {
+    width:270px;
+    height:196px;
+    margin:0px auto 10px auto;
+    color:#FF9900;
+}
+
+
+#loginUserLabel {
+    position:absolute;
+    top:94px;
+    right:194px;
+    text-align:right;
+    display:block;
+}
+
+#loginUsername {
+    position: absolute;
+    top: 94px;
+    left: 112px;
+    text-align: left;
+    border: 0px;
+    padding: 0px;
+    font-size: 12px;
+    width: 142px;
+    height: 15px;
+}
+
+#loginPassword {
+    position:absolute;
+    top:123px;
+    left:112px;
+    text-align:left;
+    border:0px;
+    padding:0px;
+    font-size:12px;
+    width:142px;
+    height: 15px;
+}
+
+#loginPasswordLabel {
+    position:absolute;
+    top:124px;
+    right:194px;
+    text-align:right;
+    display:block;
+}
+
+a#loginSubmit {
+    position:absolute;
+    top:158px;
+    right:29px;
+    height:21px;
+    width:109px;
+    background:url('../img/login.png') top;
+    display:block;
+    overflow:hidden;
+    cursor:pointer; 
+}
+
+
+a#loginSubmit:hover {
+    background-position:bottom;
+}
+
+
+a#passwordSubmit {
+    position:absolute;
+    top:158px;
+    right:29px;
+    height:21px;
+    width:109px;
+    background:url('../img/submit.png') top;
+    display:block;
+    overflow:hidden;
+    cursor:pointer; 
+}
+
+a#passwordSubmit:hover {
+    background-position:bottom;
+}
+
+#passwordResetLink {
+    position: absolute;
+    
+    border: 0px;
+    padding: 0px;
+    left: 16px;
+    top: 158px;
+}
+
+#passwordResetLink a {
+    font-size: 11px;
+    color: #777;
+    
+}
+#loginPassResetInfo {
+      display: block;
+    left: 6px;
+    position: absolute;
+    right: 10px;
+    text-align: justify;
+    top: 76px;
+}

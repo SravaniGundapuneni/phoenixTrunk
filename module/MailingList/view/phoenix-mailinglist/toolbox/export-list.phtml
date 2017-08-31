@@ -1,0 +1,29 @@
+<?php
+    $val = count($this->etext);
+	
+    if ($val > 0) {
+				$fh = @fopen( 'php://output', 'w' );
+				$i=0;
+				foreach ($this->etext as $result) {
+					if($i==0){
+						$displayNum="No";
+					}
+                    else		
+	                { 
+						$displayNum=$i;					
+					}
+					$dataToFile=implode(" | ",$result);
+					$info=$displayNum." | ".$dataToFile."\r\n";					
+					fwrite($fh,$info);
+					$info="------------------------------------------------------------------------------------------------"."\r\n";					
+					fwrite($fh,$info);
+					$i=$i+1;
+					
+				}
+			fclose($fh);
+	}
+?>
+                    
+                       
+                        
+                

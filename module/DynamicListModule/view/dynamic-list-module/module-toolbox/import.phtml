@@ -1,0 +1,27 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Upload a CSV file to import</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <?php if ($this->upload) : ?>
+            File uploaded
+
+        <?php else : ?>
+
+            <?php
+            $form = $this->form;
+            $form->prepare();
+
+            echo $this->form()->openTag($form);
+
+            echo $this->formRow($form->get('upload'));
+
+            echo $this->formSubmit($form->get('submit'));
+            echo $this->form()->closeTag();
+        endif
+        ?>
+
+            <a href="<?= $this->url('dynamicListModule-moduleToolbox', array('subsite'=> $subsiteRoute, 'module' => $this->moduleName ))?>">Back to <?=$this->moduleName?> list</a>
+    </div>
+</div>

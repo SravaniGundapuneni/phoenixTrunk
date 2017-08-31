@@ -1,0 +1,60 @@
+<?php var_dump($paginator);?>
+<div id="editBox" class="bar">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div>
+        <form id="edit-list-search" class="form-search pull-right">
+            <div class="large-12 columns">
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        <input type="text" name="s" value="<?=$this->search?>" class="input-medium search-query"></label>
+                    </div>
+                    <div class="small-2 columns">
+                        <button class="button postfix" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted"  id="example-paginate">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="190px">Property</th>
+                        <th width="auto">Name</th>
+                        <th width="60px">Code</th>
+                        <th width="70px">Brand</th>
+                        <th width="70px">Featured</th>
+                        <th width="70px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php foreach ($this->items as $rate) { ?>
+                    <tr class="ui-state-default" data-itemId="<?= $rate->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $rate->getId() ?>" />
+                        <td><?= $rate->getProperty()->getName() ?></td>
+                        <td>
+                            <a href="<?= $this->url('phoenixRates-toolbox', array('action'=>'editItem', 'subsite' => $subsiteRoute, 'itemId'=>$rate->getId())) ?>">
+                                <?= $rate->getName() ?>
+                            </a>
+                        </td>
+                        <td><?= $rate->getCode() ?></td>
+                        <td><?= $this->displayYesNo($rate->getProperty()->getIsCorporate()) ?></td>
+                        <td><?= $this->displayYesNo($rate->getFeatured()) ?></td>
+                        <td><?= $this->displayStatus($rate->getStatus()) ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </form>
+        <?php if (!empty($this->paginator)) {
+            echo $this->paginationControl($this->paginator, 'Sliding', 'list-module/helpers/edit-list-pagination', array('search' => $this->search));
+        }
+        ?>
+    </div>
+</div>

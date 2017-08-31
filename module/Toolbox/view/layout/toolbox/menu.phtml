@@ -1,0 +1,171 @@
+<ul class="inPageEditBarMenu" id="areaMenu">
+    <li class="menus" id="menu-home">
+        <a href="<?=$toolboxHomeUrl?>">
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="4516" textArea="template_toolbox" textName="toolboxMenuHome" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">
+                HOME
+            </span>
+        </a>
+    </li>
+    <li class="menus" id="menu-tools">
+        <a href="#">
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="359" textArea="template_toolbox" textName="toolboxMenuTools" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">
+                TOOLS
+            </span>
+        </a>
+        <ul>
+            <li class="submenu" id="menu-mediaManager">
+                <a href="#" onclick="openMediaManager()">
+                    <span dojoType="condor.text.EditInline" class="textSwitchHolder version_0" lang="en" langName="English" textId="0" textArea="template_toolbox" textName="toolboxMenu_mediaManager" trueLanguageContentIsEmpty="true" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="0" dynamicField="">Media Manager</span>
+                </a>
+            </li>
+            <?php if ($showCas):?>
+                <li class="submenu" id="tool-unapprovedChangesList">
+                    <a href="http://localhost/phoenixshowcase/toolbox/tools/unapprovedChangesList-en.html">
+                        <span dojoattachpoint="containerNode" dojoattachevent="onclick:onClick" id="condor_text_EditInline_4" lang="en" class="textSwitchHolder version_2" widgetid="condor_text_EditInline_4">
+                            Approve changes
+                        </span>
+                    </a>
+                </li>
+            <?php endif;?>
+            <?php 
+            foreach($this->toolList as $keyList => $valList) {
+                echo $this->menuItem(array('menuItem' => $valList));
+            }
+            ?>
+        </ul>
+    </li>
+    
+    <li class="menus" id="menu-admin">
+        <a href="#">
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="356" textArea="template_toolbox" textName="toolboxMenuAdminTools" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">ADMIN TOOLS</span>
+        </a>
+        <ul>
+            
+    <li class="submenu " id="tool-text">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/text-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="375" textArea="template_toolbox" textName="toolboxMenu_text" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">text and languages</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-languages">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/languages-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="5465" textArea="template_toolbox" textName="toolboxMenu_languages" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">language domains</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-users">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="376" textArea="template_toolbox" textName="toolboxMenu_users" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">user admin</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-sitemap">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/sitemap-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="3879" textArea="template_toolbox" textName="toolboxMenu_sitemap" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">sitemap</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-linkRedirects">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/linkRedirects-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="3938" textArea="template_toolbox" textName="toolboxMenu_linkRedirects" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">Link Redirects</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-googleAnalytics">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/googleAnalytics-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="4447" textArea="template_toolbox" textName="toolboxMenu_googleAnalytics" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">Google Analytics</span>
+        </a>
+    </li>
+    <li class="submenu " id="tool-seoUrls">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/seoUrls-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="6967" textArea="template_toolbox" textName="toolboxMenu_seoUrls" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">Custom URLs</span>
+        </a>
+    </li>
+    <li class="submenu  last " id="tool-deployer">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/deployer-en.html" >
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_0" lang="en" langName="English" textId="0" textArea="template_toolbox" textName="toolboxMenu_deployer" trueLanguageContentIsEmpty="true" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="0" dynamicField=""></span>
+        </a>
+    </li>
+        </ul>
+    </li>
+    
+    <li class="menus" id="menu-admin-dev">
+        <a href="#">
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="7346" textArea="template_toolbox" textName="toolboxMenuAdminDevTools" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">DEV TOOLS</span>
+        </a>
+        <ul>
+            
+    <li class="submenu " id="tool-refreshLocalCache">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/cache-en.html?refresh=local">
+            Refresh Local Cache
+        </a>
+    </li>
+    <li class="submenu " id="tool-refreshGlobalCache">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/cache-en.html?cache=refresh">
+            Refresh Global Cache
+        </a>
+    </li>
+    <li class="submenu " id="tool-updateTableStructures">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?updateTableStructures=1">
+            Update Table Structures
+        </a>
+    </li>
+    <li class="submenu " id="tool-viewCXML">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?showCxml=1">
+            View CXML
+        </a>
+    </li>
+    <li class="submenu " id="tool-pageFilterHistory">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?filterHistory=1">
+            Page Filter History
+        </a>
+    </li>
+    <li class="submenu " id="tool-showQueryList">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?DBQueryList=1">
+            Show Query List
+        </a>
+    </li>
+    <li class="submenu " id="tool-createTableDefinitions">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?createTableDefinitions=1">
+            Create Table Definitions
+        </a>
+    </li>
+    <li class="submenu  last " id="tool-showiHotelierInfo">
+        <a href="<?php echo $this->toolboxHomeUrl;?>tools/users_listUsers-en.html?tellMeAboutIData=1">
+            Show iHotelier Info
+        </a>
+    </li>
+        </ul>
+    </li>
+    
+    <li class="menus pending-total-page" id="menu-page-content">
+        <a href="#">
+            <span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="7335" textArea="template_toolbox" textName="toolboxMenuAdminPageTools" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">MANAGE PAGE CONTENTS</span>
+            <span class="extra page"></span>
+        </a>
+        <ul class="item-list">
+            
+    <li class="submenu " id="tool-pageText">
+        <a href="#" onclick="polyTextEditList('pageContent', 'Page Content', 'toolbox/tools/users task=listUsers')">
+            Page Text
+        </a>
+    </li>
+    <li class="submenu " id="tool-moduleItemText">
+        <a href="#" onclick="polyTextEditList('moduleContent', 'Dynamic Content', 'toolbox/tools/users task=listUsers')">
+            Module Item Text
+        </a>
+    </li>
+    <li class="submenu " id="tool-adminText">
+        <a href="#" onclick="polyTextEditList('adminContent', 'Admin Content', 'toolbox/tools/users task=listUsers')">
+            Admin Text
+        </a>
+    </li>
+    <li class="submenu " id="tool-seoMetaText">
+        <a href="#" onclick="polyTextEditList('seoContent', 'SEO Content', 'toolbox/tools/users task=listUsers')">
+            SEO/Meta Text
+        </a>
+    </li>
+    <li class="submenu  last " id="tool-imagesAltText">
+        <a href="#" onclick="openImagesAltTextEditDialog({page: 'toolbox/tools/users task=listUsers'})">
+            Images Alt Text
+        </a>
+    </li>
+        </ul>
+    </li>
+    <li class="menus" id="menu-help"><a target='_blank' href="http://training.travelclick.com/help/Toolbox_Online_Help/Default_CSH.htm#10"><span dojoType="condor.text.EditInline" class="textSwitchHolder version_1" lang="en" langName="English" textId="357" textArea="template_toolbox" textName="toolboxMenuHelp" trueLanguageContentIsEmpty="false" langCode="en" database="dbAdmin" htmlMode="htmlStrip" editAlways="false" dataSection="all" parentTable="" parentRowID="" autoUpdateText="true" version="1" dynamicField="">HELP</span></a></li>
+</ul>

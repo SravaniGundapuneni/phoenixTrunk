@@ -1,0 +1,36 @@
+<div id="editBox">
+    <div id="editItemHeader" class="editItemHeader">
+        <h2 id="editItemHeaderTitle"><?= $title ?></h2>
+        <div id="editItemLangSelect" class="editItemLangSelect">
+            <span>LANGUAGE VERSION&nbsp;</span>
+            <select id="languageSelect" name="languageSelect">
+                <option selected="selected" value="en">English - English</option>
+                <option value="es">Spanish - español</option>
+            </select>
+        </div>
+        <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+    </div>
+    <div class="editItemContent">
+        <br/>
+        <div class="editItemMessage"></div>
+        <?php echo $this->form()->openTag($form); ?>
+        <?php
+        foreach ($this->form as $valForm) {
+            if ($valForm instanceof \Zend\Form\Element\Hidden) {
+                echo $this->formHidden($valForm);
+            } else {
+                echo '<p>' . $this->formLabel($valForm);
+                if ($valForm instanceof \Phoenix\Form\Element\OrderedSelect) {
+                    echo $this->formOrderedSelect($valForm);
+                } else {
+                    echo $this->formElement($valForm);
+                }
+                echo '</p>';
+                echo str_replace('Value is required', $valForm->getName() . ' is required', $this->formElementErrors($valForm, array('class' => 'error-inline')));
+            }
+        }
+        ?>
+    <?php echo $this->form()->closeTag(); ?>
+    </div>
+<?= $this->partial('list-module/helpers/edit-item-actions') ?>
+</div>

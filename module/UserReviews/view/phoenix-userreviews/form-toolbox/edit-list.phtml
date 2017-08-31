@@ -1,0 +1,42 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select an item to edit</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="list-wrapper">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <?php foreach ($this->fields as $valField): ?>
+                            <th width="auto"><?=$valField->getDisplayName();?></th>
+                        <?php endforeach;?>
+                        <th width="80px">Status</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($items as $index => $item): ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $item->getId() ?>" /></td>
+                        <?php foreach($this->fields as $fieldIndex => $valField): ?>
+                            <td>
+                                <?php if ($fieldIndex == 0):?>
+                                    <a href="<?= $this->url('flexibleForms-formToolbox', array('form' => $formRouteName, 'action' => 'editItem', 'itemId' => $item->getId())) ?>">
+                                        <?=$item->getValue($valField->getName());?>
+                                    </a>
+                                <?php else: ?>
+                                    <?=$item->getValue($valField->getName());?>
+                                <?php endif;?>
+                            </td>
+                        <?php endforeach;?>
+                        <td><?= $this->displayStatus($item->getStatus()) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

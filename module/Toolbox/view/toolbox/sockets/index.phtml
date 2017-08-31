@@ -1,0 +1,25 @@
+<?php
+
+$data = array('success'=>true);
+
+/**
+ * Make sure that the socket file exists
+ */
+if ( ! file_exists($this->socket_file_path) )
+{
+    $data = array_merge($data,array(
+        'success' => false,
+        'result' => 'The socket you are trying to call does not exist'
+    ));
+}
+else
+{
+    $result = include $this->socket_file_path;
+
+    $data = array_merge($data, array(
+        'success' => is_array($result) && isset($result[0]) ? $result[0] : false,
+        'result'  => is_array($result) && isset($result[1]) ? $result[1] : 'Socket returned bad result'
+    ));
+}
+
+die(json_encode($data));

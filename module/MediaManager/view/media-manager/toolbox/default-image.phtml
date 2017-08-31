@@ -1,0 +1,17 @@
+<link href="<?=$toolboxIncludeUrl?>/module/MediaManager/view/media-manager/css/style.mediaManager.css" rel="stylesheet"/>
+<!-- 
+Added by Alex Kotsores (TC) To use bootstrap Modal functionality
+
+-->
+<h2>Media Manager - Manage Default Image</h2>
+<div>
+    <h3>Current Default Image</h3>
+    <div><img src="<?php echo $this->siteroot . "/d/default/" . $this->currentDefaultImage; ?>"></div>
+</div>
+
+<div>
+<?php if (!$this->readOnly): ?>  
+    <h3>Replace Default Image</h3>
+    <?php echo $this->mediaManagerUploadDefaultForm($this->currentPath);?>
+<?php endif; ?>
+</div>

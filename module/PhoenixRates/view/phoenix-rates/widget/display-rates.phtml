@@ -1,0 +1,12 @@
+<h3>Our Rates</h3>
+<?php
+foreach ($this->ratesToDisplay as $keyRate => $valRate):
+?>
+    <div class="specialRate">
+        <strong><?php echo $valRate->getName();?></strong><br />
+        <?php echo $valRate->getDescription();?>
+        <hr />
+    </div>
+<?php
+endforeach;
+?>

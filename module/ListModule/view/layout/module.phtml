@@ -1,0 +1,28 @@
+
+<?php 
+if ($subsite):
+  $subsite = substr($subsite, 1);
+endif;
+?>
+<?php $moduleName = $this->escapeHtml($this->moduleName); ?>
+<?php $defaultTasks = array('addItem'=>'New Item','editList'=>'Manage Items'); ?>
+<?php $this->tasksMenu = empty($this->tasksMenu) ? $defaultTasks : $this->tasksMenu ?>
+
+<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+<?php $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/jquery.simplePagination.js'); ?>
+<?php $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/list-module.js'); ?>
+<?php $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/underscore-min.js'); ?>
+<script>
+	var module_name = '<?=$moduleName?>';
+	var toolboxIncludeUrl = '<?=$this->toolboxIncludeUrl?>';
+</script>
+<div id="moduleName" class="breadcrumb"><?= $moduleName ?></div>
+<div id="taskMenu">
+	<ul id="taskMenu">
+		<?=$this->partial(empty($this->moduleMenuTemplate) ? 'layout/module-menu' : $this->moduleMenuTemplate);?>
+	</ul>
+	&nbsp;
+</div>
+<div id="contentFloated">
+	<?= $taskContent;?>
+</div>

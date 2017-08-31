@@ -1,0 +1,107 @@
+.popup {
+	border: 1px solid #ddd;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-khtml-border-radius: 8px;
+/*	behavior: url(/styles/border-radius.htc);*/
+	border-radius: 5px;
+	-moz-box-shadow: 4px 4px 6px #999999;
+	-webkit-box-shadow: 4px 4px 6px #999999;
+	box-shadow: 4px 4px 6px #999999;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999');
+	display: none;
+	background-color: white;
+	position: absolute;
+	padding: 15px;
+	/*cursor: move;*/
+}
+
+.popup .body {
+	white-space: nowrap;
+}
+
+.popup .interview_header,
+.popup .interview_footer {
+	cursor: move;
+}
+
+.popup .interview_body {
+	cursor: default;
+}
+
+#msg_box {
+	background-color: white;
+	color: black;
+/*	min-width: 200px;*/
+	border: 1px solid silver;
+	-moz-border-radius: 6px 6px 6px 6px;
+	-webkit-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+	-webkit-box-shadow: 3px 3px 4px #999999;
+	box-shadow: 3px 3px 4px #999999;
+	position: absolute;
+}
+
+#msg_box .header,
+#msg_box .title {
+	cursor: move;
+	background-color: #05699C;
+	color: white;
+	padding: 4px 10px;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+}
+
+#msg_box > div {
+	margin: 0;
+}
+
+#msg_box .image,
+#msg_box .content {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height: 70px;
+	vertical-align: middle;
+	padding-left: 20px;
+	text-align: left;
+	white-space: nowrap;
+	FONT-SIZE: 14px;
+}
+
+#msg_box .content {
+	width: 100%;
+	padding-right: 20px;
+}
+
+#msg_box .image {
+}
+
+#msg_box .footer {
+	text-align: center;
+	padding-bottom: 15px;
+}
+
+#msg_box .footer button {
+	padding: 2px 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.overlay {
+	position: absolute;
+	background-color: #EEEEEE;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+
+.popup .overlay {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+}

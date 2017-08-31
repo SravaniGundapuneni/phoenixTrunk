@@ -1,0 +1,14 @@
+<?php
+    $src = str_replace(
+        SITE_PATH, 
+        '',
+        $this->basePath() . $mediaAttachmentItem->getMediaManagerFile()->getPath() . '/__thumbs_80_80_scale/' . $mediaAttachmentItem->getName()
+    );
+?>
+<li class='media-attachment-item mediaAttachmentItem previouslySaved' data-fileid="<?= $mediaAttachmentItem->getId()?>">
+    <div>
+        <img src="<?=$src?>" />
+    </div>
+    <div class="media-item-name"><?=$mediaAttachmentItem->getName();?></div>
+    <a class="removeAttachment" data-fileid="<?=$mediaAttachmentItem->getId();?>" data-parentmodule="<?=$mediaAttachmentItem->getParentModule();?>" data-parentitemid="<?=$mediaAttachmentItem->getParentItemId();?>" href="">X</a>
+</li>

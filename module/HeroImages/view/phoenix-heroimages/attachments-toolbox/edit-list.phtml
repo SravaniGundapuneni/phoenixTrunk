@@ -1,0 +1,53 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->items as $page) {
+                        $params = $page->getAdditionalParams();
+                        /**
+                         * @todo Come up with standard for dealing with slashes and use it
+                         */
+                        $slash = '/';
+                        if (substr($siteroot, -1) == '/') {
+                            $slash = '';
+                        }
+
+                        $subsite = '';
+                        if ($page->getDataSection()) {
+                            $subsite = $page->getDataSection();
+                            if ($slash == '') {
+                                if (substr($subsite, 0, 1) == '/') {
+                                    $subsite = substr($subsite, 1);                                    
+                                }
+                                $slash = '/';                                
+                            }
+                        }
+                        $url = $siteroot . $subsite . $slash . $page->getPageKey() . ($params ? "?$params" : '');
+                    ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $page->getId() ?>" /></td>
+                        <td><a href="<?= $this->url('heroImages-attachmentToolbox', array('action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?= $page->getId() ?></a></td>
+                        <td><a href="<?= $this->url('heroImages-attachmentToolbox', array('action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?=$page->getTitle()?></a></td>
+                        <td class="statusText"><?= $this->displayStatus($page->getEntity()->getStatus()) ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <? //$this->partial('list-module/helpers/edit-list-pagination') ?>
+</div>

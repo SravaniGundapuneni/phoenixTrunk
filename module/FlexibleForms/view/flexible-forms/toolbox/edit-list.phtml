@@ -1,0 +1,87 @@
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select a form to edit</div>
+        
+         <?php
+                        if ($this->GetUser()==1){
+                            ?>
+                         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+                        <?php
+                        }
+                        ?>
+       
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="list-wrapper">
+                <thead>
+                    <tr>
+                        <?php
+                        if ($this->GetUser()==1){
+                            ?>
+                         <th width="20px"></th>
+                        <?php
+                        }
+                        ?>
+                       
+                        <th width="auto">Name</th>
+                        <th width="auto">Label</th>
+                        <th width="80px">Status</th>
+                        <th width="auto">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($items as $index=>$form): ?>
+                    <tr>
+                        <?php
+                        if ($this->GetUser()==1){
+                            ?>
+                        <td><input type="checkbox" name="items[]" value="<?= $form->getId() ?>" /></td>
+                         <td>
+                            <a href="<?= $this->url('flexibleForms-toolbox', array('subsite'=> $subsiteRoute, 'action' => 'editItem', 'itemId' => $form->getId())) ?>">
+                                <?= $form->getName() ?>
+                            </a>
+                        </td>
+                        <?php
+                        }else{
+                            ?>
+                         <td>
+                            
+                                <?= $form->getName() ?>
+                      
+                        </td>
+                        <?php
+                        }
+                        ?>
+                       
+                       
+                        <td>
+                            <?= $form->getLabel();?>
+                        </td>
+                        <td><?= $this->displayStatus($form->getStatus()) ?></td>
+                        
+                        <?php
+                        if ($this->GetUser()==1){
+                            ?>
+                       <td><a href="<?= $this->url('flexibleForms-fieldsToolbox', array('subsite'=> $subsiteRoute, 'formId' => $form->getId())); ?>">Fields</a> | 
+                            <a href="<?= $this->url('flexibleForms-toolbox', array('action' => 'view', 'subsite'=> $subsiteRoute, 'itemId' => $form->getId())); ?>">View Submissions</a></td>
+                   
+                        <?php
+                        }else{
+                            ?>
+                       <td>
+                            <a href="<?= $this->url('flexibleForms-toolbox', array('action' => 'view', 'subsite'=> $subsiteRoute, 'itemId' => $form->getId())); ?>">View Submissions</a></td>
+                   
+                       <?php
+                        }
+                        ?>
+                         </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

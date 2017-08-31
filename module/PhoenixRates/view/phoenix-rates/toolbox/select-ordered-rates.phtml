@@ -1,0 +1,37 @@
+<div class="selectRates">
+    <?php
+    $valueOptions = $this->orderedSelectElement->getValueOptions();
+    $value = $this->orderedSelectElement->getValue();
+    if (is_array($value) && !empty($value)) :
+
+        foreach ($value as $keyRate => $valRate):
+        ?>
+        <div class="selectRate">
+            <select name="pageRates[]" id="pageRates">
+                <option value = ''>Select a Rate</option>
+                <?php foreach ($this->orderedSelectElement->getValueOptions() as $keyOption => $valOption):
+                    $selected = ($valRate == $keyOption) ? 'selected' : '';
+                ?>            
+                    <option value="<?php echo $keyOption?>" <?php echo $selected;?>><?php echo $valOption;?></option>
+                <?php endforeach;?>
+            </select>
+                <input class="up-button" type = "button" name="btnUp" value="Move Up"/> <input type = "button" name ="btnDwn" value = "Move Down" class="down-button"/> <input type="button" class="delete-button" name="delete-button" value="Delete" />
+        </div>
+        <?php    
+        endforeach;
+    else:
+    ?>
+        <div class="selectRate">
+            <select name="pageRates[]" id="pageRates">
+                <option value = ''>Select a Rate</option>                
+                <?php foreach ($this->orderedSelectElement->getValueOptions() as $keyOption => $valOption):
+                ?>            
+                    <option value="<?php echo $keyOption?>"><?php echo $valOption;?></option>
+                <?php endforeach;?>
+            </select>
+                <input class="up-button" type = "button" name="btnUp" value="Move Up"/> <input type = "button" name ="btnDwn" value = "Move Down" class="down-button"/> <input type="button" class="delete-button" name="delete-button" value="Delete" />
+        </div>
+    <?php
+    endif;
+    ?>
+</div>

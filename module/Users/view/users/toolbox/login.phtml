@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <?php echo $this->headLink()->prependStylesheet($this->toolboxIncludeUrl . '/module/Users/view/layout/css/general.css'); ?>
+        <title>Login - Toolbox</title>
+    </head>
+    <div class="row template-builder-background" style="min-height: 700px;">
+        <div class="column large-11 medium-11 small-11 large-centered medium-centered">   
+            <div class="row" style="margin-top: 1.2rem;">
+                <div class="column large-5 medium-5 small-5 text-center">
+                    <img class="middle" src="<?= $this->toolboxIncludeUrl ?>module/Toolbox/view/layout/img/phxtbx2015.png"/>
+                    <h2 class="middle"><strong>LOGIN</strong></h2>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1.2rem;">
+                <div class="column">
+                    <?php if ($this->error): ?>
+                        <div id="loginError"><?php echo $this->errorMessage; ?></div>
+                    <?php endif; ?>
+                    <form action="<?php echo $this->url($this->actionRoute, $this->actionTokens); ?>" method="POST" name="frmLogin">
+                        <p align="center">
+                            <label for="loginUsername">Username:</label>
+                            <input type="text"  name="username" value="" />
+                        </p>
+                        <p align="center">
+                            <label  for="loginPassword">Password:</label>
+                            <input type="password"  name="password" />
+                        </p>
+                        <p align="center"> 
+                            <button id="submit" class="button radius text-center large medium small"  type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        </p>
+
+                        <script type="text/javascript">
+                            //document.write('<a href="#" id="loginSubmit" onclick="document.forms.frmLogin.submit()"> </a>');
+                            document.forms.frmLogin.elements.username.focus();
+                        </script>
+
+                        <p align="center">
+                            <a  href="<?php echo $this->url($this->actionRoute, $this->actionTokens) . '?resetPassword=1'; ?>" >Forgot Password</a>
+                        </p>
+                        <p align="center">
+                            <a  href="<?= $siteroot ?>" >Visit Site Home Page</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</html>

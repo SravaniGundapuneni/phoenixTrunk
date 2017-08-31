@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<div id="configModal" class="reveal-modal medium toolboxcontrols" data-reveal>
+    <h2>Widget</h2>
+    <a class="close-reveal-modal">&#215;</a>
+    <ul class="tabs" data-tab>
+      <li class="toolbox tab-title active"><a href="#panel2-1">HTML</a></li>
+      <li class="toolbox tab-title"><a href="#panel2-2">Styles</a></li>
+      <li class="toolbox tab-title"><a href="#panel2-3">JavaScript</a></li>
+      <li class="toolbox tab-title"><a href="#panel2-4">Config</a></li>
+    </ul>
+    <div class="tabs-content">
+
+      <div class="toolbox panel content active" id="panel2-1">
+          <textarea rows="25" cols="50" class="widget-html"></textarea>
+      </div>
+      <div class="toolbox panel content" id="panel2-2">
+          <textarea rows="25" cols="50" class="widget-styles"></textarea>
+      </div>
+      <div class="toolbox panel content" id="panel2-3">
+          <textarea rows="25" cols="50" class="widget-js"></textarea>
+      </div>
+      <div class="toolbox panel content" id="panel2-4"></div>
+
+      <ul class="stack-for-small round secondary button-group">
+          <li><a href="#" id="save-config"  class="button tiny">Save</a></li>
+          <li><a href="#" class="button alert tiny">Cancel</a></li>
+      </ul>
+    </div>
+    
+    <input type="hidden" id="thisHolderWID" name="thisHolderWID" />
+    <input type="hidden" id="thisHolderWTYPE" name="thisHolderWTYPE" />
+    <input type="hidden" id="thisHolderWNAME" name="thisHolderWNAME" />
+    
+</div>
+
+<div id="myModalDeleteWidget" class="reveal-modal tiny" data-reveal>
+    <a class="close-reveal-modal">&#215;</a>
+    <h2>Are you sure you want to this widget?</h2>
+    <ul class="stack-for-small round secondary button-group">
+        <li><a href="#" id="deleteWidget"  class="button alert tiny">Delete</a></li>
+        <li><a href="#" id="cancelDeleteWidget" class="button tiny">Cancel</a></li>
+    </ul>
+    <input type="hidden" id="thisHolderWID" name="thisHolderWID" />
+    <input type="hidden" id="thisHolderWTYPE" name="thisHolderWTYPE" />
+    <input type="hidden" id="thisHolderColID" name="thisHolderColID" />
+    <input type="hidden" id="thisHolderWNAME" name="thisHolderWNAME" />
+</div>

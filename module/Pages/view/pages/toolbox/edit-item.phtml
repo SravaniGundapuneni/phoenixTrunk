@@ -1,0 +1,5 @@
+<input type="hidden" name="isContent" value="<?=$isContent?>"/>
+<?php 
+$this->inlineScript()->appendFile($toolboxIncludeUrl . 'module/Pages/view/pages/toolbox/js/page-type.js');
+echo $this->render('list-module/toolbox/edit-item');
+?>

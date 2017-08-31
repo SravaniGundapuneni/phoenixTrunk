@@ -1,0 +1,471 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 19, 2014, 3:00:46 PM
+    Author     : rvahora
+    Template   : 3
+*/
+
+/* ---------------- OVERRIDE BROWSER DEFAULT TYPOGRAPHY ---------------- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+h1 {
+	margin: .7em 0em 0em;
+}
+h2,
+h3 {
+	margin:.5em auto;
+}
+h4 {
+	margin: 1.2em 0em 0em;
+}
+h5, 
+h6 {
+	margin: 1.2em 0em 1.2em;
+}
+p,
+li {
+	line-height: 1.8em;
+}
+p {
+	font-size: 1em;
+	margin: 0.9em 0em 1.2em;
+}
+li > p {
+	margin-top: 0.2em;
+}
+ol, 
+ul {
+	margin: 0;
+	list-style-type: square;
+}
+img {
+	border: 0 none;
+}
+th {
+	font-weight: normal;
+	text-align: right;
+	padding-right: 0.5em;
+}
+td {
+	text-align: center;
+}
+form,
+button,
+input,
+select,
+textarea {
+	margin: 0;
+}
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: bold;
+}
+sup {
+	font-size: 0.74em;
+	/* avoid increased line-box height */
+	vertical-align: top;
+	position: relative;
+	top: -0.1em;
+}
+sup.ordinal {
+	text-transform: lowercase;
+}
+.temperature {
+	white-space: nowrap; /* prevent IE from word-breaking after degreee symbol */
+}
+
+/* Colors
+----------------------*/
+
+/* BACKGROUNDS */
+
+.bg-extra-dark {
+	background: #373737;
+}
+.bg-dark, .footer button:hover{
+	background: #555555;
+}
+.bg-middle-stronger-dark, #get-directions, .footer-bar {
+	background: #616161;
+}
+.bg-middle-dark{
+	background: #696969;
+}
+.bg-middle-lighter-dark, .footer {
+	background-color: #757575;
+}
+.bg-dark-intermediate{
+	background-color: #969696;
+}
+.bg-intermidate {
+	background: #d2d2d2;
+}
+.bg-light {
+	background: #e2e2e2;
+}
+.bg-medium-light {
+    background: #f4f4f4;
+}
+.bg-extra-light {
+	background: #f9f9f9;
+}
+.holder, .main, .bg-white, body, form.flexibleForm select {
+	background: #fff;
+}
+
+/* FONT COLORS */
+.extra-dark-color, h1 {
+	color: #373737;
+}
+.dark-color {
+	color: #555;
+}
+.dark-intermediate-color, #holder h2{
+	color: #6c6c6c;
+}
+.intermediate-color{
+	color: #777777;
+}
+.dark-middle-color,
+div#header.fixed .level1 a,
+form.flexibleForm .fieldBlock .fieldInput,
+form.flexibleForm .fieldBlock .flexInputDate {
+	color: #7e7e7e;
+} 
+.middle-color {
+	color: #929293;
+}
+.middle-light-color{
+	color: #d4d2d2;
+}
+.light-color {
+	color: #d8d8d8;
+}
+.footer{
+	color: #ddd;
+}
+.black-color{
+	color: #000;
+}
+.main-intro .container{
+	color: #969696;
+}
+
+.modal a, .footer a, .white-color,
+form.flexibleForm button, form.flexibleForm .reset-btn,
+form.flexibleForm div.fieldBlock.type_fileDocument .input-file .button {
+	color: #FFF;
+}
+
+/* BORDERS */
+.dark-color-border{
+	border-color: #555555;
+}
+.dark-intermediate-color-border{
+	border-color: #969696;
+}
+.dark-middle-color-border{
+	border-color: #616161 !important;
+}
+.intermediate-border{
+	border-color: #a4a2a2;
+}
+.middle-color-border{
+	border-color: #d9d8d8;
+}
+.light-color-border{
+	border-color: #d4d2d2;
+}
+.extra-light-color-border, div#header.fixed{
+	border-color: #e6e6e6;
+}
+form.flexibleForm .fieldBlock.invalid .fieldInput {
+	border-color: #ff2020 !important;
+}
+.ftr-cell{
+	border-left: 1px solid #616161;
+}
+.modal .open .active-item:after{
+	border-bottom: 6px solid #fff;
+}
+.modal .active-item:after{
+	border-top: 6px solid #fff;
+}
+.modal .social-items{
+	border-top: 1px solid rgba(255,255,255, .2);
+	border-bottom: 1px solid rgba(255,255,255, .2);
+}
+
+/* FORMS & ACCORDIONS */
+form.flexibleForm .fieldBlock .fieldInput,
+form.flexibleForm .fieldBlock .flexInputDate,
+form.flexibleForm .type_radioButtons .label:before,
+form.flexibleForm .type_checkBox  .label:before,
+form.flexibleForm div.fieldBlock.type_fileDocument .ini-text {
+	border-color: #acacac !important;
+}
+form.flexibleForm div.fieldBlock.type_fileDocument .input-file .button,
+form.flexibleForm button,
+.mailto-btn {
+	background: #8b8b8b;
+}
+form.flexibleForm .reset-btn{
+	background: #ee2b2a;
+}
+form.flexibleForm button:hover,
+form.flexibleForm .reset-btn:hover {
+	background: #616262;
+}
+
+/* GRADIENTS & TRANSPARENCIES */
+.middle-color-gradient{
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJmMmYyZiIgc3RvcC1vcGFjaXR5PSIwLjc1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjklIiBzdG9wLWNvbG9yPSIjMmIyYjJiIiBzdG9wLW9wYWNpdHk9IjAuNjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMjMlIiBzdG9wLWNvbG9yPSIjMjQyNDI0IiBzdG9wLW9wYWNpdHk9IjAuNTUiLz4KICAgIDxzdG9wIG9mZnNldD0iMzglIiBzdG9wLWNvbG9yPSIjMWQxZDFkIiBzdG9wLW9wYWNpdHk9IjAuNDUiLz4KICAgIDxzdG9wIG9mZnNldD0iNTElIiBzdG9wLWNvbG9yPSIjMTcxNzE3IiBzdG9wLW9wYWNpdHk9IjAuMzUiLz4KICAgIDxzdG9wIG9mZnNldD0iNjglIiBzdG9wLWNvbG9yPSIjMGYwZjBmIiBzdG9wLW9wYWNpdHk9IjAuMiIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+	background: -moz-linear-gradient(top,  rgba(47,47,47,0.75) 0%, rgba(43,43,43,0.65) 9%, rgba(36,36,36,0.55) 23%, rgba(29,29,29,0.45) 38%, rgba(23,23,23,0.35) 51%, rgba(15,15,15,0.2) 68%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(47,47,47,0.75)), color-stop(9%,rgba(43,43,43,0.65)), color-stop(23%,rgba(36,36,36,0.55)), color-stop(38%,rgba(29,29,29,0.45)), color-stop(51%,rgba(23,23,23,0.35)), color-stop(68%,rgba(15,15,15,0.2)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(47,47,47,0.75) 0%,rgba(43,43,43,0.65) 9%,rgba(36,36,36,0.55) 23%,rgba(29,29,29,0.45) 38%,rgba(23,23,23,0.35) 51%,rgba(15,15,15,0.2) 68%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(47,47,47,0.75) 0%,rgba(43,43,43,0.65) 9%,rgba(36,36,36,0.55) 23%,rgba(29,29,29,0.45) 38%,rgba(23,23,23,0.35) 51%,rgba(15,15,15,0.2) 68%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(47,47,47,0.75) 0%,rgba(43,43,43,0.65) 9%,rgba(36,36,36,0.55) 23%,rgba(29,29,29,0.45) 38%,rgba(23,23,23,0.35) 51%,rgba(15,15,15,0.2) 68%,rgba(0,0,0,0) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(47,47,47,0.75) 0%,rgba(43,43,43,0.65) 9%,rgba(36,36,36,0.55) 23%,rgba(29,29,29,0.45) 38%,rgba(23,23,23,0.35) 51%,rgba(15,15,15,0.2) 68%,rgba(0,0,0,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf2f2f2f', endColorstr='#00000000',GradientType=0 ); /* IE6-8 */
+}
+.header-content{
+	background:rgba(255,255,255, 0);
+}
+.logo{
+	background: linear-gradient(to bottom,  #e0dfdd 0%,#bfb8b2 100%);
+}
+
+.dark-transparent{
+	background: rgba(47,47,47,0.9);
+	
+}
+
+/* Document
+----------------------*/
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+.no-bullets{
+	list-style-type: none;
+}
+.pointer {
+	cursor: pointer;
+}
+
+.bg-before:before,
+.bg {
+  background-image: url(../images/images_sprite.png);
+  background-image: url(../images/images_sprite.svg), none;
+}
+a:focus {
+    outline: 0; /*removes the dotted border*/
+}
+
+/* header */
+
+.header-content{
+	position: fixed;
+	z-index: 500;
+	width: 100%;
+	height: 70px;
+	overflow: visible;
+}
+.logo {
+	float: left;
+	opacity: .92;
+}
+	.ie9 .logo {
+		margin-top: -1px;
+	}
+.logo img, .logo .imageSwitchHolderAltTextOnly {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-indent: -99999px;
+}
+
+/* footer */
+
+.footer{
+	position: relative;
+	overflow: hidden;
+}
+.footer-bar{
+	height: 55px;
+	overflow: hidden;
+}
+
+/* toolbox */
+#condorAddBody{
+	z-index:15000;
+}
+
+/* cross browser */
+
+/* -- MOZ -- */
+@-moz-document url-prefix() {
+    select{
+        -moz-appearance:none;
+        text-overflow: '';
+    }
+}
+
+/* -- WEBKIT -- */
+@media only screen and (-webkit-min-device-pixel-ratio:0){
+    select{
+        -webkit-appearance: none;
+    }
+}
+
+/* -- IE (ALL) -- */
+@media screen\0{
+	/* IE 9 & 10 */
+    select::-ms-expand {
+        display: none\9;
+    }
+    select{
+        z-index:5\9;
+    }
+}
+
+/* IE8
+----------------------*/
+
+.is-desktop {
+	display: block;
+}
+.is-tablet, 
+.is-mobile {
+	display: none !important;
+}
+
+/* header */
+.header .container {
+	overflow: visible;
+}
+.header-content .ie-fix {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#a6000000, endColorstr=#00000000)";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: -1;
+}
+.header.fixed .header-content .ie-fix {
+	display: none;
+}
+.header .slide {
+	left: 0;
+	top: 0;
+}
+.header .logo {
+	margin-left: 40px;
+	width: 200px;
+	height: 132px;
+}
+.header .navigation {
+	margin: 0 23px;
+}
+
+/* Text
+----------------------*/
+
+/* Global Element Styles */
+
+body, h5, h6 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	font-size: 0.875em;
+	color: #333333;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+h2 {
+	font-size: 1.9em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+h4{
+	font-size: 1.125em;
+}
+
+h5 {
+	font-size: 0.9em;
+}
+
+h6 {
+	font-size: 0.8em;
+}
+
+/* Global Section Styles */
+
+/** FONT FAMILY **/
+body,
+.main input,
+.row-item-title,
+form.flexibleForm h4 {
+	font-family: 'Muli', sans-serif;
+	font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+}
+
+/** TOOLBOX FONTS **/
+#condorAddBody, .dijitDialog, .toolbox-link {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/** TEXT MODIFICATION **/
+#holder h2 {
+	font-size: 1em;
+}
+.main-slogan, form.flexibleForm button{
+	font-size: 0.938em;
+}
+.header a {
+	text-decoration: none;
+}
+
+
+/** TEXT TRANSFORM **/
+
+.uppercase {
+	text-transform: uppercase;
+}
+.no-text-transform{
+	text-transform: none;
+}
+
+/** TEXT DECORATION **/
+.no-text-decoration {
+	text-decoration: none !important;
+}
+thead th span{
+	font-weight:normal !important;
+}

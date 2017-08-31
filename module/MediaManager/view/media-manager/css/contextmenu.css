@@ -1,0 +1,50 @@
+.context-menu-list {
+	border     : none;
+	box-shadow : 3px 4px 0px #6a6a6b;
+	width      : 127px;
+}
+
+.context-menu-list > :nth-child(2) {
+	padding-top : 10px;
+}
+
+.context-menu-list > :last-child {
+	padding-bottom : 10px;
+}
+
+/** Context menu stuff */
+.context-menu-item {
+	background-image : none;
+	color            : #626361;
+	padding          : 3px;
+	position         : static;
+}
+
+.context-menu-item span {
+	font-size : 12px;
+}
+
+.context-menu-item .std-fa {	
+	font-size     : 15px;
+	padding-left  : 10px;
+	padding-right : 5px;
+}
+
+.contextMenuItemHover {
+	background-color : #39a5bd !important;
+	color            : #f7f7f7 !important;
+}
+
+.contextMenuClose {
+	padding  : 0px;
+	position : absolute;
+	right    : 0px;
+	top      : 5px;
+}
+
+.contextMenuClose .fa {
+	color     : #ff1414;
+	float     : right;
+	font-size : 20px;
+	width     : 20px;
+}

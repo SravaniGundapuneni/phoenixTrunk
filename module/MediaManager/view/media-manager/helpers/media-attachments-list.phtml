@@ -1,0 +1,26 @@
+<div id='media-attachments-list'>
+    <div id="addMediaSpinner"><i class="fa fa-spinner fa-spin"></i></div>
+    <a id='add-media' data-parentitemid='<?=$itemModelId;?>'>
+        <div style='vertical-align:middle;position:relative'>+</div>
+        <div id="attach-media">Attach Media</div>
+    </a>
+    <ul id='media-list'>
+        <?php 
+            foreach ($mediaAttachments as $valAttachment) {
+                echo $this->mediaAttachmentListItem($valAttachment);
+            }
+        ?> 
+    </ul>
+</div>
+
+<script id="mediaAttachmentItemTemplate" type="x-handlebars-template">
+    {{#each this}}
+        <li class='media-attachment-item mediaAttachmentItem newlyAdded' data-fileid="{{ fileId }}">
+            <div>
+                <img src="{{ currentPath }}{{ title }}"/>
+            </div>
+            <div class="media-item-name">{{ title }}</div>
+            <a class="removeAttachment" data-fileid="{{ fileId }}" data-parentmodule="{{ parentModule }}" data-parentitemid="{{ parentItemId }}" href="#">X</a>
+        </li>
+    {{/each}}
+</script>

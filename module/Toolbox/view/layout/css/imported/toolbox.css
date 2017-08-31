@@ -1,0 +1,426 @@
+/* Phoenix Toolbox Config Panel Styles
+
+    Created on : Aug 26, 2014, 2:46:08 PM
+    Author     : Erik Vecchione
+
+*******************************************/
+.regionBuilder.wrapper {
+	margin: 0 10%;
+}
+
+/*Buttons*/
+.button.gray {
+	background-color: #CECECE;
+	color: #444;
+	border: #B6B6B6 1px solid;
+	border-radius: 10px;}
+.container {
+	position: relative;
+	padding: 15px;
+	margin: 30px auto;
+}
+
+textarea.toolbox  {
+	min-height: 450px;
+	 overflow-y:scroll
+}
+
+#draggable {
+	z-index: 9999;
+}
+div.switch label {
+	background: #D5D5D5;
+	border: 1px solid #bbb;
+}
+div.switch ul {
+	list-style-type: none;
+}
+div.switch label:after{ 
+	background: white;
+	border: #bbb 1px solid;
+	margin-bottom: 2px;
+	top: 0.18rem;
+}
+.toolboxcontrols {
+  width: 80%;
+  background: #ccc;
+  border-radius: 15px;
+}
+.toolbox--label {
+	vertical-align: top;
+	padding-top: 0.25rem;
+	padding-left: 0.5rem;
+	padding-right: 1rem;
+	font-weight: normal;
+}
+.toolbox--label, .toolbox--switch {
+	display: inline-block;
+}
+.knobs {
+	display: inline-block;
+}
+.toolbox.tabs-content{
+	-webkit-box-shadow: 3px 3px 0px 0px rgba(50, 50, 50, 0.51);
+	-moz-box-shadow:    3px 3px 0px 0px rgba(50, 50, 50, 0.51);
+	box-shadow:         3px 3px 0px 0px rgba(50, 50, 50, 0.51);
+}
+.toolbox.tabs-content, .toolbox.tab-title.active a,.toolbox.tab-title.active a:hover{
+	background: #f2f2f2;
+	color:#222;
+	font-weight: bold;
+}
+.toolbox.tab-title.active a{
+   border-top-right-radius:10px; 
+   border-top-left-radius:10px;
+}
+
+.toolbox.panel.content.row.active {
+	border: none;
+}
+fieldset legend {
+	background: inherit;
+}
+
+.toolbox.tab-title a, .toolbox.tab-title a:hover{
+	background: #ccc;
+	color: #999;
+}
+.panel.content {
+	padding: 2%;
+}
+.left {
+	float: left;
+}
+.right {
+	float:right;
+}
+
+/*slider control styles*/
+
+.slider {
+  width: 300px;
+}
+
+.slider > .dragger {
+  background: #FCFCFC;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+  border: 1px solid #aaa;
+  width: 16px;
+  height: 16px;
+}
+.slider > .track, .slider > .highlight-track {
+  background: #aaa;
+  background: -webkit-linear-gradient(top, #ccc, #aaa);
+  background: -moz-linear-gradient(top, #bbb, #aaa);
+  background: linear-gradient(top, #bbb, #aaa);
+
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+
+  border: 1px solid #aaa;
+  height: 4px;
+}
+.slider > .highlight-track {
+	background-color: #8DCA09;
+	background: -webkit-linear-gradient(top, #8DCA09, #72A307);
+	background: -moz-linear-gradient(top, #8DCA09, #72A307);
+	background: linear-gradient(top, #8DCA09, #72A307);
+	border-color: #496805;
+}
+.edit {
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	background: #c60f13;
+	color: #fff;
+        z-index:10;
+}
+.edit:hover {
+	color: #fff;
+}
+/*Region-Builder Styles*/
+.regionBuilder {
+}
+
+.regionBuilder .regionBuilder_tab {
+	width: 50%;
+	height: 50px;
+	}
+
+.regionBuilder .regionBuilder_tab.tab-title > a,
+.regionBuilder .regionBuilder_tab.tab-title > a:hover {
+	color: #999;
+	background: #ccc;
+	font-weight: 400;
+
+}
+
+.regionBuilder .regionBuilder_tab.tab-title > a:before{
+	content: " "; 
+	display: block; 
+	width: 0; 
+	height: 0;
+	border-top: 28px solid transparent;           /* Go big on the size, and let overflow hide */
+	border-bottom: 28px solid transparent;
+	border-left: 20px solid #FFF;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px; 
+	left: 0%;
+	z-index: 3; 
+}
+
+.regionBuilder .regionBuilder_tab.tab-title > a:after{
+	content: " "; 
+	display: block; 
+	width: 0; 
+	height: 0;
+	border-top: 28px solid transparent;           /* Go big on the size, and let overflow hide */
+	border-bottom: 28px solid transparent;
+	border-left: 20px solid #ccc;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px; 
+	left: 100%;
+	z-index: 4; 
+}
+
+.regionBuilder h1 {
+	margin-bottom: 2.75rem; 
+}
+.regionBuilder h2 {
+	font-size: 	1.8rem;
+	margin-top: 1.8rem;
+}
+
+.regionBuilder .regionBuilder_tab.tab-title.active > a{
+	color: #FFF;
+	background: #373E61;
+}
+
+.regionBuilder .regionBuilder_tab.tab-title.active > a:before{
+	content: " "; 
+	display: block; 
+	width: 0; 
+	height: 0;
+	border-top: 28px solid transparent;           /* Go big on the size, and let overflow hide */
+	border-bottom: 28px solid transparent;
+	border-left: 20px solid #FFF;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px; 
+	left: 0%;
+	z-index: 3; 
+}
+
+.regionBuilder .regionBuilder_tab.tab-title.active > a:after{
+	content: " "; 
+	display: block; 
+	width: 0; 
+	height: 0;
+	border-top: 28px solid transparent;           /* Go big on the size, and let overflow hide */
+	border-bottom: 28px solid transparent;
+	border-left: 20px solid #373E61;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px; 
+	left: 100%;
+	z-index: 4; 
+}
+
+.regionBuilder_fieldset {
+	-webkit-box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+	-moz-box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+	box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+}
+
+/*Menu Drawers*/
+.topMenu {
+	height: 100px;
+}
+.drawerMenu {
+  top: 0px;
+  position: relative;
+  border-bottom: 1px solid #222;
+  background: #373e61;
+  -webkit-transition:-webkit-transform .2s linear;
+  -moz-transition:-moz-transform .2s linear;
+  -o-transition:-o-transform .2s linear;
+  transition:transform .2s linear;
+  color: #fff;
+  font-size: 1rem;
+  -webkit-box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+  -moz-box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+   box-shadow: 4px 4px 0px 0px rgba(162, 162, 162, 0.4);
+}
+.drawerMenu.active {
+  -webkit-transition:-webkit-transform .5s linear;
+  -moz-transition:-moz-transform .5s linear;
+  -o-transition:-o-transform .5s linear;
+  transition:transform .5s linear;
+   z-index: 10;
+}
+
+.drawerMenu_phoenix{
+  -webkit-transform: translate3d(0, -398px, 0);
+  -moz-transform: translate3d(0, -398px, 0);
+  -o-transform: translate3d(0, -398px, 0);
+    transform: translate3d(0, -398px, 0);
+}
+
+.drawerMenu_widgets {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, -200px, 0);
+  -o-transform: translate3d(0, -200px, 0);
+    transform: translate3d(0, -200px, 0);
+}
+.drawerMenu_templates {
+  -webkit-transform: translate3d(0, -597px, 0);
+  -moz-transform: translate3d(0, -597px, 0);
+  -o-transform: translate3d(0, -597px, 0);
+    transform: translate3d(0, -597px, 0);
+}
+.drawerMenu_phoenix.active {
+  -webkit-transform:translate3d(0,-200px,10px);
+  -moz-transform:translate3d(0,-200px,10px);
+  -o-transform:translate3d(0,-200px,10px);
+  transform:translate3d(0,-200px,10px);
+
+}
+.drawerMenu_widgets.active {
+  -webkit-transform:translate3d(0,0,10px);
+  -moz-transform:translate3d(0,0,10px);
+  -o-transform:translate3d(0,0,10px);
+  transform:translate3d(0,0,10px);
+}
+.drawerMenu_templates.active {
+  -webkit-transform:translate3d(0,-400px,10px);
+  -moz-transform:translate3d(0,-400px,10px);
+  -o-transform:translate3d(0,-400px,10px);
+  transform:translate3d(0,-400px,10px);
+}
+
+.drawerMenu .widgetItem {
+	max-height: 100%;
+	margin: 0 22px;
+	padding: 22px;
+	border: 1px #fff solid;
+	display: inline-block;
+	font-size: 1rem;
+	vertical-align: center;
+	text-align: center;
+	background: #555;
+}
+
+.drawerMenu .widgetTrack {
+	padding-bottom: 10px;
+	overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+	height: 125px;
+
+}
+.drawerMenu h4 {
+	color: #fff;
+}
+
+.drawerMenu .widgetItem:hover, .drawerMenu .widgetItem:focus  {
+	background: #2ba6cb;
+}
+
+.drawerMenu .drawerMenu-content .itemCarousel {
+	vertical-align: middle;
+	display: inline-block;
+	margin: 0 auto;
+}	
+.drawerMenu .drawerMenu-content a {
+	background: none;
+}
+
+.drawerMenu .drawerMenu-content a:hover {
+	background: none;
+	color: #2ba6cb;
+
+}
+
+.drawerMenu .drawerMenu-content .scrollControl #next {
+
+}
+
+.drawerMenu .drawerMenu-content .itemCarousel .slideshow.cycle-slideshow{
+	position: relative;
+	overflow: hidden;
+	width: 85%;
+	margin: 0 auto;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	display: inline-block;
+}
+
+.drawerMenu .drawerMenu-content .scrollControl {
+	display: inline-block;
+	height: 80px;
+	width: 100px;
+	background: black;
+}
+
+.drawerMenu-content.active, .drawerMenu-content{
+  padding: 22px;
+  height: 153px;
+
+}
+.drawerMenu a, .drawerMenu a:hover {
+  text-decoration: none;
+  padding: 11px 22px;
+  position: absolute;
+  background: #222;
+  text-align: center;
+  color: #fff;
+
+}
+.drawerMenu-icon {
+  margin-left: 1rem;
+  background: #222;
+}
+
+
+
+#widgets {
+	left: 45%;
+	display: none;
+}
+#phoenix {
+	right: 6%;
+}
+#templates{
+	left: 45%;
+}
+/* Modernizr Fallbacks */
+
+.no-csstransforms3d .drawerMenu_widgets {
+	top: -200px;
+}
+.no-csstransforms3d .drawerMenu_phoenix {
+	top: -400px;
+}
+.no-csstransforms3d .drawerMenu_templates {
+	top: -600px;
+}
+
+.no-csstransforms3d .drawerMenu_widgets.active {
+	top: 0;
+}
+.no-csstransforms3d .drawerMenu_phoenix.active {
+	top: -200px;
+}
+.no-csstransforms3d .drawerMenu_templates.active{
+	top: -400px;
+}

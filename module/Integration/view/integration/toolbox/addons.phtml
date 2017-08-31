@@ -1,0 +1,76 @@
+<?php if ($options['DryRun']) : ?>
+    Please approve desired changes and submit the form below
+    <br />
+    <br />
+    <form method="post">
+        <div class="importResult">
+            <table class="table table-compacted">
+                <thead>
+                    <tr>
+                        <th width="80px">Hotel code</th>
+                        <th width="90px">Addon code</th>
+                        <th width="auto">Addon name</th>
+                        <th width="60px">Duration</th>
+                        <th width="80px">Language</th>
+                        <th width="60px">Status</th>
+                        <th width="60px">Approve<br /><a class="approve-all" href="javascript:;">Select all</a></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (($options['Criteria'] == '') && (count(explode(',', $options['Criteria'])) == 1)) : ?>
+
+                        <?php foreach ($removeList as $code => $addon) : ?>
+                            <tr class="error">
+                                <td><?= $addon['hotelCode'] ?></td>
+                                <td><a href="#"><?= $code ?></a></td>
+                                <td><?= $addon['name'] ?></td>
+                                <td><?= gmdate('H:i:s', 0) ?></td>
+                                <td>English</td>
+                                <td>Removed</td>
+                                <td><input class="approve-checkbox" type="checkbox" name="approve[]" value="<?= $code ?>" /></td>
+                            </tr>
+
+                        <?php endforeach; ?>
+                    <?php endif ?>
+                    <?php foreach ($this->results as $key => $addon) : ?>
+                        <tr class="<?= $addon->status_class ?>">
+                            <td><?= $addon->hotel_code ?></td>
+                            <td><?= $addon->code ?></td>
+                            <td><?= $addon->name ?></td>
+                            <td><?= gmdate('H:i:s', $addon->duration / 1000) ?></td>
+                            <td><?= $this->languages[$addon->language] ?></td>
+                            <td><?= $addon->status_text ?></td>
+                            <td><?php if ($addon->status_text != 'Skipped') : ?><input class="approve-checkbox" type="checkbox" name="approve[]" value="<?= $addon->code ?>" /><?php endif ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <?php foreach ($hotelParams as $param) : ?>
+            <input type="hidden" name="hotel[]" value="<?= $param ?>" />
+        <?php endforeach ?>
+        <?php foreach ($languageParams as $param) : ?>
+            <input type="hidden" name="language[]" value="<?= $param ?>" />
+        <?php endforeach ?>
+        <input type="hidden" value="1" name="override" />
+        <input type="hidden" value="Import" name="import" />
+        <input type="submit" value="Submit" class="btn pull-right" />
+    </form>
+
+<?php else : ?>
+
+    Approved changes have been applied.
+    <br /><br />
+<?php endif; ?>
+
+<script type="text/javascript">
+    $('.approve-all').click(function() {
+        $('.approve-checkbox').each(function() {
+            $(this).prop('checked', true);
+        });
+    });
+    $('#addon').hide();
+</script>
+

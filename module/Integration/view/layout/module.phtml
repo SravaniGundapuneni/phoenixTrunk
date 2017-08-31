@@ -1,0 +1,30 @@
+<?php $moduleName = $this->escapeHtml($this->moduleName); ?>
+
+<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/Integration/view/layout/css/general.css'); ?>
+<link rel='stylesheet' type='text/css' href="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/css/demo_page.css"/>
+<link rel='stylesheet' type='text/css' href="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/css/demo_table.css"/>
+<script type="text/javascript" language="javascript" src="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/js/jquery.dataTables.js"></script> 
+<div id="moduleName" class="breadcrumb"><?= $moduleName ?></div>
+<div id="taskMenu">
+    <ul id="taskMenu">
+        <li class="<?php echo ($this->currentTask == 'hotels' ? 'currentTask' : ''); ?>"><a href="<?php echo $this->url($this->toolboxRoute, array('action' => 'hotels'));?>">Hotels</a></li>
+        <li class="<?php echo ($this->currentTask == 'addons' ? 'currentTask' : ''); ?>"><a href="<?php echo $this->url($this->toolboxRoute, array('action' => 'addons'));?>">Addons</a></li>
+        <li class="<?php echo ($this->currentTask == 'rooms' ? 'currentTask' : ''); ?>"><a href="<?php echo $this->url($this->toolboxRoute, array('action' => 'rooms'));?>">Rooms</a></li>
+        <li class="<?php echo ($this->currentTask == 'rates' ? 'currentTask' : ''); ?>"><a href="<?php echo $this->url($this->toolboxRoute, array('action' => 'rates'));?>">Rates</a></li>
+    </ul>&nbsp;
+</div>
+<div id="contentFloated">
+    <?php echo $taskContent;?>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $('table.table').dataTable({
+           "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": false,
+    "bInfo": false
+        });
+    });
+</script>

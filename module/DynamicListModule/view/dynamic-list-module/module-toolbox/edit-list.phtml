@@ -1,0 +1,94 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select an item to edit</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <?php foreach ($this->fields as $valField): ?>
+                            <?php if ($valField->getShowInList() == true):?>
+                                <th width="auto"><?= $valField->getLabel(); ?></th>
+                            <?php endif;?>
+                        <?php endforeach; ?>
+                            <?php if ($categories) : ?><th>Category</th><?php endif ?>
+                             <th width="80px">Property</th>
+                        <th width="80px">Status</th>
+                        <th width="80px">Preview</th>                         
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                    <?php foreach ($items as $index => $item): ?>
+                        <tr class="ui-state-default" data-itemId="<?= $item->getId() ?>">
+                            <td><input type="checkbox" name="items[]" value="<?= $item->getId() ?>" /></td>
+                            <?php foreach ($this->fields as $fieldIndex => $valField): 
+                                $showInList = $valField->getShowInList();
+                                if (empty($showInList)):
+                                    continue;
+                                endif;?>
+                                <td>
+                                    <?php if ($fieldIndex == 0): ?>
+                                        <a href="<?= $this->url('dynamicListModule-moduleToolbox', array('module' => $moduleRouteName, 'subsite' => $subsiteRoute,'action' => 'editItem', 'itemId' => $item->getId())); ?>">
+                                            <?= $item->getValue($valField->getName()); ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <?= $item->getValue($valField->getName()); ?>
+                                    <?php endif; ?>
+                                </td>
+                            <?php endforeach; ?>
+                            <?php if ($categories) : ?><td><?php if ($item->getCategoryId()) : ?><?= $categoryService->getItem($item->getCategoryId())->getName(); ?><?php endif ?></td><?php endif ?>
+                            <td><?=($item->getProperty()) ? $item->getProperty()->getName() : 'N/A'?></td>
+                            <td><?= $this->displayStatus($item->getStatus()) ?></td><td><a href="#<?= $item->getId() ?>" class="fancybox">View Item</a><div id="<?= $item->getId() ?>" style="display: none;"><?php $previewItems = $this->getModule($this->moduleName)->getItem($item->getId()); ?>
+                                    <!--BEGIN previewDisplay for each DLM Record-->
+                                    <?php if (isset($previewItems['title'])): ?>
+                                        <div class="previewItems heading">Title: <?= $previewItems['title'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['attachments'][0])): ?>
+                                        <div class="previewItems image"><img src="<?= $previewItems['attachments'][0]['large'] ?>"></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['firstName'])): ?>
+                                        <div class="previewItems name">First Name: <?= $previewItems['firstName'] ?></div>
+                                    <?php endif ?><?php if (isset($previewItems['middleName'])): ?>
+                                        <div class="previewItems name">Middle Name: <?= $previewItems['middleName'] ?></div>
+                                    <?php endif ?><?php if (isset($previewItems['lastName'])): ?>
+                                        <div class="previewItems name">Last Name: <?= $previewItems['lastName'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['jobTitle'])): ?>
+                                        <div class="previewItems name">Job Title: <?= $previewItems['jobTitle'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['description'])): ?>
+                                        <div class="previewItems description">Description: <?= $previewItems['description'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['location'])): ?>
+                                        <div class="previewItems location">Location: <?= $previewItems['location'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['category'])): ?>
+                                        <div class="previewItems property">Category: <?= $previewItems['category'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['property']['id']) && ($previewItems['property']['id'] > 1)): ?>
+                                        <div class="previewItems property">Property: <?= $previewItems['property']['name'] ?></div>
+                                    <?php endif ?>
+                                    <?php if (isset($previewItems['url'])): ?>
+                                        <div class="previewItems property"><a href="<?= $previewItems['url'] ?>" target="_blank">
+                                                <?php if (isset($previewItems['urlDescription'])): ?>
+                                                    <?php $previewItems['urlDescription'] ?>
+                                                <?php elseif (isset($previewItems['cta'])): ?><?= $previewItems['cta'] ?>
+                                                <?php else : ?><?= $previewItems['url'] ?>
+                                                <?php endif ?></a></div>
+                                    <?php endif ?></div>
+
+                                <!--END previewDisplay-->
+                                </div></td>
+
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?//= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

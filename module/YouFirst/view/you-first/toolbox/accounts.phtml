@@ -1,0 +1,23 @@
+<?php
+ $title = 'YouFirst Accounts';
+ $this->headTitle($title);
+?>
+<div class="editBox">
+ <div class="editBoxHeader">
+  <h2 class="editBoxHeaderTitle'><?php echo $this->escapeHtml ($title); ?></h2>
+  <div class="optionsList">
+   <ul>
+     <li onclick="document.user.submit(); showWait(); return false;">
+	    <img class="editListBoxButton" title="Save" src="<?php echo $this->condorBaseHREF; ?> templates/toolbox/images/confirmOff.png" onmouseover="this.src='<?php echo $this->condorBaseHREF;?> templates/toolbox/images/confirmOn.png';" onmouseout="this.src='<?php echo $this->condorBaseHREF; ?> templates/toolbox/images/confirmOff.png';" height="25" width="25" alt="" />
+	  </li>
+	  <li onclick="window.location = '<?php echo $this->toolboxHomeUrl; ?> tools/youfirst_listUser-en.html';showWait(); return false;">
+	    <img class="editBoxButton" title="Cancel" src="<?php echo $this->condorBaseHREF?> templates/toolbox/images/cancelOff.png" onmouseover="this.src='<?php echo $this->condorBaseHREF?> templates/toolbox/images/cancelOn.png';" onmouseout="this.src='<?php echo $this->condorBaseHREF?> templates/toolbox/images/cancelOff.png';" height="25" width="25" alt="" />	  
+	  </li>   
+   </ul>
+  </div>
+ </div>
+ 
+
+
+
+</div>

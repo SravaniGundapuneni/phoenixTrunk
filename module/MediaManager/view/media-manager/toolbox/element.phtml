@@ -1,0 +1,9 @@
+<span class="textSwitchHolder version_1"
+<?php 
+foreach ($this->attributes as $keyAttribute => $valAttribute) {
+	echo ' ' . $keyAttribute . '="' . $valAttribute . '"';
+} 
+?>
+>
+<?php echo $this->mediaValue; ?>
+</span>

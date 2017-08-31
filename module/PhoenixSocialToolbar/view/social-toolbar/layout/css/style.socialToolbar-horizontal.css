@@ -1,0 +1,146 @@
+#socialToolbarContainer {
+    position: fixed;
+    height:42px;
+    width:960px;
+    margin-left: -480px;
+    bottom:0;
+    left:50%;
+    font-family: Helvetica,Arial;
+    z-index:1001;  
+}
+
+#socialToolbarContainer.stExtended {
+    width:100%;
+    margin-left: 0;
+    bottom:0;
+    left:0;  
+}
+
+#socialToolbarHolder{
+    position: absolute;
+    height:42px;
+    width:960px;
+    margin-left: -480px;
+    bottom:0;
+    left:50%;
+    font-family: Helvetica,Arial;
+    z-index:1001;    
+}
+
+#socialToolbarContainer.stRounded,
+#socialToolbarContainer.stRounded #socialToolbarInnerMin,
+#socialToolbarContainer.stRounded #socialToolbarBackground{
+    border-radius: 3px 3px 0 0;
+}
+
+#socialToolbarContainer .inner_toolbar {
+    position: relative;
+    font-size:16px; 
+    float:left;
+    width:100%;
+
+}
+#socialToolbarContainer .inner_toolbar .contentLeft{
+   margin: 10px 0 0 12px;  
+   float:left;
+}
+#socialToolbarContainer .inner_toolbar .contentRight{
+   margin: 12px 30px 0 0;  
+   float:right;
+}
+#socialToolbarContainer .minimized  {
+        font-size:14px;
+    width:125px;
+    min-width:125px;
+        position: absolute;
+        bottom:0;
+        right:0;
+}
+
+#socialToolbarContainer .inner_toolbar .shareLeft{
+    display: block;
+    position: relative;
+    height: 100px;
+    margin: -20px 0 0 12px;
+    float:left;
+   
+}
+#socialToolbarContainer .inner_toolbar .shareLeft span.shareContainer{
+     font-size: 11px;
+     line-height: 80px;
+}
+/*
+#socialToolbarContainer .inner_toolbar .shareLeft:hover > .contentLeft,
+#socialToolbarContainer .inner_toolbar .shareLeft .contentLeft:hover{ 
+    display: block;
+}
+*/
+#socialToolbarContainer .inner_toolbar .shareLeft .contentLeft{
+    margin: 0;  
+    display:none;
+    position:absolute;
+    top:-20px;
+    width:960px;
+    left:-12px;
+}
+#socialToolbarContainer .inner_toolbar .shareLeft .contentLeft ul{
+    padding: 7px 6px 2px;
+}
+#socialToolbarContainer.stRounded .inner_toolbar .shareLeft .contentLeft ul{
+    border-radius:3px;
+}
+#socialToolbarContainer .inner_toolbar ul{
+    float:left;
+    display:inline;
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+#socialToolbarContainer .inner_toolbar ul li{
+     float:left;
+     margin-right: 5px;
+}
+
+#socialToolbarContainer #socialToolbarInnerMin{
+    bottom: -100px;
+    padding: 8px 5px;
+}
+#social_toolbar_minimize span.icon{
+        display: block;
+    position:absolute;
+    top:20px;
+    right:14px;
+        width:10px;
+        height:6px;
+        background: url('../images/arrows.png') top left no-repeat;
+        background-position: 0 0;
+}
+#social_toolbar_maximize span.icon{
+        display: block;
+    position:absolute;
+    top:16px;
+    right:14px;
+        width:10px;
+        height:6px;
+        background: url('../images/arrows.png') top left no-repeat;
+        background-position: 0 -6px; 
+}
+
+#social_toolbar_maximize .stdButton{
+    font-size: 14px;
+    line-height: 27px;
+    margin-left: 10px;
+}
+
+#SocialToolbarActiveWindow{
+    margin-bottom: 5px;
+    right:0;
+}
+
+.labelLeftContent,
+.labelRightContent{
+    float: left;
+    font-size: 11px;
+    line-height: 17px;
+    margin-right: 5px;
+}

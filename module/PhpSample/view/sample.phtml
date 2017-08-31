@@ -1,0 +1,43 @@
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">View Submissions <?=$formTitle?></div>
+        
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+
+                    <tr>
+                        
+                       
+                        
+                    </tr>
+
+
+                </thead>
+                <tbody>
+                   <?php
+                   //print_r($items);
+                    foreach ($items as $index => $item):
+                        //print_r($item['email']);
+                        echo $item['email'];
+                        ?>
+                       
+                            
+                            
+
+                            <?php
+                            
+                        endforeach
+                        ?>
+                   
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>

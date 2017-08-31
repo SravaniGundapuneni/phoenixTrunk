@@ -1,0 +1,79 @@
+body {
+	font-family: Arial, Verdana;
+	font-size: 12px;
+}
+
+#heading {
+	font-family: Arial, Verdana;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 20px;
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 10px;
+}
+
+#left_col {
+	float: left;
+	width: auto;
+	margin-right: 20px;
+}
+
+#right_col {
+	float: left;
+	width: 185px;
+	height: 413px;
+	border-left: 1px solid #dfdfdf;
+	padding-left: 20px;
+}
+
+.setting_list,
+.setting_list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.setting_list li {
+	margin-bottom: 10px;
+}
+
+.setting_list label {
+	width: 90px;
+	display: inline-block;
+}
+
+.setting_list .full_label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.setting_list .crop_input {
+	width: 50px;
+	border: 1px solid #a0a0a0;
+	text-align: center;
+}
+
+.setting_list .full_input {
+	width: 180px;
+	border: 1px solid #a0a0a0;
+}
+
+.setting_list .field_hint {
+	color: #8d8d8d;
+}
+
+.crop_note {
+	color: #000;
+	font-size: 11px;
+	margin: 0 0 20px;
+}
+
+#crop_completed_value {
+	font-weight: bold;
+	font-size: 14px;
+	color: darkgreen;
+}
+
+.crop-holder {
+	background-color : transparent !important;
+}

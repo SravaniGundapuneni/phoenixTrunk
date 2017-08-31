@@ -1,0 +1,427 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 19, 2014, 10:52:05 AM
+    Author     : rvahora
+    Template   : 1
+*/
+
+/* individual pages css */
+
+/* ---------------- OVERRIDE BROWSER DEFAULT TYPOGRAPHY ---------------- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.1rem;
+	color:#333333;
+}
+h1 {
+	margin: 1.6rem 0rem 0rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:.8rem;
+}
+h2, h3 {
+	margin:0 auto .3rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.9rem;
+}
+h3 {
+	font-size:1.4rem;
+}	
+h4 {
+	margin: 1.2rem 0rem 0rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:1.1rem;
+}
+h5 {
+	margin: 1.2rem 0rem 1.2rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 0.9rem;
+}
+h6 {
+	margin: 1.2rem 0rem 1.2rem;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 0.8rem;
+}
+p,
+li {
+	line-height: 1.2;
+}
+p {
+	font-size: 1rem;
+	margin:.8rem 0;
+}
+li > p {
+	margin-top:.2rem;
+}
+ol, ul {
+	margin: 0;
+	list-style-type: square;
+}
+img {
+	border: 0 none;
+}
+th {
+	font-weight: normal;
+	text-align: right;
+	padding-right: 0.5rem;
+}
+td {
+	text-align: center;
+}
+form,
+button,
+input,
+select,
+textarea {
+	margin: 0;
+}
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: bold;
+}
+sup {
+	font-size: 0.74rem;
+	/* avoid increased line-box height */
+	vertical-align: top;
+	position: relative;
+	top: -0.1rem;
+}
+
+.column h1{
+    font-size: 1rem !important;
+}
+
+/* Colors
+-----------------------*/
+
+/* BACKGROUNDS */
+body,
+div#header .best-rate-wrapper .go,
+#main-visual #pager a.selected,
+.view-list-widget .view-categories .subitems {
+	background: #FFFFFF;
+}
+.bg-extra-light {
+	background: #f9f9f9;
+}
+
+.bg-medium-light,
+.view-categories .subitems li {
+    background: #F4F4F4;
+}
+.bg-light {
+	background-color: #E2E2E2 !important;
+}
+.bg-intermidate {
+	background: #d4d2d2;
+}
+.bg-dark {
+	background: #555555;
+}
+.menu .menuLevel2-wrapper {
+	background: rgba(85,85,85,.9); 
+}
+.page-selector {
+    background: #eeeded;
+}
+.page-selector:hover,
+.page-selector.active {
+	background: #4e4e50;
+}
+.categories .selector,
+.categories select option,
+.agenda-viewItem .navbar .nav-btn,
+.view-list-viewItem .navbar .nav-btn {
+	background: #e5e4e4;
+}
+.slide-link {
+	background: #342d1f;
+}
+
+/* FONT COLORS */
+a { /* General anchors across the site */
+	color: #555555;
+}
+.dark-color, h1, .page-selector,
+input, .flexInputSimple, .flexInputTextarea, .flexInputSelect, .flexFormInputBlock .selector,
+.flexFormInputBlock .selector span, .flexibleFormContainer option, input.flexInputDate,
+.caption .counter {
+	color: #555555;
+}
+.dark-middle-color, .readmore-link {
+	color: #6C6C6C !important;
+}
+.middle-color, p, .text-container ul li {
+	color: #929293 !important;
+}
+.light-color {
+	color: #d4d2d2 !important;
+}
+.extra-dark-color, h3, h4, .itemPreviewEditLink a {
+	color: #000 !important;
+}
+.white-color,
+.page-selector:hover,
+.page-selector.active,
+.flexFormSubmitBlock button {
+	color: #FFF !important;
+}
+.share-buttons a {
+	color: #6b6b6b !important;
+}
+
+.alt-medium-color {
+	color: #999999 !important;
+}
+.flexFormBlockLabel, .mandatory-text {
+	color: #424242;
+}
+.flexFormLabelInvalid {
+	color: #ff0000 !important;
+}    
+
+/* BORDERS */
+.dark-color-border {
+	border-color: #555555 !important;
+}
+.intermidate-border {
+	border-color: #A4A2A2;
+}
+.middle-color-border {
+	border-color: #d9d8d8 !important;
+}
+.light-color-border {
+	border-color: #d4d2d2 !important;
+}
+.readmore-links {
+	border-top-color: #eee;
+}
+.flexInputSimple, .flexInputTextarea, .flexInputSelect, .flexFormInputBlock .selector, input.flexInputDate {
+	border: 1px solid #e7e7e7;
+}
+.flexInputInvalid.flexInputSimple, .flexInputInvalid.flexInputTextarea, .flexInputInvalid.flexInputSelect,
+.flexInputInvalid.flexInputDate, .flexFormInputBlock .flexInputInvalid.selector, .flexFormInputBlock input.flexInputDate.flexInputInvalid {
+	border-color: #ff0000 !important;
+}
+.itemPreviewDate {
+	border-right: 1px dashed #a6a39d;
+}
+.footer-bar {
+	border-bottom: 1px solid #787878;
+}
+
+/* Header Styles
+-----------------------*/
+
+div#header {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:67px;
+	transition: all 0.3s ease-out;
+	z-index:110;
+}
+.shadow{
+	display: none;
+	position: absolute;
+	left:0;
+	right:0;
+	bottom: -5px;
+	height: 5px;
+	background: url(../images/header_shadow.png) top left repeat-x;
+}
+div#branding{
+	position: absolute;
+	width:208px;
+	height:104px;
+	top:0;
+	left:0;
+	z-index: 24;
+	transition: all 0.3s ease-out;
+}
+	div#branding span.bg{
+		display: block;
+		width:100%;
+		height:100%;
+		transition: all 0.3s ease-out;
+		background: url(../images/logo.png);
+		background-image: url(../images/logo.svg), none;
+		background-repeat: no-repeat;
+	}
+
+/*Scroll Header*/
+div#header.fixed{
+	position: fixed;
+	height: 70px;
+}
+	div#header.fixed #branding{
+		height: 88px;
+		overflow: hidden;
+	}
+	div#header.fixed #branding span.bg{
+		margin-top: -8%;
+	}
+	div#header.fixed .shadow,
+	div#header.fixed .best-rate-wrapper{
+		display: block;
+	}
+
+/* Main Content Styles
+-----------------------*/
+
+#main-content{
+	height:auto;
+	min-height:500px;
+	margin-top: 517px;
+	margin-bottom:30px;
+}
+	#main-content p, #main-content .intro{
+		line-height:25px;
+	}
+
+/* Footer Styles
+-----------------------*/
+
+#footer{
+	position:relative;
+	width:100%;
+}
+	#footer .shadow{
+		display: block;
+		top:0;
+		bottom: auto;
+	}
+
+/* Font Styles
+-----------------------*/
+
+/** FONT FAMILY **/
+body, button, h1, h2, h3,
+.primary-font, .column-top input {
+	font-family:'Roboto', sans-serif;
+	font-weight:400; 
+}
+
+.alt-font,
+.best-rate-content,
+.flexFormBlockLabel,
+.multipage .item-extra-info,
+.page-selector,
+.mandatory-text,
+.flexibleFormContainer .flexInputSimple,
+.flexibleFormContainer .flexInputTextarea,
+.flexibleFormContainer .flexInputSelect,
+.flexibleFormContainer option,
+.flexFormInputBlock .flexInputDate,
+.subpageForm .confirmation-form h3,
+.subpageForm .title {
+	font-family:'Muli', sans-serif;
+}
+
+.uppercase {
+	text-transform:uppercase;
+}
+.no-text-transform {
+	text-transform:none;
+}
+.underline {
+	text-decoration: underline;
+}
+/** TEXT DECORATION **/
+.no-text-decoration {
+	text-decoration:none;
+}
+
+/** TEXT MODIFICATION **/
+.brw .rate {
+	font-style:italic;
+}
+h1, h2, h3 {
+	font-weight:700; 
+	color:black;
+}
+h1 {
+	font-size: 2em;
+}
+h2, .brw .units {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.375em;
+}
+#holder h1 {
+	font-size: 1.125em;
+}
+#holder h1 {
+	font-weight: 400;
+	text-transform: none;
+}
+
+.menu a, 
+#top-block,
+.brw .rate,
+#middle-block,
+#main-content,
+#holder div.selector select {
+	font-size: 0.875em;
+	font-weight: 400;
+}
+.readmore-link {
+	font-size: 0.75em;
+}
+
+#top-block p, #middle-block p{
+	line-height: 1.563em;
+}
+
+/* Header Styling
+---------------------------- */
+
+#header-template1 {
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	background-color: #E2E2E2;
+}
+
+#header-template1.docked {
+	-webkit-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 2px 6px 0px rgba(50, 50, 50, 0.75);
+}
+
+.contain-to-grid {
+	background-color: transparent !important;
+}
+
+.row {
+	position: relative;
+}
+
+div[data-draggedwidget="Booking"] {
+	position: absolute;
+	z-index: 1000 !important;
+}
+
+div[data-draggedwidget="CorporateLogo"] {
+	z-index: 10;
+}
+
+div[data-draggedwidget="HeroImageWidget"] {
+	z-index: -1 !important;
+	height: 600px;
+	overflow: hidden;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+/*	margin-top: 58px;*/
+}

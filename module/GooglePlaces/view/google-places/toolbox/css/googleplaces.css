@@ -1,0 +1,147 @@
+/*
+    Created on : Sep 16, 2013, 9:37:50 AM
+    Author     : isorokin
+*/
+
+#top > * {display: inline}
+
+.cityLabel {
+    color: black;
+    background-color: transparent;
+    font-family: Arial, Tahoma;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#top > span,
+#our-properties {
+    font-family: Times;
+    font-size: 24px;
+}
+
+#our-properties {
+    margin: 40px 0 10px 0;
+}
+
+#top > label {
+    color: #AAA;
+    font-weight: bold;
+}
+
+#loewsMap,
+.map-canvas {
+    width: 940px;
+    height: 600px;
+    border: 1px solid #DDD
+}
+
+#map-view-panel .info-box {
+    max-width: 500px;
+}
+
+#map-view-panel .info-box div,
+#map-view-panel .info-box button {
+    font-size: 9px;
+    line-height: 11px;
+}
+
+#list-view-panel .info-box div,
+#list-view-panel .info-box button {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.info-box td {
+    vertical-align: top;
+}
+
+#map-view-panel .info-box button,
+#list-view-panel .info-box button {
+    border: 1px solid #AAA;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 5px 5px 3px 5px;
+}
+
+#map-view-panel .info-box button:last-child,
+#list-view-panel .info-box button:last-child {
+    margin-right: 0px;
+    float: right;
+}
+
+.info-box img {
+    width: 150px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    float: left;
+}
+
+#list-view-panel .info-box img {
+    margin-right: 30px;
+}
+
+#map-view-panel div.hotel-name,
+#list-view-panel div.hotel-name {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+div.gm-style img {
+    max-width: none;
+}
+
+#button-view-style {
+    float: right;
+}
+
+#map-view-panel div.info-phones,
+#map-view-panel div.info-address,
+#list-view-panel div.info-phones,
+#list-view-panel div.info-address {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#map-view-panel div.info-phones,
+#list-view-panel div.info-phones {
+    margin-right: 30px;
+}
+
+#hotels-table td {
+    padding-right: 20px;
+    border-bottom: 1px solid #DDD;
+}
+
+#hotels-table tr:first-child > td {
+    border: 0;
+}
+
+#hotels-table td > a {
+    color: red;
+}
+
+#list-view-panel {
+    border-top: 1px solid #CCC;
+}
+
+#list-view-panel .info-box {
+    margin-top: 30px;
+}
+
+#list-view-panel .info-box button:last-child {
+    display: none;
+}
+
+#list-view-panel .info-box button:first-child {
+    margin-left: 200px;
+}
+
+.hotels-in-group {
+    background-color: #000;
+    font-size: 20px;
+    color: #FFF;
+}

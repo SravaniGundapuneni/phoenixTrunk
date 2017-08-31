@@ -1,0 +1,82 @@
+<div id="editBox">
+       <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+     
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>       
+                        <th width="20px"></th>
+                        <th>Key</th>
+                        <th>HeroImage</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+     
+                    <?php
+                    foreach ($this->items as $page) {
+                        $createdDateObject = $page->getCreated();
+                                      
+                        $params = $page->getAdditionalParams();
+                        /**
+                         * @todo Come up with standard for dealing with slashes and use it
+                         */
+                        $slash = '/';
+                        if (substr($siteroot, -1) == '/') {
+                            $slash = '';
+                        }
+
+                        $subsite = '';
+
+                        if ($page->getDataSection()) {
+                            $subsite = $page->getDataSection();
+                            if ($slash == '') {
+                                if (substr($subsite, 0, 1) == '/') {
+                                    $subsite = substr($subsite, 1);
+                                }
+                                $slash = '/';
+                            }
+                        }
+
+                        $url = $siteroot . $subsite . $slash . $page->getPageKey() . (!empty($params) ? "?$params" : '');
+                       
+                        ?> 
+                        <tr>
+                    <!--checking for the isDeveloper()status starts here -->                 
+                      <?php $accessurl = ($this->currentUserObject->isDeveloper() ? urldecode($this->url('pages-toolbox', array('action' => 'editItem', 'itemId' => $page->getId(),
+                        'subsite' => ($subsiteToolboxPath) ? substr($subsiteToolboxPath, 1) : ''))) : '#' ); ?>
+                    <!--ends here -->     
+                  
+                            <td><input type="checkbox" name="items[]" value="<?= $page->getId() ?>" /></td>
+                            <td><a href="<?= $accessurl ?>"><?= $page->getPageKey() ?></a></td>
+                             <?php 
+                             $link['url'] = $this->url('heroImages-toolbox', array('subsite' => $subsiteRoute, 'action'=>'editItem', 'itemId'=>$page->getItemId($page->getId()))) ;
+                             $link['action'] = 'EditImage';
+                                if (!$page->isAttached($page->getId()))
+                                {
+                                    $link['url'] = $this->url('heroImages-toolbox', array('subsite' => $subsiteRoute, 'action'=>'AddItem','itemId'=>$page->getId())); 
+                                   
+                                    $link['action'] = 'AddImage';
+                                }
+                                ?>
+                            <td><a href="<?= $link['url'] ?>"><?php echo $link['action']; ?></a></td>                   
+                            <td><a class="editListCustomLink" href="<?= $url ?>" target="_blank"><?= $url ?></a></td>
+                            <td class="statusText"><?= $this->displayStatus($page->getEntity()->getStatus()) ?></td>
+                            <td class="statusText" style="width:100px"><?= empty($createdDateObject) ? 'N/A' : $createdDateObject->format('Y-m-d');?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </form>
+             
+    </div>
+    <?php $this->partial('list-module/helpers/edit-list-pagination') ?>
+</div>
+

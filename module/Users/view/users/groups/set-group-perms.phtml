@@ -1,0 +1,66 @@
+<?php
+if ($subsite) {
+    $subsite = substr($subsite, 1);
+}
+?>
+<style>
+    #permissions {margin-top: 10px}
+    #permissions th {padding: 0 10px}
+    #permissions td {text-align: center}
+    #permissions tbody tr:first-chilt td {text-align: left}
+    .editBoxHeaderTitle img {cursor:pointer}
+</style>
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form name ="groupPerms" method = "POST" action = "<?= $this->url('users-groups-toolbox', array('action'=>'setGroupPerms', 'itemId'=>$this->itemId, 'subsite' => $subsite)) ?>">
+            <input type="hidden" name="action" value="" />
+            <table id='permissions'>
+                <thead>
+                <tr>
+                    <th>Permission Name</th>
+                    <?php $colSpan = 1;?>
+                    <?php foreach ($this->authLevels as $valAuthLevel):?>
+                        <th><?= $valAuthLevel;?></th>
+                    <?php
+                            $colSpan++;
+                        endforeach;
+                    ?>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($this->permissions as $keyPermissions => $valPermissions):?>
+                    <tr>
+                        <td><strong><?= $keyPermissions;?></strong></td>
+                    </tr>
+                    <?php 
+                    foreach ($valPermissions as $keyPerm => $valPerm):
+                        $authLevels = array_values($this->authLevels);
+                    ?>
+                        <tr>
+                            <td><?= $keyPerm;?></td>
+                        <?php
+                        for ($i = 1; $i <= count($authLevels); $i++) :
+                            $authLevelKey = $i - 1;
+                            $boxName = 'chk' . ucfirst($authLevels[$authLevelKey]) . '[]';
+                            $boxValue = $keyPermissions . '-' . $valPerm;
+                            $checked = (isset($this->groupPerms[$authLevels[$authLevelKey]]) && in_array($boxValue, $this->groupPerms[$authLevels[$authLevelKey]])) ? ' checked ' : '';
+                        ?>
+                            <td>
+                                <input type="checkbox" name="<?= $boxName;?>" value="<?= $boxValue;?>" <?= $checked;?>/>
+                            </td>
+                        <?php
+                            endfor;
+                        ?>
+                        </tr>
+                    <?php endforeach;?>
+                <?php endforeach;?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

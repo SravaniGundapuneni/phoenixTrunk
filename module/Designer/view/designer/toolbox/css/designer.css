@@ -1,0 +1,148 @@
+/* 
+    Created on : Sep 26, 2013, 1:22:56 PM
+    Author     : isorokin
+*/
+
+h3,
+#tool-panel,
+#design-canvas {
+    font-family: arial;
+}
+
+#design-view-wrapper {
+    position: absolute;
+    top: 60px;
+}
+
+#tool-panel {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 128px;
+    float: left;
+    height: 100%;
+    background-color: #ededed;
+    vertical-align: top;
+}
+.tool-item {
+    display: inline-block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.tool-item div {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.tool-item img {
+    margin-right: 5px;
+}
+
+#design-canvas {
+    height: 100%;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: auto;
+}
+
+.ui-draggable {
+    cursor: pointer;
+}
+
+#design-canvas .layout-element {
+    position: absolute;
+    border: 1px solid #CCC;
+}
+
+#design-canvas .layout-element.panel {
+    border: 1px dotted #BBB;
+}
+
+#design-canvas .layout-element.text {
+    height: 22px;
+    width: 150px;
+    display: inline-block;
+}
+
+.ui-selecting {
+    background: #FECA40;
+}
+.ui-selected {
+    background: #F39814;
+    color: white;
+}
+
+td #property-box {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color: #EEE;
+    padding: 10px;
+    font-family: arial;
+    font-size: 12px;
+    display: none;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    box-shadow: 3px 3px 2px #DDD;
+    z-index: 9999;
+}
+
+.ui-draggable {
+    cursor: pointer;
+}
+
+#property-box > table td:first-child {
+    padding-right: 5px;
+}
+
+#property-box > div {
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:5px;
+    background-color:#DDD;
+}
+
+#property-box input {
+    border: 1px solid #DDD;
+}
+
+.red-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.lock {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 13px;
+}
+
+.tools-section-head {
+    border-bottom: 1px solid #BBB;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.pro-cap {
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.tooltip {
+    background-color: papayawhip;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #DDD;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#active-block-name {
+    font-style: italic;
+}

@@ -1,0 +1,161 @@
+#uploadMedia {
+	background-color : #d6cece;
+	border           : #a5a5a5;
+	margin           : 0px;
+	padding          : 19px 22px;
+}
+
+#drop {
+	border         : 2px dashed #615f5f;
+	font-size      : 16px;
+	padding-bottom : 27px;
+	text-align     : center;
+}
+
+#uploadButton a {
+	color           : #ffffff;	
+	margin-top      : 3px;
+	padding-left    : 7px;
+	padding-top     : 4px;
+	text-decoration : none;
+}
+
+
+#drop input{
+	display : none;
+}
+
+#uploadButtonContainer {
+	margin-left  : auto;
+	margin-right : auto;
+	padding      : 54px;
+	width        : 410px;
+}
+
+#uploadButtonContainer div {
+	float : left;
+}
+
+#uploadButtonContainerText {
+	margin-right : 8px;
+	padding-top  : 5px;
+	width        : 200px;
+}
+
+#uploadButtonContainerText p {
+	color       : #323132;
+	font-size   : 12px;
+	line-height : 14px;
+	margin      : 0px;
+	text-align  : right;
+}
+
+#uploadButton {
+	background-color : #007a96;
+	color            : #fff;
+	cursor           : pointer;
+	display          : inline-block;
+	font-size        : 14px;
+	line-height      : 1;
+	padding          : 5px 10px;
+}
+
+#uploadButton > * {
+	float : left;
+}
+
+#uploadButton:hover{
+	background-color : #0986a3;
+}
+
+#uploadButton .fa-upload {
+	font-size : 22px;
+}
+
+#uploadMedia ul {
+	list-style : none;
+	margin     : 0px 0px 10px 0px;
+}
+
+#uploadMedia ul li {
+	background-color : #c1b9b9;
+	height           : 80px;
+	margin-left      : 0px;
+	margin-right     : 0px;
+	padding          : 15px;
+	position         : relative;
+}
+
+#uploadMedia ul li:nth-child(even) {
+	background-color : #c7c0c0;
+}
+
+#uploadMedia ul li input{
+	display: none;
+}
+
+#uploadMedia ul li i{
+	font-weight : normal;
+	font-style  : normal;
+	display     : block;
+}
+
+#uploadMedia ul li canvas{
+	top: 15px;
+	left: 32px;
+	position: absolute;
+}
+
+#uploadMedia ul li span{
+	width: 15px;
+	height: 12px;
+	background: url('../img/icons.png') no-repeat;
+	position: absolute;
+	top: 34px;
+	right: 33px;
+	cursor:pointer;
+}
+
+#uploadMedia ul li.working span{
+	height: 16px;
+	background-position: 0 -12px;
+}
+
+#uploadMedia ul li.error p{
+	color:red;
+}
+
+.successCheckmark {
+	color     : #008000;
+	float     : left;
+	font-size : 50px;
+}
+
+.errorFrown {
+	color     : #ff0000;
+	float     : left;
+	font-size : 50px;
+}
+
+.uploaded_file_text {
+	color      : #008000;
+	margin-top : 5px;	
+}
+
+.uploadStatusContainer {
+	float : left;
+}
+
+.progressCircle {
+	color       : #008080;
+	float       : left;
+	font-size   : 40px;
+	margin-left : 12px;
+	margin-top  : 5px;
+}
+
+.closeUploadProgress {
+	color     : #aea6a6;
+	cursor    : pointer;
+	font-size : 46px;
+}

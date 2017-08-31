@@ -1,0 +1,99 @@
+<div id="editBox">
+    <div id="approval-legend" style="border: 1px solid #ccc; position: absolute;left: -195px ;top: 90px; width: 180px; font-size: 12px;">
+    <ul style="padding: 20px 20px 20px 0">
+        <li><strong>Save</strong> - creates new record</li>
+        <li><strong>Update</strong> - updates record</li>
+        <li><strong>Trash</strong> - set item status to trashed</li>
+        <li><strong>Publish</strong> - set item status to published</li>
+        <li><strong>Draft</strong> - set item status to draft</li>
+        <li><strong>Archive</strong> - set item status to archived</li>
+    </ul>
+</div>
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+        <div id="action-filter-block" style="float: right;">
+    Filter
+    <select id="action-filter">
+        <option value=""></option>
+        <option value="save">Save</option>
+        <option value="update">Update</option>
+        <option value="trash">Trash</option>
+        <option value="archive">Archive</option>
+        <option value="publish">Publish</option>
+        <option value="draft">Draft</option>
+    </select>
+    </div>
+    </div>
+    
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                        <th>User</th>
+                        <th>Pending approvals</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->items as $page) : ?>
+                    <?php if (($page->getStatus()!=\ListModule\Model\ListItem::ITEM_STATUS_TRASHED) && ($this->user->getScope()!='site')) : ?>
+                    <tr class="<?php if (count($page->getPendingApprovals())>0) echo 'warning';
+                    else echo 'success'; ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $page->getId() ?>" /></td>
+                        <td><?= $page->getId() ?></td>
+                        <td><a href="<?= $this->url('contentApproval-toolbox', array('subsite' => $subsiteRoute, 'action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?=$page->getItemTable()?></a></td>
+                        <td><?=$page->getApprovalAction() ?></td>
+                       <?/* <td><a href="<?= $this->url('heroImages-toolbox', array('subsite' => $subsiteRoute, 'action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?=$page->getTitle()?></a></td> */ ?>
+                       <td>
+                        <?= $this->users->getUser($page->getCreatedUserId())->getEntity()->getUsername() ?></td>
+                       <td><?=count($page->getPendingApprovals())?></td>
+
+                       <td class="statusText">
+                           <?php if (count($page->getPendingApprovals())>0) : ?><a class="btn btn-inverse tiny radius" href="<?= $this->url('contentApproval-toolbox')?>/approve?id=<?=$page->getId()?>">Approve</a><?php endif ?>
+                           <?php if ($page->getApproved() == 1) : ?><a class="btn btn-inverse tiny radius" href="<?= $this->url('contentApproval-toolbox')?>/rollback?id=<?=$page->getId()?>">Rollback</a><?php endif ?>
+                           <?php if ($page->getApproved() == 2) : ?>Rolled back<?php endif ?>
+                       </td>
+                    </tr>
+                <?php endif ?>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <? //$this->partial('list-module/helpers/edit-list-pagination') ?>
+</div>
+
+<style>
+    #editBox .editListOptionsList .editItemOption-toggleReorder,
+    #editBox .editListOptionsList .editItemOption-publish,
+    #editBox .editListOptionsList .editItemOption-archive
+    {
+        display: none;
+    }
+    
+    #approval-legend ul li
+    {
+        padding-bottom: 10px;
+    }
+    </style>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#action-filter').change(function(){
+            listTable.fnFilter( $(this).val(), 3 );
+        });
+        
+        listTable.fnSettings().bSort = true;
+        listTable.fnDraw();
+
+        listTable.fnSort( [[0,'desc']] );
+        });
+        
+        </script>

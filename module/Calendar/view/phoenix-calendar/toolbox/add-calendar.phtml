@@ -1,0 +1,105 @@
+<?php
+    $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/underscore-min.js');
+    $this->headScript()->appendFile($this->toolboxIncludeUrl . 'widget/Vendor/js/knockout-3.2.0.js');
+    $this->headScript()->appendFile($this->toolboxIncludeUrl . 'widget/Vendor/js/moment.js');
+    $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/Calendar/view/layout/js/calendar.js');
+    $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/Calendar/view/layout/css/calendar.css');
+?>
+
+<div class="events-calendar">
+	<div class="row">
+		<div class="small-12 columns">
+			<div id="form-alert" class="alert-box alert" data-bind="visible: error">
+				<!-- ko text: error --><!-- /ko -->
+				<a href="#" class="close" data-bind="click: clearError">&times;</a>
+			</div>
+		</div>
+	</div>
+	<div class="row collapse">
+		<div class="small-12 columns calendar-navigation">
+			<h3 class="left"><!-- ko text: calendarMonth --><!-- /ko -->, <!-- ko text: calendarYear --><!-- /ko --></h3>
+			<span class="right">
+				<div class="left calendar-loader" data-bind="visible: loading">
+					<i class="fa fa-spinner fa-spin"></i>
+				</div>
+				<ul class="button-group left radius">
+					<li><button class="button tiny secondary" data-bind="click: previousMonth"><i class="fa fa-caret-left"></i></button></li>
+					<li><button class="button tiny secondary" data-bind="click: currentMonth">Today</button></li>
+					<li><button class="button tiny secondary" data-bind="click: nextMonth"><i class="fa fa-caret-right"></i></button></li>
+				</ul>
+			</span>
+		</div>
+	</div>
+	<div class="row collapse">
+		<div class="small-12 columns">
+			<ul class="small-block-grid-7 calendar-header">
+				<li>Sunday</li>
+				<li>Monday</li>
+				<li>Tuesday</li>
+				<li>Wednesday</li>
+				<li>Thursday</li>
+				<li>Friday</li>
+				<li>Saturday</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row collapse">
+		<div class="small-12 columns">
+			<ul class="small-block-grid-7" data-bind="foreach: calendarDays">
+				<li class="calendar-day">
+					<div class="date">
+						<!-- ko text: date --><!-- /ko -->
+						<i class="right fa fa-plus" data-bind="visible: enabled, click: $root.openAddEventsModal" title="Add Event"></i>
+					</div>
+					<div data-bind="foreach: events">
+						<small>
+							<!-- ko text: eventtitle --><!-- /ko -->
+							<i class="fa fa-spinner fa-spin" data-bind="visible: loading"></i>
+							<i class="fa fa-times" data-bind="click: $root.removeEvent, visible: !loading()" title="Remove Event"></i>
+						</small>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="addEventModal" class="reveal-modal" data-reveal>
+	<a class="close-reveal-modal">&#215;</a>
+	<div class="row">
+		<div class="small-12 columns">
+			<h3>Events for <!-- ko text: calendarMonth --><!-- /ko --> <!-- ko text: selectedDate --><!-- /ko -->, <!-- ko text: calendarYear --><!-- /ko --> <i class="fa fa-spinner fa-spin" data-bind="visible: loading"></i></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 available-events" data-bind="foreach: calendarEvents">
+				<li>
+					<div class="row collapse">
+						<div class="small-2 medium-4 large-3 columns">
+							<button class="button tiny radius right" data-bind="click: $root.saveEventToDate, visible: !loading()"><i class="fa fa-plus"></i></button>
+							<button class="button tiny radius right secondary" data-bind="visible: loading" disabled><i class="fa fa-spinner fa-spin"></i></button>
+						</div>
+						<div class="small-10 medium-8 large-9 columns">
+							<p data-bind="text: title"></p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="right">
+				<ul class="button-group radius">
+					<li><button class="buttom small secondary" data-bind="click: closeAddEventsModal">Done</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div data-calendar-socket-get="<?php echo $this->url('calendar-sockets',array('action'=>'getEventsData')); ?>"></div>
+<div data-calendar-socket-save="<?php echo $this->url('calendar-sockets',array('action'=>'addEvent')); ?>"></div>
+<div data-calendar-socket-delete="<?php echo $this->url('calendar-sockets',array('action'=>'removeEvent')); ?>"></div>
+

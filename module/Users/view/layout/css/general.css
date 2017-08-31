@@ -1,0 +1,283 @@
+
+#loginBox {
+    width:290px;
+    height:196px;
+    margin:160px auto 20px auto;
+    background:url('../img/loginBack.png') repeat-x;
+    position:relative;
+}
+
+
+#resetBox {
+    width:290px;
+    height:196px;
+    margin:80px auto 10px auto;
+    background:url('../img/loginReset.png') repeat-x;
+    position:relative;
+}
+
+#loginError {
+    width:270px;
+    margin:0px auto 10px auto;
+    color:#FF9900;
+}
+
+
+#loginUserLabel {
+    position:absolute;
+    top:94px;
+    right:194px;
+    text-align:right;
+    display:block;
+}
+
+#loginUsername {
+    position: absolute;
+    top: 94px;
+    left: 112px;
+    text-align: left;
+    border: 0px;
+    padding: 0px;
+    font-size: 12px;
+    width: 142px;
+    height: 15px;
+}
+
+#loginPassword {
+    position:absolute;
+    top:123px;
+    left:112px;
+    text-align:left;
+    border:0px;
+    padding:0px;
+    font-size:12px;
+    width:142px;
+    height: 15px;
+}
+
+#loginPasswordLabel {
+    position:absolute;
+    top:124px;
+    right:194px;
+    text-align:right;
+    display:block;
+}
+
+#loginSubmit {
+    border:0;
+    border:none;
+    outline:none;
+    position:absolute;
+    top:158px;
+    right:29px;
+    height:21px;
+    width:109px;
+    background:url('../img/login.png') top;
+    display:block;
+    overflow:hidden;
+    cursor:pointer; 
+}
+
+
+#loginSubmit:hover {
+    background-position:bottom;
+}
+
+
+a#passwordSubmit {
+    position:absolute;
+    top:158px;
+    right:29px;
+    height:21px;
+    width:109px;
+    background:url('../img/submit.png') top;
+    display:block;
+    overflow:hidden;
+    cursor:pointer; 
+}
+
+a#passwordSubmit:hover {
+    background-position:bottom;
+}
+
+#passwordResetLink {
+    position: absolute;
+
+    border: 0px;
+    padding: 0px;
+    left: 16px;
+    top: 158px;
+}
+
+#passwordResetLink a {
+    font-size: 11px;
+    color: #777;
+
+}
+#loginPassResetInfo {
+    display: block;
+    left: 6px;
+    position: absolute;
+    right: 10px;
+    text-align: justify;
+    top: 76px;
+}
+.row{
+    max-width:75rem !important;
+}
+body { 
+    background: #FDFDFD; 
+}
+body, input, textarea { 
+    font: 14px/24px Helvetica, Arial, sans-serif; 
+    color: #666; 
+}
+input { 
+    width: 60% 
+}
+form p{ 
+    width:100%;
+}
+form { 
+    margin: 30px 0 0 0 ;
+}
+input, textarea { 
+    background: none repeat scroll 0 0 #FFFFFF; 
+    border: 1px solid #C9C9C9; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset, -5px -5px 0 0 #F5F5F6, 5px 5px 0 0 #F5F5F6, 5px 0 0 0 #F5F5F6, 0 5px 0 0 #F5F5F6, 5px -5px 0 0 #F5F5F6, -5px 5px 0 0 #F5F5F6; 
+    color: #545658; 
+    padding: 8px; 
+    font-size: 14px; 
+    border-radius: 7px; 
+}
+#logo {
+    width: 75px;
+    height: auto;
+    display: inline-block;
+    margin-right: 20px;
+}
+#submit { 
+    border-radius: 7px; 
+    border-bottom: 3px solid #137fcc;
+    font-weight:bold;    
+
+}
+a { 
+    color: #CECCCB !important; 
+    text-decoration: underline !important; 
+}
+a:hover { 
+    color: #f26525 
+}
+#signup-form { 
+    width: 510px; 
+    margin: 0 auto; 
+    margin-top: 50px; 
+    margin-bottom: 50px; 
+    background: #fff; 
+    padding: 40px; 
+    border: 10px solid #f2f2f2; 
+}
+#signup-icon { 
+    float: right; 
+    width: 48px; 
+    height: 48px; 
+}
+h1, h2, h3, h4, h5, h6 { 
+    margin: 0; 
+    padding: 0; 
+    color: #444; 
+}
+#header h1 #header #logo {
+    height: 100%;
+    vertical-align: middle;
+}
+h1 { 
+    display: inline-block;
+    margin: 0 0 10px;
+    font-size: 2rem;
+    line-height: 2rem
+}
+h2.secondary { 
+    float: left; 
+    width: 260px; 
+    font-size: 16px; 
+    font-weight: normal; 
+    color: #999; 
+    margin-bottom: 30px; 
+    line-height: 26px; 
+}
+strong{
+    margin-top: 0.5rem !important;
+    margin-left: 0.5rem !important;
+    color:#0074C8 !important;
+}
+button, .button{
+    background-color: #4da1d8 !important;
+}
+h3 { 
+    margin: 30px 0 0 0 
+}
+.clearfix:after { 
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden; 
+}
+.clearfix { 
+    display: inline-block 
+} /* Hide from IE Mac \*/
+.clearfix { 
+    display: block; 
+} /* End hide from IE Mac */
+.none { 
+    display: none; 
+} /* End Clearfix _NO__DOTCOMMA__AFTER__*/
+
+#header { 
+    margin: 0 0 30px 0; 
+    border-bottom: 1px solid #efefef; 
+
+}
+#send p { 
+    margin-bottom: 20px 
+}
+textarea { 
+    width: 95%; 
+    margin: 0 0 0 2px; 
+}
+#required p{
+    font-size:10px;
+}
+#apply { 
+    border-top: 1px solid #efefef; 
+    margin-top: 30px; 
+    padding: 20px 0 0 0; 
+}
+#apply ul { 
+    margin-bottom: 50px 
+}
+form label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-size: 16px; 
+    color:#999;
+    width:360px ;
+    text-align: left;
+}
+form input { 
+
+    width:360px !important;
+}
+.tooltip{
+    height:200px !important;
+    width:700px !important;
+    right:200px !important;
+    background-color:blue !important;
+
+}
+
+.checkBox{
+    border:3px solid #000 !important;
+}

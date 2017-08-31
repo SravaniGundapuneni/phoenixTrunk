@@ -1,0 +1,171 @@
+<?php $originalData = unserialize($this->item->getOriginalData()) ?>
+<?php if (!$originalData) $originalData = array() ?>
+<?php $data = unserialize($this->item->getData()) ?>
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Original Data</th>
+                        <th>New Data</th>
+                    </tr>
+                </thead>
+                <?php if ($this->item->getItemTable() == 'MediaManager') : ?>
+                    <tr class="error">
+                        <td>Name</td>
+                        <td></td>
+                        <td><?= $data['name'] ?></td>
+                    </tr>
+                    <tr class="error">
+                        <td>Image</td>
+                        <td></td>
+                        <td><img src="<?= substr($siteroot, 0, strlen($siteroot) - 1) . $data['path'] . $data['name'] ?>" width="250" /></td>
+                    </tr>
+                <?php elseif ($this->item->getItemTable() == 'AttachedMediaFiles') : ?>
+                    <?php if ($this->item->getApprovalAction()=='trash') : ?>
+                        <tr class="error">
+                            <td>Delete Image</td>
+                            <td>
+
+                                <?php $moduleItem = $this->getCasInfo()->getModuleItem('AttachedMediaFiles',$this->item->getItemId()) ?>
+                                <?php $mediaFile = $this->getCasInfo()->getMediaManagerFile($moduleItem->getFile());?>
+                                <img src="<?= substr($siteroot, 0, strlen($siteroot) - 1)  . $mediaFile->getPath().'/'.$mediaFile->getName() ?>" width="250" />
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr class="error">
+                            <td>module:</td>
+                            <td>AttachedMediaFiles</td>
+                            <td></td>
+                        </tr>
+
+                        <?php foreach ($moduleItem->toArray() as $key=>$value) : ?>
+                            <?php if (! in_array($key, array('created','modified','module', 'userId','status'))): ?>
+                                <tr class="error">
+                                    <td><?= $key ?></td>
+                                    <td><?php
+                                        if ($key == 'propertyId' || $key == 'property') {
+                                            $property = $this->getPropertyInformation($value);
+                                            echo $property['name'];
+                                        } else {
+                                            if (!is_object($value)) echo $value;
+                                        }
+                                        ?></td>
+                                    <td></td>
+                                </tr>
+
+                            <?php endif ?>
+
+
+                        <?php endforeach ?>
+
+                    <?php else : ?>
+                        <tr class="error">
+                            <td>New Image</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>module:</td>
+                                        <td><?= $data['parentModule'] ?></td>
+                                    </tr>
+                                    <?php $moduleItem = $this->getCasInfo()->getModuleItem(str_replace('phoenix','',$data['parentModule']),$data['parentItemId']) ?>
+
+                                    <?php foreach ($moduleItem->toArray() as $key=>$value) : ?>
+                                        <?php if (! in_array($key, array('created','modified','module', 'userId','status'))): ?>
+                                            <tr>
+                                                <td><?= $key ?></td>
+                                                <td><?php
+                                                    if ($key == 'propertyId' || $key == 'property') {
+                                                        $property = $this->getPropertyInformation($value);
+                                                        echo $property['name'];
+                                                    } else {
+                                                        echo $value;
+                                                    }
+                                                    ?></td>
+                                            </tr>
+
+                                        <?php endif ?>
+
+
+                                    <?php endforeach ?>
+                                </table>
+                            </td>
+                            <td>
+                                <?php $mediaFile = $this->getCasInfo()->getMediaManagerFile($data['file']);?>
+                                <img src="<?= substr($siteroot, 0, strlen($siteroot) - 1)  . $mediaFile->getPath().'/'.$mediaFile->getName() ?>" width="250" />
+                            </td>
+                        </tr>
+                    <?php endif ?>
+                <?php else : ?>
+                    <?php foreach ($data as $key => $dataItem) : ?>
+                        <?php if (!in_array($key, array('id', 'action', 'allProperties', 'component', 'currentLanguage'))) : ?>
+                            <tr class="<?php
+                            if (array_key_exists($key, $originalData) && ($originalData[$key] != '' || ($originalData[$key]=='' && $dataItem =='')) && ($originalData[$key] == $dataItem))
+                                echo 'info';
+                            else
+                                echo 'error'
+                                ?>">
+                                <td><?= $key ?></td>
+                                <td><?php
+                                    if (array_key_exists($key, $originalData)) {
+                                        if ($key == 'status') {
+                                            echo $this->displayStatus($originalData[$key]);
+                                        } elseif ($key == 'propertyId' || $key == 'property') {
+                                            $property = $this->getPropertyInformation($originalData[$key]);
+                                            echo $property['name'];
+                                        } else {
+                                            echo $originalData[$key];
+                                        }
+                                    }
+                                    ?></td>
+                                <td><?php
+                                    if ($key == 'status') {
+                                        echo $this->displayStatus($dataItem);
+                                    } elseif ($key == 'propertyId' || $key == 'property') {
+                                        $property = $this->getPropertyInformation($dataItem);
+                                        echo $property['name'];
+                                    } else {
+                                        echo $dataItem;
+                                    }
+                                    ?></td>
+                            </tr>
+                                <?php endif ?>
+                            <?php endforeach ?>
+
+                        <?php endif ?>
+
+
+            </table>
+
+        </form>
+    </div>
+    <h4>Required approvals</h4>
+    <table class="table table-compacted" id="example">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Approved?</th>
+            </tr>
+        </thead>
+<?php foreach ($this->item->getApprovals() as $approval) : ?>
+            <tr class="<?= ($approval->getApproved()) ? 'success' : 'warning' ?>">
+                <td><?= $this->groups->find($approval->getWorkflow()->getUserGroup())->getName() ?></td>
+                <td><?= ($approval->getApproved()) ? 'Yes' : 'No' ?></td>
+            </tr>
+        <?php endforeach ?>
+    </table>
+<?php if (count($this->item->getPendingApprovals()) > 0) : ?>
+        <a class="btn btn-inverse tiny radius" href="<?= $this->url('contentApproval-toolbox') ?>/approve?id=<?= $this->item->getId() ?>">Approve</a>
+<?php endif ?>
+    <br />
+    <br />
+    <? //$this->partial('list-module/helpers/edit-list-pagination') ?>
+</div>

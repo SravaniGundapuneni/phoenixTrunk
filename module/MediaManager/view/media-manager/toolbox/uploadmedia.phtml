@@ -1,0 +1,23 @@
+<div class="fileHeaderBar row">
+	<div class="fileHeading">Upload Files</div>
+</div>
+<div id="uploadMediaContainer" class="row">
+	<form id="uploadMedia" method="post" action="<?=$this->url('mediaManager-sockets', array('action' => 'upload'));  ?>" enctype="multipart/form-data">
+		<div id="drop">
+			<div id="uploadButtonContainer">
+				<!--[if !IE]>-->
+				<div id="uploadButtonContainerText">
+					<p>Drag files and archived folders from</p>
+					<p>your computer here or</p>
+				</div>
+				<!--<![endif]-->
+				<div id="uploadButton">
+					<i class="fa fa-upload"></i>
+					<a>Upload</a>
+					<input type="file" name="mediaUpload" id="mediaUpload" multiple />
+				</div>
+			</div> 
+		</div>
+		<ul></ul>
+	</form>
+</div>

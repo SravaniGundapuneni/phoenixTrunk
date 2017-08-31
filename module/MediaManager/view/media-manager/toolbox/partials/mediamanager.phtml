@@ -1,0 +1,76 @@
+
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/filetree.css" rel="stylesheet"/>
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.contextMenu.css" rel="stylesheet"/>
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/newmediamanager.css" rel="stylesheet"/>
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/underscore-min.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/handlebars-v2.0.0.js"></script>
+<script type="text/javascript">
+	var app           = app || {}; 
+	app.BASE_FOLDER   = 'd/';
+	app.IMAGES_PATH   = '<?=$this->toolboxIncludeUrl;?>' + 'module/MediaManager/view/media-manager/images/';
+	app.isAttachments = '<?=$isAttachments;?>';
+	app.readOnly      = '<?=$this->isReadOnly();?>'; // media manager view helper
+	app.SOCKET_PATH   = '<?=$this->url("mediaManager-sockets");?>' + '/';
+</script>
+
+<script src="<?php echo $this->toolboxIncludeUrl;?>/module/MediaManager/view/media-manager/js/phoenix/attachmentitems.js"></script>
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.ui.position.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.contextMenu.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jquery.repeater/jquery.repeater.js"></script>
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/search.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/flexbox.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/filetree.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/vendor/jquery.ui.widget.js"></script>
+<!--[if (gte IE 8)&(lt IE 10)]>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/cors/jquery.xdr-transport.js"></script>
+<![endif]-->
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/jquery.iframe-transport.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/jquery.fileupload.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/jquery.fileupload-process.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/jquery.fileupload-validate.js"></script>
+<!--<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQueryFileUpload/js/jquery.fileupload-ui.js"></script>-->
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/screen.js"></script>
+
+<link rel="stylesheet" href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/Jcrop/css/jquery.Jcrop.css">
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jquery-ui-1.11.1.custom/jquery-ui.css" rel="stylesheet"/>
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/Jcrop/js/jquery.Jcrop.min.js"></script>
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/editor.css" rel="stylesheet"/>
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/dialog.css" rel="stylesheet"/>
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/upload.css" rel="stylesheet">
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/contextmenu.css" rel="stylesheet">
+<link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/css/viewer.css" rel="stylesheet">
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/notifications.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/explorer.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/contextmenu.js"></script>
+
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/cropper.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/editor.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/contextmenuhandlers.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/upload.js"></script>
+<script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/phoenix/main.js"></script>
+
+<div id="fileManagerLoading" class="column small-12">
+	<p id="fileManagerLoadingText">Loading File Manager...</p>
+	<p id="fileManagerLoadingSpinner"><i class="fa fa-spinner fa-spin"></i></p>
+</div>
+<div id="fileManagerWrapper" class="column small-12">
+<?php
+	echo $this->partial('media-manager/toolbox/handlebars/fileviewer.phtml');
+	echo $this->partial('media-manager/toolbox/handlebars/fileexplorer.phtml');
+	echo $this->partial('media-manager/toolbox/handlebars/opengraph.phtml');
+	echo $this->partial('media-manager/toolbox/filemanager.phtml', array('baseFolder' => 'd/'));
+	echo $this->partial('media-manager/toolbox/cropdialog.phtml');
+	echo $this->partial('media-manager/toolbox/editdialog.phtml');
+
+	if ($this->isReadOnly() === 'false') { // media manager view helper
+		echo $this->partial('media-manager/toolbox/uploadmedia.phtml');
+		echo $this->partial('media-manager/toolbox/handlebars/uploadprogress.phtml');
+	}
+?>
+</div>

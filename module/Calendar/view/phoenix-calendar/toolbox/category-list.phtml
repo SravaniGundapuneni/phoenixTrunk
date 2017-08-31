@@ -1,0 +1,38 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+
+			<thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="40px">Event Category Name</th>
+                        
+                        <th width="40px">Status</th>
+                    </tr>
+            </thead>
+                <tbody id="sortable">
+				<?php //var_dump($this->items); ?>
+                <?php foreach($this->items as $index => $eventCategoryList): ?>
+                    <tr class="ui-state-default" data-itemId="<?= $eventCategoryList->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $eventCategoryList->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('calendar-toolbox', array('subsite'=> $subsiteRoute, 'action'=>'editEventCategory', 'itemId'=>$eventCategoryList->getId())) ?>">
+                                <?= $eventCategoryList->getTitle() ?>
+                            </a>
+                        </td>
+                       
+                        <td><?= $this->displayStatus($eventCategoryList->getStatus()) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

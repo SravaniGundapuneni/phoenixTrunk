@@ -1,0 +1,38 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+
+			<thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="40px">Country</th>
+                        <th width="20px">Email subscriptions</th>
+						<th width="40px">Percentage</th>
+						<th width="40px"></th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+				<?php  ?>
+                <?php foreach ($stat as $list): ?>
+				
+                            <tr>
+								<td width="20px"></td>
+                                <td width="40px"><?php echo $list['country'] ?></td>
+								<td width="20px"><?php echo $list['total'] ?></td>
+								<td width="40px"><?php echo $list['per'] ?></td>
+								<td width="40px"></td>
+							</tr>
+							
+                <?php endforeach ?>       
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

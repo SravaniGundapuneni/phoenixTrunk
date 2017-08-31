@@ -1,0 +1,43 @@
+<?php
+$title = 'Add Group';
+$this->headTitle($title);
+?>
+<div class="editBox">
+    <div class="editBoxHeader">
+        <h2 class="editBoxHeaderTitle"><?php echo $this->escapeHtml($title); ?></h2>
+        <div class="optionsList">
+            <ul>
+                <li onclick="document.groups.submit(); showWait(); return false;">
+                    <img class="editBoxButton" title="Save" src="<?php echo $this->condorBaseHREF;?>templates/toolbox/images/confirmOff.png" onmouseover="this.src='<?php echo $this->condorBaseHREF;?>templates/toolbox/images/confirmOn.png';" onmouseout="this.src='<?php echo $this->condorBaseHREF;?>templates/toolbox/images/confirmOff.png';"  height="25" width="25" alt="" />
+                </li>
+                <li onclick="window.location = '<?php echo $this->toolboxHomeUrl;?>tools/users-groups_editList-en.html';showWait(); return false;">    
+                    <img class="editBoxButton" title="Cancel" src="<?php echo $this->condorBaseHREF?>templates/toolbox/images/cancelOff.png" onmouseover="this.src='<?php echo $this->condorBaseHREF?>templates/toolbox/images/cancelOn.png';" onmouseout="this.src='<?php echo $this->condorBaseHREF?>templates/toolbox/images/cancelOff.png';" height="25" width="25" alt="" />
+                </li>                
+            </ul>
+        </div>    
+    </div>
+    <div class="editBoxContent">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('users-groups-legacypath-toolbox', array('action' => 'addItem')));
+        $form->prepare();
+
+        if ($this->hasErrors) {
+            echo $this->formElementErrors($this->form);
+        }
+
+        echo $this->form()->openTag($form);
+        echo '<input type="hidden" name="action" value="" />';
+        foreach ($this->form as $valForm) {
+            if ($valForm instanceof \Zend\Form\Element\Hidden) {
+                echo $this->formHidden($valForm);        
+            } else {
+                echo '<p>' . $this->formLabel($valForm) . $this->formElement($valForm) . '</p>';
+                echo str_replace('Value is required', $valForm->getName() . ' is required', $this->formElementErrors($valForm, array('class' => 'error-inline')));
+            }
+        }
+
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>

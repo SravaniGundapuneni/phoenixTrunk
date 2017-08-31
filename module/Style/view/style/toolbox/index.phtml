@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Template Style</title>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+        <?php $css = file_get_contents(SITE_PATH . "/templates/main/css/main.css");?>
+    </head>
+    <body>
+        <div class="row">
+            <div class="large-12 medium-12 small-12 columns text-center">
+                <h1>Style</h1>    
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 small-12 columns text-left">
+                <label for="#base-style">File name: main.css</label>
+                <textarea id="base-style" name="base-style" class="base-style" rows="30" cols="60" autofocus="true"><?=$css?></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 small-12 columns text-center">
+                <a href="#" id="save-style" class="button radius large small medium">Save</a>
+                <a href="<?=$this->url('home').'toolbox/';?>" class="button radius large small medium">Close</a>
+            </div>
+        </div>
+        <script>
+            $(document).foundation();
+            $(document).ready(function(){
+                
+                $(".base-style").linedtextarea({
+                    selectedLine: 1
+                });
+                
+                $("#save-style").click(function(){
+                    var cssData = {'tmpl-name': 'template1', 'css-data':escape($("#base-style").val())};
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?=$this->url('style-sockets', array('action' => 'saveCss'))?>',
+                        data: cssData,
+                        dataType: "JSON"
+                    }).done(function(data){
+                        alert(JSON.stringify(data));
+                        window.location.reload();
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+ul {
+    list-style: none;
+}
+
+#moduleName {
+    background-color: #313131;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+#contentFloated {
+    border: 1px solid #CCC;
+    width: 815px;
+}
+
+#contentFloated #contentFloated {
+    border: 0px solid transparent;
+    border-bottom: 1px solid #CCC;
+}
+
+#taskMenu {
+    width: 190px;
+    min-height: 400px;
+}
+
+#taskMenu ul {
+    border: 1px solid #ddd;
+    min-height: 0px;
+    margin-left: 0px;
+    margin-right: 4px;
+    width: 180px;
+}
+
+#taskMenu li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: rgb(240, 240, 240);
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 1px;
+}
+
+#taskMenu li a {
+    color: black;
+    display: block;
+    padding: 2px 5px;
+    background-color: #F0F0F0;
+    text-decoration: none;
+}
+
+#taskMenu li a:hover {
+    color:#000;
+    font-weight:bold;
+}
+
+#taskMenu li.currentTask a {
+    color:#000;
+    font-weight:bold;
+    background: url(../img/currentTask.png) 97% 50% no-repeat #FFF;
+}
+
+
+#taskMenu, #contentFloated {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#editBox {
+    position:relative;
+}
+
+#editBox #list-wrapper td,
+#editBox #list-wrapper th {
+    text-align: left;
+    padding: 3px 5px;
+}
+
+#editBox #editBoxHeader {
+    height: 34px;
+    border-bottom: 1px solid #ccc;
+}
+
+#editBox .editListOptionsList {
+    margin: 4px 5px;
+}
+
+#editBox .editListOptionsList li {
+    display: inline;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+#editBox .editListOptionsList {
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}
+
+#editBox .editListOptionsList ul {
+    margin: 0;
+}
+
+#editBox .editItemOptionsList {
+    display: inline-block;
+    margin: 0;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    position: relative;
+    background-color: white;
+}
+
+#editBox .editItemOptionsList:last-child {
+    top: 7px;
+}
+
+#editBox .editItemOption {
+    display: inline-block;
+    border-left: 1px solid #EEE;
+    padding: 5px;
+    width: 114px;
+    float: right;
+    cursor: pointer;
+    background-image: url('../img/action-background.png');
+    font-size: 11px;
+}
+
+#editBox .editItemOption:hover {
+    background-position: 0 36px;
+}
+
+#itemForm {
+    margin: 10px 15px;
+}
+
+#editItemHeaderTitle {
+    color: #024881;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 8px 5px;
+    float: left;
+}
+
+#editItemLangSelect {
+    float: right;
+    padding: 8px 5px;
+}
+
+#editItemLangSelect > span {
+    position: relative;
+    padding: 5px 6px;
+    font-size: 12px;
+}
+
+#editItemLangSelect > select {
+    position: relative;
+    padding: 2px 4px;
+    margin-bottom: 0px;
+    line-height: 24px;
+    height: 24px;
+}
+
+#editItemInputBlock {
+    border: 0;
+    width: 100%;
+    border-collapse: separate;
+}
+
+#editItemInputBlock td {
+    height: 50px;
+}
+
+#editItemInputBlock td:first-child {
+    width: 150px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#editItemInputBlock td {
+    vertical-align: top;
+}
+
+#editItemInputBlock td:last-child > * {
+    border: 1px dashed #FF9900;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 13px;
+}
+
+#main-image {
+    padding: 2px;
+    height: 50px;
+}
+
+td:last-child > div#big-plus {
+    height: 70px;
+    width: 350px;
+    border: 1px solid #DDD;
+}
+
+div#big-plus > div:first-child {
+    font-size: 70px;
+    color: #3B872F;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+div#big-plus > div {
+    display: inline-block;
+}
+
+/*
+div#attach-media {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FF9900;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+div#add-media-file {
+    cursor: pointer;
+    float: right;
+}
+*/
+
+#editItemInputBlock td:last-child > input {
+    width: 330px;
+    border: 1px solid #DDD;
+    border-radius: 0;
+}
+
+.editItemContent {
+    padding: 0 10px;
+}
+
+.editItemContent form input,
+.editItemContent form select,
+.editItemContent form textarea {
+    font-size: 11px;
+}
+
+#editBox .editItemContent input[type="text"],
+#editBox .editItemContent input[type="password"],
+#editBox .editItemContent input.stdInputDate {
+    width: 60%;
+}
+
+#editBox .editItemContent textarea {
+    width: 60%;
+}
+
+#editBox .editItemContent textarea.description {
+    height: 200px;
+}
+
+#editBox .editItemContent select {
+    width: 62%;
+}
+
+/*
+.media-attachments-list {
+    border:1px solid #CCC;
+    border-radius: 5px;
+    display: inline-block;
+    width: 61.5%;
+}
+#add-media {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 10px;
+    line-height: 50px;
+    text-decoration: none;
+}
+#add-media > div:first-child {
+    color: #3B872F;
+    font-size: 70px;
+    font-weight: bold;
+}
+#add-media > div:last-child {
+    color: #FF9900;
+    font-size: 14px;
+    font-weight: bold;
+}
+*/
+
+/* #media-list {display:inline-block} */
+
+/** List Module Pagination **/
+
+#editBox #page-navigation-bar {
+    padding: 0px;
+    margin: 10px;
+    bottom: 0px;
+}
+
+#editBox .editListContent table {
+    margin-bottom: 0px;
+}
+
+/* Hiding Datepicker in chrome */
+input[type="date"]::-webkit-calendar-picker-indicator{
+    display:none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="date"]::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+}
+/** THIS DOESN'T WORK **/
+input[type="date"]::-webkit-input-placeholder{
+    display:none !important;
+    -webkit-appearance: none !important;
+        visibility: hidden !important;
+}

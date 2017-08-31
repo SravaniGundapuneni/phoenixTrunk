@@ -1,0 +1,177 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+            <meta charset="UTF-8">
+            <title>Layout Editor - Home</title>
+            <?php echo $this->headLink(); ?>
+            <?php echo $this->headScript(); ?>
+            <style>
+                .row{
+                    max-width:70.5rem;
+                    }
+            </style>
+	</head>
+<body>
+    <div class="row template-builder-background">            
+        <a href="<?=$this->siteroot."toolbox"?>" class="exit button alert tiny has-tip right" title="Back to Dashboard">EXIT</a>
+        <div class="column large-11 medium-11 small-11 large-centered medium-centered"> 
+            <div class="row">
+                <div class="column large-12 medium-12 small-12 text-center">
+                    <h2>Layout Editor</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="column large-2">
+                    <label for="layoutName" class="left inline"><strong>Layout Name:</strong></label>
+                </div>
+                <div class="column large-4">
+                    <input type="text" placeholder="e.g. privacy-policy" name="layoutName" id="layoutName" />
+                </div>
+                <div class="column large-6 text-center">
+                    <a class="button tiny has-tip add-widget-link" title="Add a widgets to the layout" href='<?=$this->url('templateBuilder-toolbox', array('action' => 'index'))?>'>Go to Template Builder</a>
+                    <a href="#" id="toggle-btn-existing-layout" class="button tiny">Show/Hide Existing Layouts</a>
+                    <a href="#" id="delete-page-layout" class="button tiny alert" data-layout-file=''>Delete Layout</a>
+                </div>
+            </div>
+            <div class="row existing-layouts">
+                <div class="column panel large-12 medium-12 small-12">
+                    <ul class="inline-list existing-layout-list">
+                        
+                    <?php
+                        $dir = SITE_PATH . "/templates/main/layouts/";
+                        $files = scandir($dir);
+                        for($i=0; $i< count($files); $i++)
+                        {
+                            if(is_file($dir.$files[$i]) AND $files[$i] != 'index.phtml')
+                            {
+                    ?>
+                                <li data-layout="<?=$files[$i]?>"><a href="#"><?=strtoupper(str_replace(".phtml", "", $files[$i]))?></a></li>
+                    <?php
+                            }
+                        }
+                    ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center" style="width: 100%; max-width: 70.5rem; margin: 0 auto;">
+                <div class="container column small-12 medium-12 large-12">
+                    <div id="layout-canvas"></div>
+                </div>
+            </div>
+            
+            <div id="myModalVisibility" class="reveal-modal medium" data-reveal>
+                <h3>Visibility Classes</h3>
+                <div class="row">
+                    <div class="column large-4 medium-4 small-4">
+                        <label><input type="checkbox" name="chkbox-editor" id="chkbox-editor"  /> <strong>Add an editable content area(ckEditor)</strong></label>
+                    </div>
+                    <div class="column large-4 medium-4 small-4">
+                        <select id="medium-columns-classes">
+                            <option value="medium-12-clsstmp">medium-12</option>
+                            <option value="medium-11-clsstmp">medium-11</option>
+                            <option value="medium-10-clsstmp">medium-10</option>
+                            <option value="medium-9-clsstmp">medium-9</option>
+                            <option value="medium-8-clsstmp">medium-8</option>
+                            <option value="medium-7-clsstmp">medium-7</option>
+                            <option value="medium-6-clsstmp">medium-6</option>
+                            <option value="medium-5-clsstmp">medium-5</option>
+                            <option value="medium-4-clsstmp">medium-4</option>
+                            <option value="medium-3-clsstmp">medium-3</option>
+                            <option value="medium-2-clsstmp">medium-2</option>
+                            <option value="medium-1-clsstmp">medium-1</option>
+                        </select>
+                    </div>
+                    <div class="column large-4 medium-4 small-4">
+                        <select id="small-columns-classes">
+                            <option value="small-12-clsstmp">small-12</option>
+                            <option value="small-11-clsstmp">small-11</option>
+                            <option value="small-10-clsstmp">small-10</option>
+                            <option value="small-9-clsstmp">small-9</option>
+                            <option value="small-8-clsstmp">small-8</option>
+                            <option value="small-7-clsstmp">small-7</option>
+                            <option value="small-6-clsstmp">small-6</option>
+                            <option value="small-5-clsstmp">small-5</option>
+                            <option value="small-4-clsstmp">small-4</option>
+                            <option value="small-3-clsstmp">small-3</option>
+                            <option value="small-2-clsstmp">small-2</option>
+                            <option value="small-1-clsstmp">small-1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column large-4 medium-4 small-4">
+                        <h4>Show Classes</h4>
+                        <ul class="no-bullet">
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-small-only"> show-for-small-only</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-medium-up"> show-for-medium-up</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-medium-only"> show-for-medium-only</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-large-down"> show-for-large-down</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-large"> show-for-large</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-large-up"> show-for-large-up</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-xlarge"> show-for-xlarge</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="show-for-xxlarge"> show-for-xxlarge</label></li>
+                        </ul>
+                    </div>
+                    <div class="column large-4 medium-4 small-4">
+                        <h4>Hide Classes</h4> 
+                        <ul class="no-bullet">
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-small-only"> hide-for-small-only</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-medium-up"> hide-for-medium-up</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-medium-only"> hide-for-medium-only</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-large-down"> hide-for-large-down</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-large"> hide-for-large</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-large-up"> hide-for-large-up</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-xlarge"> hide-for-xlarge</label></li>
+                            <li><label><input type="radio" name="visibility-radio" value="hide-for-xxlarge"> hide-for-xxlarge</label></li>
+                        </ul>
+                    </div>
+                    <div class="column large-4 medium-4 small-4">
+                        <div class="row">
+                            <div class="column large-12 medium-12 small-12">
+                                <h4>Orientation Detection</h4>
+                                <ul class="no-bullet"> 
+                                    <li><label><input type="radio" name="visibility-radio" value="show-for-landscape"> show-for-landscape</label></li>
+                                    <li><label><input type="radio" name="visibility-radio" value="show-for-portrait"> show-for-portrait</label></li>
+                                </ul>
+                            </div>
+                            <div class="column large-12 medium-12 small-12">
+                                <h4>Touch Detection</h4>
+                                <ul class="no-bullet">
+                                    <li><label><input type="radio" name="visibility-radio" value="show-for-touch"> show-for-touch</label></li>
+                                    <li><label><input type="radio" name="visibility-radio" value="hide-for-touch"> hide-for-touch</label></li>
+                                </ul>
+                            </div>
+                            <div class="column large-12 medium-12 small-12">
+                                <h4>Accessibility</h4>
+                                <ul class="no-bullet">
+                                    <li><label><input type="radio" name="visibility-radio" value="hidden-for-small-only"> hidden-for-small-only</label></li>
+                                    <li><label><input type="radio" name="visibility-radio" value="visible-for-small-only"> visible-for-small-only</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a class="close-reveal-modal">&#215;</a>
+                <ul class="stack-for-small radius secondary button-group">
+                    <li><a href="#" class="button alert update-column">Update</a></li>
+                    <li><a href="#" class="button cancel-column">Cancel</a></li>
+                </ul>
+            </div>
+            <div id="myModal" class="reveal-modal small" data-reveal>
+                <h2>Delete Layout</h2>
+                <p class="lead">Are you sure you want to delete the layout?</p>
+                    <a class="close-reveal-modal">&#215;</a>
+                    <ul class="stack-for-small radius secondary button-group">
+                        <li><a href="#" class="button alert delete-layout">Delete</a></li>
+                        <li><a href="#" class="button cancel-delete-layout">Cancel</a></li>
+                    </ul>
+            </div>
+        </div>
+        <div class="hide" data-siteroot="<?=$this->siteroot?>"></div>
+        <div class="hide" data-delete-layout-url="<?=$this->url('layoutEditor-sockets', array('action' => 'deleteLayout'))?>"></div>
+        <div class="hide" data-save-layout-url="<?=$this->url('layoutEditor-sockets', array('action' => 'saveLayout'))?>"></div>
+    </div>
+    </body>
+</html>

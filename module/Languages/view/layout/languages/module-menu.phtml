@@ -1,0 +1,19 @@
+        <?php foreach ($this->tasksMenu as $taskAction => $taskLabel): ?>
+            <?php 
+                switch ($taskAction) : 
+                    case 'propertyLanguages':
+                        $menuToolboxRoute = 'languages-properties-toolbox';
+                        $taskAction = 'index';
+                        break;
+                    default:
+                        $menuToolboxRoute = $this->toolboxRoute;
+                endswitch;
+            ?>            
+        <li>
+            <?=$this->partial('layout/module-route-link.phtml', 
+                array('toolboxRoute' => $menuToolboxRoute, 
+                      'taskLabel' => $taskLabel,
+                      'moduleRouteParams' => \array_merge($this->moduleRouteParams, array('action' => $taskAction, 'subsite' => $subsiteRoute))
+                      ));?>
+        </li>
+        <?php endforeach; ?>

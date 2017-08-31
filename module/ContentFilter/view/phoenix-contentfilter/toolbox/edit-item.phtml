@@ -1,0 +1,120 @@
+<?php $this->inlineScript()->captureStart() ?>
+$("#languageSelect").change(function() {
+        var changedLanguage = $(this).val();
+        var currentLanguage = $('input[name="currentLanguage"]').val();
+
+        var translateFields = JSON.parse('<?php echo json_encode($this->translateFields);?>');
+
+        translateFields.forEach(function(element, index, array) {
+                var fieldName = element[0];
+                var fieldType = element[1];
+                var currentFieldName = fieldName + '_' + currentLanguage;
+                var changedFieldName = fieldName + '_' + changedLanguage;
+
+                var fieldPrefix = 'input';
+
+                switch (fieldType) {
+                    case 'textarea':
+                        fieldPrefix = 'textarea';
+                        break;
+                }
+                $(fieldPrefix + '[name=' + currentFieldName + ']').val($(fieldPrefix +  '[name=' + fieldName + ']').val());
+                $(fieldPrefix + '[name=' + fieldName + ']').val($(fieldPrefix + '[name=' + changedFieldName + ']').val());
+
+                //alert($('textarea[name=' + fieldName + ']').val());
+            }
+        );
+        $('input[name="currentLanguage"]').val(changedLanguage); 
+    }
+);
+<?php $this->inlineScript()->captureEnd() ?>
+
+<div id="editBox">
+    <div id="editItemHeader" class="editItemHeader">
+        <h2 id="editItemHeaderTitle"><?= $title ?></h2>
+        <div id="editItemLangSelect" class="editItemLangSelect">
+            <span>LANGUAGE &nbsp;</span>
+            <?php echo $this->formElement($this->languageOptions);?>
+        </div>
+        <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+    </div>
+    <div class="editItemContent">
+       
+	 <form method="POST" name="filterForm" action="filterControl">          
+            <table cellpadding="30" class="table table-compacted" id="example" class="table table-compacted" id="list-wrapper">
+
+			<!--<thead>
+                    <tr>                       
+                        <th width="80px">Parameter</th>
+                        <th width="120px">Selection</th>						
+                    </tr>
+            </thead>-->         
+				<tbody>
+				
+				<tr>
+			    <td> &nbsp; &nbsp; </td>
+				<td> &nbsp; &nbsp; </td>
+			    </tr> 
+				
+				
+                <tr>
+			    <td> <input type="checkbox" checked value="1" name="propertyIdCheckbox"> &nbsp; &nbsp; Property Name </td>
+				<td> <select name="hotel">                        
+					     <option value="60"> Loews Philadelphia Hotel </option> 
+					     <option value="2"> Loews Atlanta Hotel </option>
+					     <option value="3"> Loews Boston Hotel </option>
+				</select> </td>
+			</tr>  
+			
+			<tr>
+			    <td> <input type="checkbox" checked value="1" name="roomNameCheckbox"> &nbsp; &nbsp; Room Name </td>
+				<td> <select name="roomName">  
+                         <option value="Standard Room">Standard Room</option>  				
+					     <option value="Poolside Room">Poolside Room</option> 
+                         <option value="Superior Room">Superior Room</option>  	
+                         <option value="Luxury King Bed">Luxury King Bed</option> 					 
+					     <option value="Premium King Suite">Premium King Suite</option>                      
+				</select> </td>
+			</tr>
+			
+			<tr>
+			    <td> <input type="checkbox" checked value="1" name="bedTypeCheckbox"> &nbsp; &nbsp; Bed Type (Twin/Queen/King)</td>
+				<td> <input type="text" value="Queen" name="bedType"> 
+				</td>
+			</tr>
+			
+			<tr>
+			    <td> <input type="checkbox" checked value="1" name="maxOccupancyCheckbox"> &nbsp; &nbsp; Max Occupancy </td>
+				<td> <select name="maxOccupancy">  
+                         <option value="1">1</option>  				
+					     <option value="2">2</option> 
+                         <option value="3">3</option>  	
+                         <option value="4">4</option> 					 
+					     <option value="5">5</option>                      
+				</select> </td>
+			</tr>
+						
+			<tr>
+			    <td> <input type="checkbox" checked value="1" name="roomCodeCheckbox"> &nbsp; &nbsp; Codes </td>
+				<td> <select name="roomCode">  
+                         <option value="STD2Q">STD2Q</option>  				
+					     <option value="PLS2Q">PLS2Q</option> 
+                         <option value="CFS2Q">CFS2Q</option>  	
+                         <option value="TFS2Q">TFS2Q</option> 					 
+					     <option value="LUXK1">LUXK1</option>
+                         <option value="LUXD2">LUXD2</option>  						 
+				      </select> 
+				</td>
+			</tr>
+					
+			<tr>
+			    <td> <!--<input type="reset" value="Reset">--> &nbsp; &nbsp; </td>
+				<td>  <input type="submit" value="Apply Selected Filters">   </td>
+			</tr>
+                </tbody>
+            </table>
+        </form>
+	   
+    </div>
+    <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+</div>

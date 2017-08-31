@@ -1,0 +1,14 @@
+<?php
+    $val = count($this->elist);
+    if ($val > 0) {
+				$fh = @fopen( 'php://output', 'w' );
+				foreach ($this->elist as $result) {
+				fputcsv($fh, $result);
+				}
+			fclose($fh);
+	}
+?>
+                    
+                       
+                        
+                

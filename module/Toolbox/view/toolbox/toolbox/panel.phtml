@@ -1,0 +1,11 @@
+<div class="heading"><?= $panel ?></div>
+<div class="panel panel-default" <?= $id ? "id='$id'" : '' ?>>
+    <ul class="small-block-grid-11">
+        <?php foreach ($panelArray as $moduleName => $modulePath): ?>
+        <li class="toolbox-tool" data-tooltip aria-haspopup="true" class="has-tip" title="<?= $this->camelCaseToWords($moduleName) ?>">
+            <div class="tool-name text-center"><strong><?= $this->camelCaseToWords($moduleName) ?></strong></div>
+            <a class="thumbnail" href="<?= $this->toolboxToolUrl($this->toolboxHomeUrl, $moduleName, $modulePath) ?>" style="background-image:url('<?= $this->toolIconPath($moduleName, $imgDir, $imgUrl) ?>')"></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

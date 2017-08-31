@@ -1,0 +1,15 @@
+<script id="openGraphTemplate" type="x-handlebars-template">
+	{{#each this}}
+		<div data-repeater-item class="openGraphItem row">
+			<div class="column small-5">
+				<input name='property' class='opengraphProperty' type='text' value='{{ propertyValue }}'/>
+			</div>
+			<div class="column small-5">
+				<input name='content' class='opengraphContent' type='text' value='{{ contentValue }}'/>
+			</div>
+			<div class="column small-2">
+				<input data-repeater-delete type='button' value='Delete'/>
+			</div>
+		</div>
+	{{/each}}
+</script>

@@ -1,0 +1,91 @@
+<?php
+ $title = 'YouFirst Dashboard';
+ $this->headTitle($title);
+?>
+<div class="editBox">
+ <div class="editBoxHeader">
+  You first logo
+  The status bar will be placed here.. 
+  </div>
+  <div class="editBoxContent">
+  <?php $form = $this->form;?>
+    <table>
+	 <tr>
+	   <td><b>Account Details</b><BR>
+	   <table>
+	   <tr><td><b>Level:</b> <?php echo $form->level; ?></td><td><b>Number:</b><?php echo $form->acctNumber; ?></td></tr>
+	   </table>
+	   <table>
+	   <tr><td><?php echo $form->creditInfo; ?></td></tr>
+	   <tr><td><b>Last Stay Credited:</b></td></tr>
+	   <tr><td><?php echo $form->loewsHotel ?>, <?php echo $form->stayMonth ?>, <?php echo $form->stayDay ?>, <?php echo $form->stayYear ?></td></tr>
+	   </table>
+	   <h4>Guest Information</h4>
+	   <table>
+	   <tr><td><h3><?php echo $form->title ?> <?php echo $form->firstName ?> <?php echo $form->lastName ?></h3></td></tr>
+	   </table>
+	   <table>
+	   <tr><td><b>Date of Birth</b></td><td><b>Email</b></td></tr>
+	   <tr><td><?php echo $form->birthMonth ?> <?php echo $form->birthDate ?>, <?php echo $form->birthYear ?></td><td><?php echo $form->email; ?></td></tr>
+	   </table>
+	   <h4>Home Address and Contact</h4>   
+	   <table>
+	   <tr><td><?php echo $form->home-address1; ?></td></tr>
+	   <tr><td><?php echo $form->home-address2; ?></td></tr>
+	   <tr><td><?php echo $form->home-city; ?>, <?php echo $form->home-state ?> <?php echo $form->home-zipcode ?></td></tr>
+	   <tr><td><?php echo $form->country; ?></td></tr>
+	   <tr><td><?php echo $form->countryCode; ?> <?php echo $form->phoneNumber ?></td></tr>
+	   </table>
+	   <h4>Business Address and Contact</h4>  
+	   <table>
+	   <tr><td><?php echo $form->work-address1; ?></td></tr>
+	   <tr><td><?php echo $form->work-address2; ?></td></tr>
+	   <tr><td><?php echo $form->work-city; ?>, <?php echo $form->work-state ?> <?php echo $form->work-zipcode ?></td></tr>
+	   <tr><td><?php echo $form->country; ?></td></tr>
+	   <tr><td><?php echo $form->countryCode; ?> <?php echo $form->phoneNumber ?></td></tr>
+	   </table>
+	   <h4>Correspondence</h4> 
+       <table>
+       <tr><td><?php echo $form->correspondence; ?></td></tr>
+       </table>
+       <h4>Email Information</h4>
+   	   <table>
+	   <tr><td><?php echo $form->emailInoformation; ?></td></tr>
+	   </table>
+	   <h4>My Preferences</h4>
+	   <table>
+	   <tr><td><b>Floor Preference:</b></td><td><?php echo $form->floorPreference; ?></td></tr>
+	   <tr><td><b>Arrival Time:</b></td><td><?php echo $form->checkInTime; ?></td></tr>
+	   <tr><td><b>Newspaper:</b></td><td><?php echo $form->newspaper; ?></td></tr>
+	   <tr><td><b>Bed Type:</b></td><td><?php echo $form->bedType; ?></td></tr>
+	   </table>
+	   <b>Loews programs that interest you:</b><BR>
+	   <?php echo $form->lowesPrograms;?>
+	   <BR><BR>
+	   <b>Other Requests</b><BR>tbd
+	   <h4>Credit Card On File</h4>
+	   <table>
+	   <tr><td><b>Card Type:</b></td><td><?php echo $form->cardType ?></td></tr>
+	   <tr><td><b>Card Number:</b></td><td><?php echo $form->cardNumber ?></td></tr>
+	   </table>
+	   </td>
+	   
+	   <td><b>My Reservations</b>
+	   <BR><BR>
+	   <?php
+	    foreach ($this->form as $valForm) {
+		 echo  "will have to combine the reservation details here...";
+		}
+	   ?>
+	   
+	   
+	   </td>
+	   
+	   </tr>
+     </table>
+  </div>
+ 
+
+
+
+</div>

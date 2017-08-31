@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 12, 2015, 4:56:23 PM
+    Author     : rvahora
+*/
+
+/*  Fix for the css foundation ckEditor design break    */
+/*
+* {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+*/
+
+/*  ckEditor Responsive Images*/
+.containerImage {
+	width: 99.5% !important;
+	height: auto;
+	text-align: center;
+}
+
+.containerImage img{
+	border: none;
+	margin: 1px;
+}

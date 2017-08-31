@@ -1,0 +1,94 @@
+<style type="text/css">
+    .editBox .blockLabel, #contentFloated .blockLabel, .editBox .textareaLabel, #contentFloated .textareaLabel{
+        width :210px;
+    }
+
+</style>
+<?php $this->inlineScript()->captureStart() ?>
+$("#languageSelect").change(function() {
+var changedLanguage = $(this).val();
+var currentLanguage = $('input[name="currentLanguage"]').val();
+
+var translateFields = JSON.parse('<?php echo json_encode($this->translateFields); ?>');
+        
+        // ckeditor
+        for(name in CKEDITOR.instances)
+        {
+            CKEDITOR.instances[name].destroy()
+        }
+
+translateFields.forEach(function(element, index, array) {
+var fieldName = element[0];
+var fieldType = element[1];
+var currentFieldName = fieldName + '_' + currentLanguage;
+var changedFieldName = fieldName + '_' + changedLanguage;
+
+var fieldPrefix = 'input';
+
+if(fieldType == "textarea")
+{
+editor = CKEDITOR.instances['description'];
+var edata = editor.getData();
+editor.setData($(fieldPrefix + '[name=' + changedFieldName + ']').val());
+}
+else
+{
+$(fieldPrefix + '[name=' + currentFieldName + ']').val($(fieldPrefix +  '[name=' + fieldName + ']').val());
+$(fieldPrefix + '[name=' + fieldName + ']').val($(fieldPrefix + '[name=' + changedFieldName + ']').val());
+}
+}
+);
+$('input[name="currentLanguage"]').val(changedLanguage); 
+}
+);
+<?php $this->inlineScript()->captureEnd() ?>
+<div id="editBox" class="foo">
+    <div id="editItemHeader" class="editItemHeader">
+        <h2 id="editItemHeaderTitle"><?= $title ?></h2>
+        <div id="editItemLangSelect" class="editItemLangSelect">
+            <span>LANGUAGE &nbsp;</span>
+            <?php echo $this->formElement($this->languageOptions); ?>
+        </div>
+        <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+    </div>
+    <div class="editItemContent">
+        <br/>
+        <div class="editItemMessage"></div>
+        <?php echo $this->form()->openTag($form); ?>
+        <?php
+        foreach ($this->form as $valForm) {
+            //convert date input to text
+            if ($valForm instanceof \Zend\Form\Element\Date) {
+                $valForm->setAttribute('type', 'text')->setFormat('m/d/Y');
+            }
+
+            if ($valForm instanceof \Zend\Form\Element\Hidden) {
+                echo $this->formHidden($valForm);
+            } else {
+                echo '<p>' . $this->formLabel($valForm);
+                if ($valForm instanceof \Phoenix\Form\Element\OrderedSelect) {
+                    echo $this->formOrderedSelect($valForm);
+                } else {
+                    echo $this->formElement($valForm);
+                }
+                echo '</p>';
+                echo str_replace('Value is required', $valForm->getName() . ' is required', $this->formElementErrors($valForm, array('class' => 'error-inline alert alert-error')));
+            }
+        }
+        ?>
+<?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var dropdownSelections = '<?=$itemModel->getMembership();?>',
+            dropdown = $('select[name="membership[]"]'),
+            selections = dropdownSelections.split(','),
+            i;
+
+        for (i in selections) {
+            dropdown.find('option[value="'+selections[i]+'"]').attr({selected:'selected'});
+        }
+    });
+</script>

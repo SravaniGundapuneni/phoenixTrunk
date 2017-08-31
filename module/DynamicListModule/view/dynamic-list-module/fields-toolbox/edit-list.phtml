@@ -1,0 +1,39 @@
+
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select a field to edit for <?=$moduleTitle?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="auto">Type</th>
+                        <th width="auto">Order</th>                     
+                        <th width="80px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php foreach ($items as $index=>$field): ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $field->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('dynamicListModule-fieldsToolbox', array('subsite'=> $subsiteRoute, 'action' => 'editItem', 'moduleId' => $field->getComponent()->getId(), 'itemId' => $field->getId())) ?>">
+                                <?= $field->getName() ?>
+                            </a>
+                        </td>
+                        <td><?=$field->getType();?></td>
+                        <td><?=$field->getOrderNumber();?></td>
+                        <td><?= $this->displayStatus($field->getStatus()) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

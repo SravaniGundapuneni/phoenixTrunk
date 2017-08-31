@@ -1,0 +1,178 @@
+<?php $shareableServicesForImages[] = $imgFacebook ? 'facebook' : null ?>
+<?php $shareableServicesForImages[] = $imgTwitter ? 'twitter' : null  ?>
+<?php $shareableServicesForImages[] = $imgGoogle ? 'google_plusone_share' : null  ?>
+<?php $shareableServicesForImages[] = true ? 'email' : null  ?>
+
+<link href="<?php echo $this->toolboxIncludeUrl;?>module/PhoenixSocialToolbar/view/social-toolbar/layout/css/style.socialToolbar-common.css" rel="stylesheet" />
+<link href="<?php echo $this->toolboxIncludeUrl;?>module/PhoenixSocialToolbar/view/social-toolbar/layout/css/style.socialToolbar-horizontal.css" rel="stylesheet" />
+
+<script type="text/javascript" src="<?php echo $this->toolboxIncludeUrl;?>module/PhoenixSocialToolbar/view/social-toolbar/layout/js/json2.min.js"></script>
+
+<script type="text/javascript">
+  var addthis_config = { services_overlay: "<?php echo implode(',',array_filter($shareableServicesForImages)) ?>" }
+</script>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=[ra-522775530db3c0fa]"></script>
+
+
+<script type="text/javascript">
+
+//Social toolbar Options
+var socialToolbarSettings = {
+  'closeButton'                      : '',
+  'shareLabelHoritzontal'            : '',
+  'shareLabelVerital'                : '',
+  'minimizedLabelHoritzontal'        : '',
+  'labelLeftContent'                 : '',
+  'labelRightConent'                 : ''
+};
+
+//Social Toolbar Init
+/**
+socialtoolbar.toolbar_init('{"toolbar_enabled":"<?= $toolbarEnabled ?>","layout":"<?= $layout ?>","color":"-1","recommend_email":"1","only_icons":"","minimized":"1","icon_preset":"1","fb_type":"1","extend":"","rounded":"","toolbar_label":"","toolbarSize":"","share_tooltip":"","fontColor":"ffffff"}','{"recommend_0":"1","recommend_1":"1","recommend_2":"1","recommend_3":"1","n_buttons":4}','{"Facebook":{"enabled":"1","url":"https:\/\/www.facebook.com\/<?= $smFacebook ?>"},"Twitter":{"enabled":"1","username":"<?= $smTwitter ?>","keyword":""},"YouTube":{"enabled":"","url":""},"Tripadvisor":{"enabled":"","url":""},"iStay":{"enabled":"","istay_id":""}');
+**/
+
+
+//Twitter API
+window.twttr = (function (d,s,id) {
+              var t, js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+              js.src="https://platform.twitter.com/widgets.js"; js.type = 'text/javascript'; fjs.parentNode.insertBefore(js, fjs);
+              return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+            }(document, "script", "twitter-wjs"));
+
+</script>
+
+
+ <style type="text/css">
+        #socialToolbarContainer,
+        #SocialToolbarActiveWindow,
+        #socialToolbarContainer #socialToolbarInnerMin,
+        #socialToolbarContainer .inner_toolbar .shareLeft .contentLeft ul,
+        #socialToolbarContainer .inner_toolbar .shareRight .contentLeft ul{
+             border:1px solid #233038;
+        }
+
+        #SocialToolbarActiveWindow,
+        #socialToolbarContainer.stLayout1 #socialToolbarBackground,
+        #socialToolbarContainer.stLayout1 #socialToolbarInnerMin,
+        #socialToolbarContainer .inner_toolbar .shareLeft .contentLeft ul,
+        #socialToolbarContainer .inner_toolbar .shareRight .contentLeft ul{
+                background-color:#233038;
+                color:#ffffff;
+                background-image: linear-gradient(bottom, #233038 0%, #233038 100%);
+                background-image: -o-linear-gradient(bottom, #233038 0%, #233038 100%);
+                background-image: -moz-linear-gradient(bottom, #233038 0%, #233038 100%);
+                background-image: -webkit-linear-gradient(bottom, #233038 0%, #233038 100%);
+                background-image: -ms-linear-gradient(bottom, #233038 0%, #233038 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#233038', endColorstr='#233038',GradientType=0 );
+        }
+
+        #socialToolbarContainer.stLayout2  #socialToolbarBackground{
+                background-color:#233038;
+                background: -moz-linear-gradient(left,  #233038 0%, #233038 100%);
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#233038), color-stop(100%,#233038));
+                background: -webkit-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: -o-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: -ms-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: linear-gradient(to right,  #233038 0%,#233038 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#233038', endColorstr='#233038',GradientType=1 );
+
+       }
+        #socialToolbarContainer.stLayout3  #socialToolbarBackground{
+                background-color:#233038;
+                background: -moz-linear-gradient(left,  #233038 0%, #233038 100%);
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%,#233038), color-stop(100%,#233038));
+                background: -webkit-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: -o-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: -ms-linear-gradient(left,  #233038 0%,#233038 100%);
+                background: linear-gradient(to right,  #233038 0%,#233038 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#233038', endColorstr='#233038',GradientType=1 );
+        }
+
+        #socialToolbarContainer.stLayout1,
+        #socialToolbarContainer.stLayout2,
+        #socialToolbarContainer.stLayout3,
+        #socialToolbarContainer .stdButton {
+                color:#ffffff;
+           }
+
+        #socialToolbarContainer .findUs,
+        #socialToolbarContainer .minimized,
+        #SocialToolbarActiveWindow .winHeader,
+        #SocialToolbarActiveWindow .winLink,
+        #SocialToolbarActiveWindow #iframe_mail body{
+                color:#ffffff;
+        }
+        #SocialToolbarActiveWindow #iframe_mail body a{
+                color:#ffffff;
+        }
+        .addthis_floating_style {
+          position: fixed;
+          _position: absolute;
+          background: none;
+          padding:0;
+          text-align: center;
+          /* border-radius: 0; */
+          -moz-border-radius: 0;
+          -webkit-border-radius: 0;
+          z-index: 1;
+        }
+        .addthis_floating_style a {
+          margin-bottom: 0;
+        }
+        .addthis_floating_style .at300b>*, .addthis_floating_style .at300bo>*, .addthis_floating_style .at300m>* {
+        margin-bottom: 0;
+        }
+        .addthis_floating_style a, .addthis_floating_style.addthis_16x16_style a, .addthis_floating_style.addthis_20x20_style a, .addthis_floating_style.addthis_32x32_style a {
+        margin-bottom: 0;
+        display: block;
+        }
+        .addthis_floating_style .at300b, .addthis_floating_style .at300bo, .addthis_floating_style .at300m {
+        padding: 0;
+        }
+        .addthis_overlay_container {
+        position: absolute;
+        float: right;
+        border-radius: 0;
+        }
+        .addthis_toolbox, .addthis_default_style, .addthis_32x32_style, .addthis_overlay_toolbox {
+          float: right !important;
+        }
+        .addthis_overlay_toolbox {
+          -webkit-border-top-left-radius: 0;
+          -webkit-border-top-right-radius: 0;
+          -moz-border-radius-topleft: 0;
+          -moz-border-radius-topright: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          padding: 5px;
+          background-color: #000;
+          background-color: rgba(0,0,0,0.6);
+        }
+        </style>
+
+
+        <script type="text/javascript">
+
+
+         /* SOCIAL TOOLBAR INIT -------------------*/
+
+//Facebook API
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  js.type = 'text/javascript';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//Google Plus
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+ </script>

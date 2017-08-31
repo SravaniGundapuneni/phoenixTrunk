@@ -1,0 +1,19 @@
+<script id="fileViewImageContainerTemplate" type="x-handlebars-template">
+	{{#each this}}
+		<div class="fileViewerImageContainer column small-2" data-fileid="{{ fileId }}">
+			<div class="fileViewerImageContainerInner row">
+				<div class="fileViewerImage column small-12">
+					<i class="fa fa-pencil-square-o {{ contextMenuType }}{{ isReadOnly }}"></i>
+					<img src="{{ previewThumb }}"/>
+				</div>
+				<div class="separator column small-offset-1 small-10 end"></div>
+				<div class="fileInfo fileName column small-offset-1 small-10 end text-center">{{ title }}</div>
+				<div class="fileInfoBottom">
+					<div class="fileInfo column column small-offset-1 small-10 text-center end">{{ fileType }}</div>
+					<div class="fileInfo column column small-offset-1 small-10 text-center end">{{ fileSize }}</div>
+					<div class="fileInfo fileMemorySize column small-11 text-center end">{{ file_size }}</div>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+</script>

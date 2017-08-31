@@ -1,0 +1,254 @@
+<?php 
+    //  check if header and footer files exist or not
+    $headerfile = SITE_PATH . "/templates/main/edit-templates/header.phtml";
+    $footerfile = SITE_PATH . "/templates/main/edit-templates/footer.phtml";
+    $showCheckbox = (file_exists($headerfile) && file_exists($footerfile));
+    $showPreviewLink = file_exists(SITE_PATH . "/templates/main/edit-templates/".$this->subTmpl);
+    $showSidebar = file_exists(SITE_PATH . "/templates/main/edit-templates/sidebar.phtml");
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv='cache-control' content='no-cache'>
+        <meta charset="UTF-8">
+        <title>Template Builder - Home</title>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div class="row template-builder-background">            
+            <a href="#" class="exit button alert tiny has-tip right" title="Back to Dashboard">EXIT</a>
+            <div class="column large-12 medium-12 small-12 large-centered medium-centered">   
+        <div class="row" style="margin-top: 1.2rem;">
+            <div class="column large-5 medium-5 small-5 text-center">
+                <img class="middle left" src="<?=$this->toolboxIncludeUrl?>module/TemplateBuilder/view/template-builder/toolbox/img/vector.png"/>
+                <h2 class="middle left" style="margin-top: 0.8rem;margin-left: 0.5rem;">TEMPLATE <strong>BUILDER</strong></h2>
+            </div>
+            <div class="column large-7 medium-7 small-7 text-right">
+                <!--Wizard Steps-->
+                <ol class="track-progress middle" data-steps="3">
+                 <li>
+                   <span>Add and Edit Layouts</span>
+                 </li><!--
+              --><li class="done">
+                   <span>Configure Layout</span>
+                   <i></i>
+                 </li>
+               </ol><!--End Wizard Steps-->
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="column large-6 medium-6 small-6">
+
+            </div>
+            <div class="column large-6 medium-6 small-6">
+                <ul class="config-buttons button-group right">
+                    <li><a href="#" class="button small save-tmpl has-tip" title="Save Template"><i data-icon="" class="icon"></i></a></li>
+                    <li><a href="<?=$this->siteroot.str_replace(".phtml", "", $this->subTmpl)?>" target="_blank" class="button small preview-page-template has-tip" title="Preview" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></li>
+                    <li><a href="#" class="button small has-tip" title="Help"><i data-icon="" class="icon"></i></a></li>
+                    <li><a href="<?=$this->siteroot."toolbox/tools/templateBuilder"?>" class="back-to-page-layouts button small has-tip" title="Back to page templates"><i data-icon="" class="icon"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column large-12 medium-12 small-12 ">                
+                <div class="off-canvas-wrap docs-wrap" data-offcanvas="">
+                  <div class="inner-wrap">
+                    <nav class="tab-bar">
+                      <section class="left-small toggle-widget">
+                          <a class="left-off-canvas-toggle menu-icon  has-tip" title="Show/Hide Widgets" aria-expanded="false"><span></span></a>
+                      </section>
+                      
+                      <section class="right tab-bar-section tmpl-title-div">
+                          <div class="row collapse">
+                            <div class="column large-12 medium-12 small-12">
+                                <h1 class="title"><?= strtoupper($this->templateID)?> : <?= ucfirst(str_replace(".phtml", "", $this->subTmpl))?></h1>  
+                            </div>
+                          </div>
+                      </section>
+                        <section class="right-small toggle-global">
+                          <a class="right-off-canvas-toggle menu-icon has-tip" title="Show/Hide Global" aria-expanded="false"><span></span></a>
+                      </section>
+                    </nav>
+
+                    <aside class="left-off-canvas-menu widget-menu-sidebar">
+                        
+                        <div class="row widget-slick" data-equalizer>
+                            <div class="column large-10 medium-10- small-10 large-centered">
+                                <div class="row">
+                                    <div class="column large medium small large-centered fixed">
+                                        <input type="text" id="#search-widget" class="left radius search-widget" placeholder="Search widget" value=""/>
+                                    </div>
+                                </div>
+                                <div class="row widget-list-row large-centered">
+                                        <?php
+                                            $dir = PHOENIX_PATH . "/widget/";
+                                            $files = scandir($dir);
+                                            for($i=0; $i< count($files); $i++)
+                                            {
+                                                $excluded = array('.','..','.svn','global');
+                                                if(is_dir($dir.$files[$i]."/") AND !(in_array($files[$i], $excluded)))
+                                                {                                    
+                                                    $widgetConfig[] = include_once($dir.$files[$i].'/config/widget.config.php');
+                                                    $filter = strtolower($widgetConfig[0]['defaults']['widgetType']."-widget");
+                                                    unset($widgetConfig);
+                                        ?>
+                                                        <div class="text-center left draggable-widget <?=$files[$i]?> <?=$filter?>" data-widget="<?=$files[$i]?>" data-tooltip aria-haspopup="true" class="has-tip" title="<?=ucfirst($files[$i])?> Widget" data-equalizer><div class="draggable icon icon-download"></div> 
+                                                        <?=ucfirst($files[$i])?></div>
+                                        <?php
+                                                }
+                                            }
+                                        ?>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                      <aside class="right-off-canvas-menu global-menu-sidebar">
+                        <?php if($showSidebar AND !($this->subTmpl == "sidebar.phtml")){ ?>
+                        <div class="row">
+                            <div class="column large-6 medium-6 small-6">
+                                <label for="#sidebar-select">SIDEBAR</label>
+                            </div>
+                            <div class="column large-6 medium-6 small-6">
+                                <select id="sidebar-select" name="sidebar-select">
+                                    <option value="sidebar-none">NONE</option>
+                                    <option value="sidebar-left">LEFT</option>
+                                    <option value="sidebar-right">RIGHT</option>
+                                </select>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <?php if($showCheckbox AND !($this->subTmpl == "header.phtml" OR $this->subTmpl == "footer.phtml")){ ?>
+                        <div class="row">
+                            <div class="column large-6 medium-6 small-6">
+
+                                <label for="#includehf">SHOW GLOBAL</label>
+                            </div>
+                            <div class="column large-6 medium-6 small-6">
+                                <div class="switch tiny round">
+                                    <input id="includehf" name='includehf' type="checkbox">
+                                    <label for="includehf"></label>
+                                </div> 
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <div class="row">
+                            <div class="column large-6 medium-6 small-6">
+                                <label for="#reorderSwitch">RE-ORDER</label>
+                            </div>
+                            <div class="column large-6 medium-6 small-6">
+                                <div class="switch tiny round">
+                                    <input id="reorderSwitch" name="reorderSwitch" type="checkbox">
+                                    <label for="reorderSwitch"></label>
+                                </div> 
+                            </div>
+                        </div>
+                      </aside>
+                    <section class="main-section">
+                        <div class="row tmpl-layout">
+                            <div class="header-data"></div>
+                            
+                            <div id="containment-wrapper" class="row">
+                                <div class="large-12 medium-12 small-12 columns content-data"></div>
+                            </div>
+                            
+                            <div class="footer-data"></div>
+                            
+                        </div>
+                        
+                        <div class="row re-order-options-div">
+                            <div class="column large-12 medium-12 small-12 text-right">
+                                <ul>
+                                    <li><a href="#" id="lockReOrder"><i class="icon icon-lock-closed"></i> LOCK </a></li>
+                                    <li><a href="#" id="undoReOrder"><i class="icon icon-music-back"></i> UNDO </a></li>
+                                    <li><a href="#" id="revert"><i class="icon icon-music-backtoend"></i> RESET </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                  <a class="exit-off-canvas"></a>
+
+                  </div>
+                </div>
+                </div>
+        </div>
+
+        <div id="widgetConfigModal" class="reveal-modal medium" data-reveal>
+            <h2>Widget</h2>
+            <a class="close-reveal-modal">&#215;</a>
+            <ul class="tabs" data-tab>
+              <li class="toolbox tab-title active"><a href="#panel2-1">HTML</a></li>
+              <li class="toolbox tab-title"><a href="#panel2-2">Styles</a></li>
+              <li class="toolbox tab-title"><a href="#panel2-3">JavaScript</a></li>
+              <li class="toolbox tab-title"><a href="#panel2-4">Config</a></li>
+            </ul>
+            <div class="tabs-content">
+
+              <div class="toolbox panel content active" id="panel2-1">
+                  <textarea rows="25" cols="50" class="widget-html"></textarea>
+              </div>
+              <div class="toolbox panel content" id="panel2-2">
+                  <textarea rows="25" cols="50" class="widget-styles"></textarea>
+              </div>
+              <div class="toolbox panel content" id="panel2-3">
+                  <textarea rows="25" cols="50" class="widget-js"></textarea>
+              </div>
+                <div class="toolbox panel content" id="panel2-4">
+                    <textarea rows="25" cols="50" class="widget-config"></textarea>
+                </div>
+
+              <ul class="stack-for-small radius secondary button-group right">
+                  <li><a href="#" id="save-config" class="button small cancel-modal">Save</a></li>
+                  <li><a href="#" id="cancel-save-config" class="button alert small">Cancel</a></li>
+              </ul>
+            </div>
+
+            <input type="hidden" id="thisHolderTNAME" name="thisHolderTNAME" />
+            <input type="hidden" id="thisHolderWID" name="thisHolderWID" />
+            <input type="hidden" id="thisHolderWNAME" name="thisHolderWNAME" />
+        </div>
+
+        <div id="widgetDeleteModal" class="reveal-modal tiny" data-reveal>
+            <a class="close-reveal-modal">&#215;</a>
+            <h2>Delete Widget</h2>
+            <p>Are you sure you want to delete <span class="delete-widget-title"></span>?</p>
+            <ul class="stack-for-small radius secondary button-group right">
+                <li><a href="#" id="cancelDeleteWidget" class="button small cancel-modal">Cancel</a></li>
+                <li><a href="#" id="deleteWidget"  class="button alert small">Delete</a></li>
+            </ul>
+            <input type="hidden" id="thisHolderTNAME" name="thisHolderTNAME" />
+            <input type="hidden" id="thisHolderWID" name="thisHolderWID" />
+            <input type="hidden" id="thisHolderWNAME" name="thisHolderWNAME" />
+        </div>
+        </div>
+
+        <div id="ajax-loader-overlay">
+            <div class="ajax-loader-icon text-center">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <p class="message"></p>
+        </div>
+    </div>
+
+    <div class="hide" data-edit-flag="<?=$this->editFlag?>"></div>
+    <div class="hide" data-sub-tmpl="<?=$this->subTmpl?>"></div>
+    <div class="hide" data-tmpl-name="<?=$this->templateID?>"></div>
+    <div class="hide" data-tmpl-url="<?=$this->toolboxIncludeUrl?>"></div>
+    <div class="hide" data-save-template-url="<?=$this->url("templateBuilder-sockets", array("action" => "saveTemplate"))?>"></div>
+    <div class="hide" data-save-widget-files-url="<?=$this->url("templateBuilder-sockets", array("action" => "saveWidgetFiles"))?>"></div>
+    <div class="hide" data-get-widget-url="<?=$this->url('templateBuilder-sockets', array('action' => 'getWidget'))?>"></div>
+    <div class="hide" data-add-widget-url="<?=$this->url('templateBuilder-sockets', array('action' => 'addWidget'))?>"></div>
+    <div class="hide" data-delete-widget-url="<?=$this->url('templateBuilder-sockets', array('action' => 'deleteWidget'))?>"></div>
+    <div class="hide" data-check-for-existing-widget-url="<?=$this->url('templateBuilder-sockets', array('action' => 'checkForExistingWidget'))?>"></div>
+    <div class="hide" data-widget-config-url="<?=$this->url("templateBuilder-sockets", array("action" => "readWidgetConfigFile"))?>"></div>
+    <div class="hide" data-siteroot="<?=$this->siteroot?>"></div>
+    <div class="hide" data-show-preview-link="<?=$showPreviewLink?>"></div>
+    <div class="hide" data-back-to-page-layouts-url="<?=$this->url('templateBuilder-toolbox', array('action' => 'index'))?>"></div>
+
+    </body>
+</html>

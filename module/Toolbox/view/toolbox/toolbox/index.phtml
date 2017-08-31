@@ -1,0 +1,43 @@
+<?php //echo $this->formSelect($this->languageOptions);?>
+<?php $imgUrl = $this->toolboxIncludeUrl . "/module/Toolbox/view/layout/img/"; ?>
+<?php $imgDir = realpath("./module/Toolbox/view/layout/img"); ?>
+
+<div class="dashboard row">
+    <div class="small-12 columns">
+        <div class="breadcrumb well">Dashboard</div>
+        <div class="welcome">
+            <h3><?= $this->translate('Welcome');?></h3>
+            <p>Welcome to the TravelCLICK Toolbox. The TravelCLICK Toolbox allows you to manage the content for various parts of your site. Click on one of the icons below to get started.</p>
+        </div>
+
+        <div class="heading">Your website Tools &amp; Help</div>
+        <div id="site-tools" class="panel panel-default">
+            
+            <ul class="small-block-grid-11">
+                <li class="toolbox-tool" data-tooltip aria-haspopup="true" class="has-tip" title="Site Content">
+                    <div class="tool-name text-center"><strong>Site Content</strong></div>
+                    <a style="background-image:url('<?= $imgUrl ?>/site-content.png')" href="<?= $this->url('home'); ?>" class="thumbnail"></a>
+                </li>
+            </ul>
+        </div>
+        
+        <?php
+            $panel = 'Interact with your website';
+            $panelArray = array_merge($this->toolList, $this->dlmToolList);
+            $id = '';
+            include "panel.phtml";
+
+            if ($this->isAdmin) {
+                $panel = 'Admin Tools';
+                $panelArray = $this->adminToolList;
+                include "panel.phtml";
+            }
+
+            if ($this->isDeveloper) {
+                $panel = 'Developer Tools';
+                $panelArray = $this->devToolList;
+                include "panel.phtml";
+            }
+        ?>
+    </div>
+</div>

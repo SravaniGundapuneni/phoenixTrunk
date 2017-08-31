@@ -1,0 +1,19 @@
+<script id="fileExplorerTemplate" type="x-handlebars-template">
+	<ul class="jqueryFileTree">
+		{{#each folders}}
+			<li class="folderFullMenu directory collapsed"><a href="#" rel="{{ currentPath }}{{ title }}/">{{ title }}</a></li>
+		{{/each}}
+		{{#each files}}
+			<li class="explorerFile file ext_{{ ext }}"><a href="#" rel="{{ currentPath }}{{ title }}">{{ title }}</a></li>
+		{{/each}}
+	</ul>
+</script>
+
+<script id="fileExplorerFolderTemplate" type="x-handlebars-template">
+	<li class="folderFullMenu directory collapsed"><a href="#" rel="{{ currentPath }}{{ title }}/">{{ title }}</a></li>
+</script>
+
+<script id="fileExplorerFileTemplate" type="x-handlebars-template">
+	<li class="explorerFile file ext_{{ ext }}"><a href="#" rel="{{ currentPath }}{{ title }}">{{ title }}</a></li>
+</script>
+

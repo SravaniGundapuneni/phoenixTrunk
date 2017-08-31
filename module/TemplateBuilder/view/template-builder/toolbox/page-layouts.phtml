@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<?php 
+    if ($subsiteRoute) {
+        $homeUrl = urldecode($this->url('root-subsite', array('subsite' => $subsiteRoute)));
+    } else {
+        $homeUrl = $this->url('home');
+    }
+    ?>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Phoenix Templates</title>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="row template-builder-background">            
+            <div class="column large-11 medium-11 small-11 large-centered medium-centered">                
+        <div class="row" style="margin-top: 1.2rem;">
+            <div class="column large-5 medium-5 small-5 text-center">
+                <img class="middle left" src="<?=$this->toolboxIncludeUrl?>module/TemplateBuilder/view/template-builder/toolbox/img/vector.png"/>
+                <h2 class="middle left" style="margin-top: 0.8rem;margin-left: 0.5rem;">TEMPLATE <strong>BUILDER</strong></h2>
+            </div>
+            <div class="column large-7 medium-7 small-7 text-center">
+                <!--Wizard Steps-->
+                <ol class="track-progress middle" data-steps="3">
+                 <li>
+                   <span>Choose a Template Set</span>
+                   <i></i>
+                 </li><!--
+              --><li class="done">
+                   <span>Add and Edit Layouts</span>
+                 </li><!--
+              --><li>
+                   <span>Configure Layout</span>
+                   <i></i>
+                 </li>
+               </ol><!--End Wizard Steps-->
+            </div>
+        </div>
+        
+        <div class="row" >
+            <div class="column large-12 medium-12 small-12 text-center">
+                <h1>Template One chosen. Now and edit layouts.</h1>
+            </div>
+        </div>
+        
+        <div class="row" >
+            <div class="column large-12 medium-12 small-12 text-center">
+                <div class="page-layout-panel column large-2 panel radius large-centered">
+                    <p>GLOBAL LAYOUTS</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row global-layouts text-center"  data-equalizer>
+        <h1>helper: <?= $this->templateFileExists('') ?></h1>
+            <?php
+                $dir = PHOENIX_PATH . "/module/PhoenixTemplates/view/phoenix-templates/{$this->tmplId}/";
+                $files = scandir($dir);
+                for($i=0; $i< count($files); $i++)
+                {
+                    if(is_file($dir.$files[$i]) AND $files[$i] != 'index.phtml')
+                    {
+                        $imgFile = str_replace(".phtml", "", $files[$i]);
+                        $tmpl = $imgFile;
+                        if($imgFile == "header" || $imgFile == "footer")
+                        {
+                            if($imgFile == "header")
+                                $imgFile = "header-icon.png";
+                            else if($imgFile == "footer")
+                                $imgFile = "footer-icon.png";
+                            else
+                                $imgFile = "content-icon.png";
+
+                            $existing_file = SITE_PATH . "/templates/main/{$files[$i]}";
+                            if(file_exists($existing_file))
+                            {
+                ?>
+                                <div class="extra-margin column large-2 left text-center existing-file" data-equalizer data-tooltip aria-haspopup="true" class="has-tip" title="The template is exist in the core-template folder. click on preview link to see the current template! "  data-tmpl-name="<?=$this->tmplId?>" data-tmpl-file="<?=$files[$i]?>">
+                                    <p><?=strtoupper(str_replace(".phtml", "", $files[$i]))?></p>
+                                    <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$imgFile}"?>" alt="" />
+                                    <ul id="tmpl-options">
+                                        <li><a href="#" class="edit-page-template has-tip" title="Edit" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="<?=$this->siteroot."/phoenixtestsite21/{$tmpl}"?>" target="_blank" class="preview-page-template has-tip" title="Preview" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="#" class="delete-page-template has-tip" title="Delete" data-tmpl-file="<?=$files[$i]?>"><i class="icon icon-trash-bin"></i></a></li>
+                                    </ul>
+                                </div>
+                <?php
+                            }
+                            else
+                            {
+                ?>
+                                <div class="extra-margin column large-2 left  text-center" data-equalizer data-tooltip aria-haspopup="true" class="has-tip" title="<?=ucfirst(str_replace(".phtml", "", $files[$i]))?> template" data-tmpl-name="<?=$this->tmplId?>" data-tmpl-file="<?=$files[$i]?>">
+                                    <p><?=  strtoupper(str_replace(".phtml", "", $files[$i]))?></p>
+                                    <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$imgFile}"?>" alt="" />
+                                    <p><a href='#' class="add-page-template" data-tmpl-name="<?=$this->tmplId?>" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></p>
+                                </div>
+                <?php
+                            }
+                        }
+                    }
+                }
+            ?>
+        </div>
+        
+        <div class="row" >
+            <div class="column large-12 medium-12 small-12 text-center">
+                <div class="page-layout-panel column large-2 panel radius large-centered">
+                    <p>PAGE LAYOUTS</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row page-layouts text-center large-centered"  data-equalizer>
+            <?php
+                $dir = PHOENIX_PATH . "/module/PhoenixTemplates/view/phoenix-templates/{$this->tmplId}/";
+                $files = scandir($dir);
+                for($i=0; $i< count($files); $i++)
+                {
+                    if(is_file($dir.$files[$i]) AND !(in_array($files[$i], array('index.phtml','header.phtml','footer.phtml'))))
+                    {
+                        $imgFile = str_replace(".phtml", "", $files[$i]);
+                        $tmpl = $imgFile;
+                        if($imgFile !== "header" || $imgFile !== "footer")
+                        {
+                            $imgFile = "content-icon.png";
+
+                            $existing_file = SITE_PATH . "/templates/main/{$files[$i]}";
+                            if(file_exists($existing_file))
+                            {
+                ?>
+                                <div class="extra-margin column large-2 left text-center existing-file" data-equalizer data-tooltip aria-haspopup="true" class="has-tip" title="The template is exist in the core-template folder. click on preview link to see the current template! "  data-tmpl-name="<?=$this->tmplId?>" data-tmpl-file="<?=$files[$i]?>">
+                                    <p><?=strtoupper(str_replace(".phtml", "", $files[$i]))?></p>
+                                    <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$imgFile}"?>" alt="" />
+                                    <ul id="tmpl-options">
+                                        <li><a href="#" class="edit-page-template has-tip" title="Edit" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="<?=$this->siteroot."/phoenixtestsite21/{$tmpl}"?>" target="_blank" class="preview-page-template has-tip" title="Preview" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="#" class="delete-page-template has-tip" title="Delete" data-tmpl-file="<?=$files[$i]?>"><i class="icon icon-trash-bin"></i></a></li>
+                                    </ul>
+                                </div>
+                <?php
+                            }
+                            else
+                            {
+                ?>
+                                <div class="extra-margin column large-2 left text-center left" data-tooltip aria-haspopup="true" class="has-tip" title="<?=ucfirst(str_replace(".phtml", "", $files[$i]))?> template"  data-equalizer>
+                                    <p><?=strtoupper(str_replace(".phtml", "", $files[$i]))?></p>
+                                    <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$imgFile}"?>" alt="" />
+                                    <p><a href='#' class="add-page-template" data-tmpl-name="<?=$this->tmplId?>" data-tmpl-file="<?=$files[$i]?>"><i data-icon="" class="icon"></i></a></p>
+                                </div>
+                <?php
+                            }
+                        }
+                    }
+                }
+            ?>
+        </div>
+                
+            <div id="myModal" class="reveal-modal small" data-reveal>
+                <h2>Delete Template</h2>
+                <p class="lead">Are you sure you want to delete the template?</p>
+                <a class="close-reveal-modal">&#215;</a>
+                <ul class="stack-for-small radius secondary button-group right">
+                    <li><a href="#" class="button small cancel-delete-template left">Cancel</a></li>
+                    <li><a href="#" class="button small alert delete-template left">Delete</a></li>
+                </ul>
+            </div>
+            
+            <div id="myModalOverwrite" class="reveal-modal small" data-reveal>
+                <p class="lead">Are you sure you want to overwrite the existing template?</p>
+                <a class="close-reveal-modal">&#215;</a>
+                <ul class="stack-for-small radius secondary button-group right">
+                    <li><a href="#" class="button small cancel-overwrite-template left">No</a></li>
+                    <li><a href="#" class="button small alert overwrite-template left">Yes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        <script>
+
+
+            /**
+             * This is bad.... bad, bad, bad, bad, bad....
+             */
+            
+            var tmplURL = '<?=$this->toolboxIncludeUrl?>';
+            var subTmplDeleteURL = '<?=$this->url('templateBuilder-sockets', array('action' => 'deleteTemplate'))?>';
+            var widgetsConfig = '<?=$this->url('templateBuilder-toolbox', array('action' => 'pageLayoutConfig'))?>';
+            var current_tmpl = '<?=$this->tmplId?>';
+            
+            $(document).foundation();
+            $(document).ready(function(){
+                
+            });
+        </script>
+    </body>
+</html>

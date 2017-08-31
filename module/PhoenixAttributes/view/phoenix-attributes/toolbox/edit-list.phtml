@@ -1,0 +1,43 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="list-wrapper">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="190px">Property</th>
+                        <th width="60px">Code</th>
+                        <th width="70px">Brand</th>
+                        <th width="70px">Featured</th>
+                        <th width="70px">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($this->items as $valAttribute) { ?>
+                    <?php $attribute = $valAttribute->getEntity(); ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $attribute->getId() ?>" />
+                        <td>
+                            <a href="<?= $this->url('phoenixAttributes-toolbox', array('action'=>'editItem', 'itemId'=>$attribute->getId())) ?>">
+                                <?= $attribute->getName() ?>
+                            </a>
+                        </td>
+                        <td><?= $attribute->getProperty()->getName() ?></td>
+                        <td><?= $attribute->getCode() ?></td>
+                        <td><?= $this->displayYesNo($attribute->getProperty()->getIsCorporate()) ?></td>
+                        <td><?= $this->displayYesNo($attribute->getFeatured()) ?></td>
+                        <td><?= $this->displayStatus($attribute->getStatus()) ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

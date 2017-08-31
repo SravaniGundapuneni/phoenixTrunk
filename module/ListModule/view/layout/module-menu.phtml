@@ -1,0 +1,14 @@
+        <?php foreach ($this->tasksMenu as $taskAction => $taskLabel): ?>
+        <li>
+            <?=$this->partial('layout/module-route-link.phtml', 
+                array('toolboxRoute' => $this->toolboxRoute, 
+                      'taskLabel' => $taskLabel,
+                      'moduleRouteParams' => \array_merge($this->moduleRouteParams, array('action' => $taskAction, 'subsite' => $subsiteRoute))
+                      ));?>
+        </li>
+        <?php endforeach; ?>
+        <?php if (!empty($emptyTrash)):
+            $siteRootSocket = ($siteroot == '/') ? '' : $siteroot;
+            $this->headScript()->prependScript("var emptyTrashUrl = '{$siteRootSocket}" . $this->url($socketsRoute, \array_merge($this->moduleRouteParams, array('action' => 'emptyTrash', 'subsite' => $subsiteRoute))) . "';")?>
+            <li><a id="empty-trash" href="#">Empty Trash</a></li>
+        <?php endif;?>

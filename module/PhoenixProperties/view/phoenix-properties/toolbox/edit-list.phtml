@@ -1,0 +1,38 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select a Hotel to edit</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="60px">Code</th>
+                        <th width="80px">Brand</th>
+                        <th width="80px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php foreach ($items as $index=>$property): ?>
+                    <tr class="ui-state-default" data-itemId="<?= $property->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $property->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('phoenixProperties-toolbox', array('action' => 'editItem', 'subsite' => $subsiteRoute, 'itemId' => $property->getId())) ?>">
+                                <?= $property->getName() ?>
+                            </a>
+                        </td>
+                        <td><?= $property->getCode() ?></td>
+                        <td><?= $this->displayYesNo($property->getIsCorporate()) ?></td>
+                        <td><?= $this->displayStatus($property->getStatus()) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

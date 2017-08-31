@@ -1,0 +1,87 @@
+<?php  $access = ($this->currentUserObject->isDeveloper() ? true : false); ?>
+ 
+<?php $this->inlineScript()->captureStart() ?>
+
+$("#languageSelect").change(function() {
+        var changedLanguage = $(this).val();
+        var currentLanguage = $('input[name="currentLanguage"]').val();
+
+        var translateFields = JSON.parse('<?php echo json_encode($this->translateFields);?>');
+
+        translateFields.forEach(function(element, index, array) {
+                var fieldName = element[0];
+                var fieldType = element[1];
+                var currentFieldName = fieldName + '_' + currentLanguage;
+                var changedFieldName = fieldName + '_' + changedLanguage;
+
+                var fieldPrefix = 'input';
+
+                if(fieldType == "textarea")
+                {
+                    editor = CKEDITOR.instances[fieldName];
+                    var edata = editor.getData();
+                    editor.setData($(fieldPrefix + '[name=' + changedFieldName + ']').val());
+                }
+                else
+                {
+                    $(fieldPrefix + '[name=' + currentFieldName + ']').val($(fieldPrefix +  '[name=' + fieldName + ']').val());
+                    $(fieldPrefix + '[name=' + fieldName + ']').val($(fieldPrefix + '[name=' + changedFieldName + ']').val());
+                }
+            }
+        );
+        $('input[name="currentLanguage"]').val(changedLanguage); 
+    }
+);
+
+<?php $this->inlineScript()->captureEnd() ?>
+<div id="editBox">
+    <div id="editItemHeader" class="editItemHeader">
+                  
+        <h2 id="editItemHeaderTitle"><?= $title ?></h2>
+        <div id="editItemLangSelect" class="editItemLangSelect">
+            <span>LANGUAGE &nbsp;</span>
+            <?php $form->prepare();
+            echo $this->formElement($this->languageOptions); ?>
+
+        </div>
+        <?= $this->partial('list-module/helpers/edit-item-actions') ?>
+    </div></br>
+     
+    <div class="editItemContent">
+        <div class="editItemMessage"></div>
+        <?php echo $this->form()->openTag($form); ?>
+      
+        <?php
+        foreach ($this->form as $valForm) {
+
+              if($valForm->getName() =='pageType'){                
+                 
+                 if (!$access) continue ; 
+                
+                $pageType = $valForm->getValue();
+                             
+                
+            } 
+           
+              if ($valForm instanceof \Zend\Form\Element\Hidden) {
+                echo $this->formHidden($valForm);
+            } else {
+
+                echo '<p class="' . $valForm->getName() . '">' . $this->formLabel($valForm);
+
+                if ($valForm instanceof \Phoenix\Form\Element\OrderedSelect) {
+                    echo $this->formOrderedSelect($valForm);
+                } else {
+                    echo $this->formElement($valForm);
+                }
+                echo '</p>';
+                echo str_replace('Value is required', $valForm->getName() . ' is required', $this->formElementErrors($valForm, array('class' => 'error-inline')));
+            }
+        }
+        ?>
+    </div><?php  $isContent = ($pageType =='contentpage') ? true :false ;?>
+<?= $this->partial('list-module/helpers/edit-item-actions') ?>
+        <script>
+    var hide ="<?php echo $isContent ?>";
+        </script>
+</div>

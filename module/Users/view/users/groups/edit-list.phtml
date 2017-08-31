@@ -1,0 +1,62 @@
+<?php
+    if (isset($editedItem) && $editedItem) {
+        $title = $editedItem->getName() . " has been edited";
+    } elseif (isset($itemName) && $itemName) {
+        $title = $itemName . " has been deleted";
+    } else {
+        $title = "Groups";
+    }
+
+    if ($subsite) {
+        $subsite = substr($subsite, 1);
+    }
+?>
+
+<style>
+    #editListOptionsList div {
+        padding: 0 5px;
+        display: inline-block;
+        cursor: pointer;
+    }
+</style>
+
+<div id="contentFloated">
+    <div id="editBox">
+        <div id="editBoxHeader">
+            <div id="editItemHeaderTitle"><?=$title?></div>
+            <?= $this->listUpdateStatusButtons('userGroups', "archive") ?>
+        </div>
+        <form id="userGroups" name="userGroups" method="POST" action="<?= $this->url('phoenixRooms-toolbox', array('action'=>'editList')) ?>">
+            <input type="hidden" name="action" value="" />
+            <div id="editBox">
+                <table class="table table-compacted" id="list-wrapper">
+                    <thead>
+                        <tr>
+                            <th width="20px"></th>
+                            <th width="auto">Name</th>
+                            <th width="190px">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($this->items as $group) {
+                        $id = $group->getId();
+                    ?>
+                        <tr>
+                            <td><input type="checkbox" name="items[]" value="<?=$id?>" />
+                            <td>
+                                <a href="<?= $this->url('users-groups-legacypath-toolbox', array('action'=>'editItem', 'itemId'=>$id, 'subsite' => $subsiteRoute)) . "?scope={$group->getScope()}";?>"><?=$group->getName()?></a>
+                            </td>
+                            <td>
+                                <?php /*<a href="<?= $this->url('users-groups-toolbox', array('action'=>'setGroupPerms', 'itemId'=>$id, 'subsite' => $subsite)) ?>">Permissions</a>
+                                | */?><a href="<?= $this->url('users-groups-toolbox', array('action'=>'deleteItem', 'itemId'=>$id, 'subsite' => $subsiteRoute)) ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?php include getcwd() . "/module/ListModule/view/list-module/toolbox/pagination.phtml" ?>

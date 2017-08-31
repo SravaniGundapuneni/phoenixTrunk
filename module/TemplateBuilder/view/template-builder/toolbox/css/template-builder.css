@@ -1,0 +1,606 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 29, 2014, 6:12:50 PM
+    Author     : rvahora
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+
+h1, h2, h3, h4, h5, h6, a, p, li, body, div, .button, .tabs dd > a, .tabs .tab-title > a {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+
+.heading {
+    font-weight: 700;
+    line-height: 125%;
+    color: #575757;
+}
+
+ a, p, li, body, div, .button {
+/*    font-size: 0.9rem !important;*/
+    line-height: 1rem;
+    font-weight: 400;
+}
+
+
+p, body, div {
+    color: #444;
+}
+
+.slider-image-background{
+    background: url(../img/slider.jpg) no-repeat;
+/*    background-size: 100% 100%;*/
+}
+
+.template-builder-background{
+    background: url(../img/bg-image.png) no-repeat;
+    background-size: 100% 100%;
+    min-height: 100%;
+}
+
+
+.tmpl-bldr{
+    padding: 12.5%;
+    width: 100%;
+    height: auto;
+}
+/*.tmpl-list li:hover{
+    border: 2px solid #18C0DF;
+}*/
+
+.tmpl-list div {
+/*    border: 2px solid #4195fc;*/
+     border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.slick-slide:hover,
+.tmpl-list div:hover { 
+/*    outline: none;
+    border-color: #4195fc;
+    box-shadow: 0px 0px 14px #4195fc; 
+    -moz-box-shadow: 0px 0px 14px #4195fc;
+    -webkit-box-shadow: 0px 0px 14px #4195fc; */
+}
+
+.active-content{
+/*    border: 2px solid #4195fc;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0px 0px 14px #4195fc; 
+    -moz-box-shadow: 0px 0px 14px #4195fc;
+    -webkit-box-shadow: 0px 0px 14px #4195fc;*/
+}
+
+.tmpl-subpage-main h4{
+    color: #FFF;
+    margin-bottom: 30px;
+}
+
+.tmpl-subpage-main p{
+    color: #FFF;
+}
+
+.hf-template-slick .slick-slide,
+.template-slick .slick-slide,
+.widget-slick .slick-slide
+{
+    border-radius: 7px;
+    margin: 1px;
+}
+
+.tmpl-subpage-main .top-drawer-templates .existing-file{
+/*    opacity: 0.4 !important;*/
+    background: darkgreen;
+}
+
+/*.tmpl-subpage-main .top-drawer-templates .existing-file:hover{
+    background: darkgreen;
+}*/
+
+.img-mrgn{
+    margin: auto !important;
+}
+
+.tmpl-subpage-main{
+    background: #3B3941 !important;
+    color: #FFF;
+    border-bottom: 4px solid #BBCBDF;
+}
+.tmpl-subpage-main .top-drawer-templates, .tmpl-subpage-main .top-drawer-widgets{
+/*    min-height: 200px;*/
+    max-height: 25%;
+    display: block;
+}
+.drawer-button .button{
+    margin-bottom: 0px;
+}
+.tmpl-layout{
+    position: relative;
+    top: 25%;
+}
+.tmpl-layout .content-data{
+    padding: .1rem 3rem;
+}
+
+/*------------------------------------------------------------------
+Begin [Steps Wizard]
+*/
+
+.track-progress{
+    padding: 1.2rem !important;
+}
+
+.track-progress[data-steps="3"] li { 
+  width: 33%;
+  margin-left: -3px;
+}
+.track-progress[data-steps="4"] li { width: 25%; }
+.track-progress[data-steps="5"] li { width: 20%; }
+.track-progress {
+/*  margin: 75px 0 25px;*/
+  padding: 0;
+  overflow: hidden;
+
+}
+
+.track-progress li {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  font-size: 1rem;
+
+  background-color: #f0f0f0;
+}
+.track-progress li > span {
+  display: block;
+
+  color: #999;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.track-progress li.done > span {
+  color: #FFF;
+  background-color: #59ADF4;
+}
+.track-progress li > span:after,
+.track-progress li > span:before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border: solid transparent;
+  border-left-color: #f0f0f0;
+  border-width: 15px;
+}
+
+.track-progress li > span:after {
+  top: -5px;
+  z-index: 1;
+  border-left-color: white;
+  border-width: 20px;
+}
+
+.track-progress li > span:before {
+  z-index: 2;
+}
+
+.track-progress li.done + li > span:before {
+  border-left-color: #59ADF4;
+}
+
+.track-progress li:first-child > span:after,
+.track-progress li:first-child > span:before {
+  display: none;
+}
+/*--
+End [Steps Wizard]
+*/
+
+/* TOOLBOX PALLETE */
+
+.color-primary-0 { color: #353D5E } /* base color */
+.color-primary-1 { color: #000000 }
+.color-primary-2 { color: #181B27 }
+.color-primary-3 { color: #47589C }
+.color-primary-4 { color: #4F6FF3 }
+
+.color-secondary-1-0 { color: #743B55 } /* Main Secondary color (1) */
+.color-secondary-1-1 { color: #000000 }
+.color-secondary-1-2 { color: #311B25 }
+.color-secondary-1-3 { color: #C14A80 }
+.color-secondary-1-4 { color: #F93A91 }
+
+.color-secondary-2-0 { color: #657F40 } /* Main Secondary color (2) */
+.color-secondary-2-1 { color: #000000 }
+.color-secondary-2-2 { color: #2B351D }
+.color-secondary-2-3 { color: #9ED251 }
+.color-secondary-2-4 { color: #ADFC3B }
+
+.color-complement-0 { color: #8A7646 }  /* Main Complement color */
+.color-complement-1 { color: #000000 }
+.color-complement-2 { color: #3A3220 }
+.color-complement-3 { color: #E5BB58 }
+.color-complement-4 { color: #FFC53C }
+
+
+
+/* As RGBa codes */
+
+.rgba-primary-0 { color: rgba( 53, 61, 94,1) }  /* Main Primary color */
+.rgba-primary-1 { color: rgba(  0,  0,  0,1) }
+.rgba-primary-2 { color: rgba( 24, 27, 39,1) }
+.rgba-primary-3 { color: rgba( 71, 88,156,1) }
+.rgba-primary-4 { color: rgba( 79,111,243,1) }
+
+.rgba-secondary-1-0 { color: rgba(116, 59, 85,1) }  /* Main Secondary color (1) */
+.rgba-secondary-1-1 { color: rgba(  0,  0,  0,1) }
+.rgba-secondary-1-2 { color: rgba( 49, 27, 37,1) }
+.rgba-secondary-1-3 { color: rgba(193, 74,128,1) }
+.rgba-secondary-1-4 { color: rgba(249, 58,145,1) }
+
+.rgba-secondary-2-0 { color: rgba(101,127, 64,1) }  /* Main Secondary color (2) */
+.rgba-secondary-2-1 { color: rgba(  0,  0,  0,1) }
+.rgba-secondary-2-2 { color: rgba( 43, 53, 29,1) }
+.rgba-secondary-2-3 { color: rgba(158,210, 81,1) }
+.rgba-secondary-2-4 { color: rgba(173,252, 59,1) }
+
+.rgba-complement-0 { color: rgba(138,118, 70,1) }   /* Main Complement color */
+.rgba-complement-1 { color: rgba(  0,  0,  0,1) }
+.rgba-complement-2 { color: rgba( 58, 50, 32,1) }
+.rgba-complement-3 { color: rgba(229,187, 88,1) }
+.rgba-complement-4 { color: rgba(255,197, 60,1) }
+.slick-slide {color: #fff;}
+.slick-list {margin: 0 0 30px;}
+
+#tmpl-options{
+    margin-top: 1rem;
+    margin-left: 0;
+    text-align: center;
+}
+#tmpl-options .has-tip{
+    border-bottom: none;
+}
+
+#tmpl-options li:not(.hide)
+{
+    display: inline-block;
+}
+
+#tmpl-options li.hide
+{
+  margin-bottom: 2px;
+}
+
+#tmpl-options li
+{
+    list-style-type: none;
+    padding: 0 2px;
+}
+#tmpl-options li a{
+    font-size: .7rem !important;
+    color: #fff;
+}
+
+#tmpl-options li a:hover{
+    color: darkorange;
+}
+
+.glowing-border {
+    border: 2px solid #4195fc;
+     border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.glowing-border:focus { 
+    outline: none;
+    border-color: #4195fc;
+    box-shadow: 0px 0px 14px #4195fc; 
+    -moz-box-shadow: 0px 0px 14px #4195fc;
+    -webkit-box-shadow: 0px 0px 14px #4195fc; 
+}
+.reorder-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.reorder-menu li{
+    display: inline;
+    padding: 0px 5px;
+}
+
+.filter-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.filter-menu li{
+    display: inline;
+    padding: 0px 5px;
+}
+
+/*  Sidebar widget classes   */
+
+.tmpl-title-div{
+    background: #ececec;
+}
+.tmpl-title-div h1{
+    color: #333;
+}
+
+.toggle-widget, .toggle-global{
+    background: #0074c8;
+}
+
+.widget-menu-sidebar, .global-menu-sidebar{
+    overflow-x: hidden;
+    background: #1b425b;
+}
+.global-menu-sidebar *{
+    padding: 0.6rem;
+}
+.global-menu-sidebar label{
+    color: #fff;
+}
+
+.draggable-widget{
+    color: #fff;
+    background: #1b425b;
+    word-wrap: break-word;
+    padding: 2px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color:  #ffffff;
+    border-style: dotted;
+    width: 90px;
+    height: 90px;
+    margin:8px;
+}
+
+.tmpl-next-step-div {
+    position: absolute;
+    top: -2px;
+    left: 0;
+/*    border: none;*/
+    padding: 20px;
+/*    opacity: 0.9;*/
+    display: none;
+    background: #EEF6FB;
+}
+
+.tmpl-next-step-div .button{
+    background: #4da1d8;
+}
+
+.off-canvas-wrap .main-section{
+    min-height: 600px;
+    background: #fff !important;
+}
+
+.widget-menu-sidebar .search-widget{
+    margin-top: 10px;
+}
+
+.widget-menu-sidebar .widget-list-row{
+    margin-top: 55px;
+}
+
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  
+  .page-layout-panel{
+      border: 1px solid grey;
+      background: none;
+      border-radius: 7px !important;
+      padding: 0.7rem !important;
+  }
+  
+  .add-page-template{
+      font-size: 1.6rem !important;
+  }
+  
+  .edit-page-template{
+      font-size: 1.6rem !important;
+      color: #399d59;
+  }
+  
+  .page-layouts{
+/*      min-height: 503px;*/
+  }
+  
+  .global-layouts .template-block-wrap,
+  .page-layouts .template-block-wrap
+  {
+    padding: 10px;
+    height: 100%;
+    background-color: #1b425b;
+  }
+  
+  .global-layouts .template-block-wrap.selected,
+  .page-layouts .template-block-wrap.selected
+  {
+    background-color: gray;
+  }
+  
+  .global-layouts i,
+  .global-layouts p,
+  .page-layouts i,
+  .page-layouts p
+  {
+      color: #fff !important;
+  }
+  
+.global-layouts i,
+.page-layouts i{
+      font-size: 1.6rem !important;
+  }
+  
+  .global-layouts .delete-page-template i,
+  .page-layouts .delete-page-template i {
+      color: #f00 !important;
+  }
+  
+  .tmpl-layout fieldset{
+      border:none;
+      padding: 3% !important;
+  }
+  
+  .config-buttons .button
+  {
+      background: #4da1d8 !important;
+  }
+  
+  .config-buttons i{
+      color: #fff;
+      font-size: 1.2rem;
+  }
+  
+  .re-order-options-div{
+      background: #1b425b;
+      display: none;
+  }
+  
+  .re-order-options-div .column ul{
+      margin: 1rem;
+  }
+  
+  .re-order-options-div .column ul li a{
+      color: #fff !important;
+  }
+  
+  .re-order-options-div .column ul li {
+      list-style-type: none;
+      display: inline;
+      padding: 1rem;      
+      font-size: 1.2rem;
+  }
+  .panel.callout {
+      border-style: solid;
+      border-width: 1px;
+      border-color: #ACAFB2;
+      margin-bottom: 1.25rem;
+      padding: 1.25rem;
+      background: #CBE1EF;
+}
+  
+  .dragged-widget, .panel.callout.dragged-widget{
+      text-align: center;
+/*      background: url(../img/widget-icon.png) no-repeat;*/
+/*      min-height: 120px;*/
+      background-position: 50% 50%;
+      padding: 0.75rem;
+      border: 3px dotted white;
+      background-color: #869DAB;
+      margin: -0.1rem;
+  }
+
+  .draggable.icon.icon-download {
+    color: #4da1d8;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+    font-size: 1.75rem !important;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+  }
+  
+    .dragged-widget:hover{
+      background: #0074c9;
+    }
+  
+    .dragged-widget .widget-options{
+        text-align: center;
+    }
+
+    .dragged-widget .widget-options a{
+        margin: 5px;
+    }
+
+    .dragged-widget .widget-options i:hover{
+        color: #f04123 !important;
+    }
+
+    .dragged-widget i{
+        color: #fff;
+        font-size: 1.6rem;
+    }
+  
+  .existing-layout-list li {
+      padding: 3px;
+  }
+  
+  .add-widget-link, .add-layout-link{
+      color: #fff;
+  }
+
+  .button-group.right.gm-layout-mode{
+    display: none;
+  }
+
+  #ajax-loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+
+  #ajax-loader-overlay .ajax-loader-icon {
+  	position: fixed;
+  	top: 50%;
+  	left: 50%;
+  	height: 100px;
+  	width: 100px;
+  	margin-left: -50px;
+  	margin-top: -50px;
+  }
+
+  #ajax-loader-overlay .ajax-loader-icon i {
+  	font-size: 100px;
+  	opacity: 0.7;
+  	color: #fff;
+  }
+  
+  #ajax-loader-overlay p{
+      position: fixed;
+      top: 50%;
+      left: 45%;
+      margin-top: 5%;
+      color: #fff;
+  }
+  
+  .button.exit {
+  	z-index: 100;
+  }
+
+  .reveal-modal .button-group .button {
+    margin-bottom: 0;
+  }

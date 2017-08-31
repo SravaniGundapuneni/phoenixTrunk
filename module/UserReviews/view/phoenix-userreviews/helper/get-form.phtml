@@ -1,0 +1,22 @@
+<?php echo $this->form()->openTag($this->flexibleForm);?>
+<?php foreach ($this->flexibleForm as $valForm) {
+    if ($valForm instanceof \Zend\Form\Element\Hidden) {
+        echo $this->formHidden($valForm);
+    } elseif ($valForm instanceof \Zend\Form\Element\Submit) {
+        echo '<p>' . $this->formElement($valForm) . '</p>';
+    } else {
+        echo '<p>' . $this->formLabel($valForm);
+        if ($valForm instanceof \Phoenix\Form\Element\OrderedSelect) {
+            echo $this->formOrderedSelect($valForm);
+        } else {
+            echo $this->formElement($valForm);
+        }
+        echo '</p>';
+        echo str_replace('Value is required', $valForm->getName() . ' is required', $this->formElementErrors($valForm, array('class' => 'error-inline')));
+    }
+} ?>
+<!--<div id="edit-save" data-action="save" class="editItemOption">
+    <img src="<?php //echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/img/editItem-save.png">
+    <span><? //$key ?></span>
+</div>-->
+<?php echo $this->form()->closeTag(); ?>

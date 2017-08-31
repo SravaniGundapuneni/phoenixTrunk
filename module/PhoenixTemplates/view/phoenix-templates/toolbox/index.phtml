@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Phoenix Templates</title>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+    </head>
+    <body>
+        <div class="row">
+            
+            <div class="large-12 medium-12 small-12 columns text-center">
+                <h1>Pre-Built Templates</h1>    
+            </div>
+            
+            <div class="panel large-12 medium-12 small-12 columns text-center">    
+                <div class="row" data-equalizer>
+                    <ul class="tmpl-list small-block-grid-4">
+                        <?php
+                        $dir = PHOENIX_PATH . "/module/PhoenixTemplates/view/phoenix-templates/";
+                        $directories = scandir($dir);
+                        $exclude_dir = array(".","..","test","toolbox");
+                        for($i=0; $i< count($directories); $i++)
+                        {
+                            if(is_dir($dir.$directories[$i]) AND !(in_array($directories[$i], $exclude_dir)))
+                            {
+                        ?>
+                        <li data-tmplId="<?=$directories[$i]?>"><img src='<?=$this->toolboxIncludeUrl . "module/PhoenixTemplates/view/phoenix-templates/{$directories[$i]}/img/template.jpg"?>' alt="" /> <?=  ucfirst($directories[$i])?> </li>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="large-12 columns text-center">
+                <form method="post" id="tmplForm" action="<?=$this->url("phoenixTemplates-toolbox", array('action' => 'index'))?>">
+                <input type="hidden" name="selected-template" id="selected-template" value="" />
+                <input type="submit" class="button radius text-center large medium small" value="Continue" />
+                </form>
+            </div>
+            
+        </div>
+        <script>
+            $(document).foundation();
+            $(document).ready(function(){
+                
+                $(".tmpl-list li").click(function(){
+                   $(".tmpl-list li").removeClass("active");
+                   $(this).addClass("active");
+                   $("#selected-template").attr("value",$(this).attr("data-tmplId"));
+                });
+                
+                $(".tmpl-list li:first").click();
+                
+                $(".fancybox-effects-a").fancybox({
+                    closeBtn  : true,
+                        helpers: {
+                            title : {
+                                    type : 'outside'
+                            }
+                        }
+                });
+            });
+        </script>
+    </body>
+</html>

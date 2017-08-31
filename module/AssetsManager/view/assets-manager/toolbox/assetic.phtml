@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @package     AssetsManager
+ * @copyright   Copyright (c) 2014 TravelClick, Inc (http://www.travelclick.com)
+ * @license     All Rights Reserved
+ * @version     Release: 1.14
+ * @since       File available since release 1.14
+ * @author      Saurabh Shirgaonkar <sshirgaonkar@travelclick.com>
+ * @filename    index.phtml
+ */
+
+?>
+
+	
+	<?php 
+    if (empty($title)) {
+	$title = 'Asset Manager';
+    }
+    ?>
+
+	
+	<?php echo $this->inlineScript()->appendScript($this->listUpdateStatusScript());?>
+    <?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+    <?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/jquery.simplePagination.js'); ?>
+    <?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/list-module.js'); ?>
+	
+
+    <div id="moduleName" class="breadcrumb"> <?php  echo $this->escapeHtml($title); //echo $this->getHelperPluginManager()->getServiceLocator()->get('request')->getUri()->toString();?></div>
+    <!--<div id="contentFloated" style="width=100%;">
+   
+    </div>-->
+	
+    <b> Processing Complete. </b>
+	
+
+

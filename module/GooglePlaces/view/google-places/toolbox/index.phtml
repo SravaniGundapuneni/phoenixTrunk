@@ -1,0 +1,56 @@
+<!-- 
+    Document   : edit-item.phtml
+    Created on : Sep 12, 2013, 10:42:03 AM
+    Author     : isorokin
+    Description: GooglePlaces template
+-->
+
+<?php
+    echo $this->headLink()->prependStylesheet($toolboxIncludeUrl . 'module/GooglePlaces/view/google-places/toolbox/css/googleplaces.css');
+?>
+
+<!-- info-box is a template for a hotel info section -->
+<div id='info-box' style='display:none'>
+<table class='info-box'>
+    <tr>
+        <td><img class='info-photo'/></td>
+        <td>
+            <div class="hotel-name"></div>
+            <div class='info-text'></div>
+            <div class='info-phones'></div><div class='info-address'></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan='2'>
+            <button class='visit-site'>Visit Site</button><button class='view-offers'>View Special Offers</button><button class='check-availability'>Check Availability</button><button>What's Around</button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<span id="top">
+    <span>Destinations&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <label>Search by:&nbsp;&nbsp;</label>
+    <input name="address" id="address" type="text" style="width:500px"/>
+    <button id='button-view-style' onclick='changeViewStyle()'>List View</button>
+</span>
+
+<div id='map-view-panel'>
+    <div class="map-canvas" id="map-canvas-<?=$blockId?>"></div>
+
+    <div id='our-properties'>Our Properties</div>
+    <table id='hotels-table'>
+        <tr><td style="height:20px">&nbsp;</td></tr>
+    </table>
+</div>
+
+<div id='list-view-panel'></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&key="></script>
+<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
+<script type="text/javascript" src="<?= $this->toolboxIncludeUrl ?>module/GooglePlaces/view/google-places/toolbox/js/markerwithlabel.js"></script>
+<script type="text/javascript" src="<?= $this->toolboxIncludeUrl ?>module/GooglePlaces/view/google-places/toolbox/js/googleplaces.js"></script>
+
+<script type="text/javascript"><?= $jScript ?></script>
+

@@ -1,0 +1,52 @@
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+    toolboxIncludeUrl = '<?= $toolboxIncludeUrl ?>';
+    phoenixURL = "http://localhost/phoenixtng/";
+    designerUrl = "<?= $toolboxIncludeUrl ?>module/Designer/view/designer/toolbox/";
+</script>
+
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/tc-widgets.js"></script>
+
+<?php
+    // this code includes all available widget scripts
+    foreach (scandir(getcwd()."/module/Designer/view/designer/toolbox/js") as $jsFile) {
+        if (strpos($jsFile, 'tc-widget-') === 0) {
+            echo "<script type='text/javascript' src='{$toolboxIncludeUrl}module/Designer/view/designer/toolbox/js/$jsFile'></script>";
+        }
+    }
+?>
+
+<div style="display:inline-block"><h3>TravelClick DESIGNER</h3></div>
+<button type="button" style="float:right" onclick="savePage()">Save</button>
+<button type="button" style="float:right" onclick="saveAsTemplate()">Save as template</button>
+<button type="button" style="float:right" onclick="showInBrowser()">Show in browser</button><br/>
+<table id='design-view-wrapper' style="width:100%; height:100%">
+    <tr>
+        <td id="tool-panel">
+            <div class="tools-section-head">Templates</div>
+            <div class="tool-item" onclick="showItemList(1)"><img src="images/web-page.jpg"/><div>Pages</div></div><br/>
+            <div class="tool-item" onclick="showItemList(2)"><img src="images/header.png"/><div>Page Headers</div></div><br/>
+            <div class="tool-item" onclick="showItemList(3)"><img src="images/footer.png"/><div>Page Footers</div></div><br/>
+            <div class="tool-item" onclick="showItemList(4)"><img src="images/side-bar.png"/><div>Side Bars</div></div><br/>
+            <!--div class="tool-item" onclick="showItemList(5)"><img src="images/dynamic.png"/><div>Dynamic Data</div></div><br/-->
+            <div class="tools-section-head" id="widgets-head">Layout Elements</div>
+            <div id='property-box'>
+                <div>Properties for "<span id='active-block-name'></span>"<img src='images/delete.png' style='float:right' onclick="$('#property-box').css({display:'none'})"></div>
+                <table></table>
+            </div>
+        </td>
+        <td><div id="design-canvas"></div></td>
+    </tr>
+</table>
+
+<link type="text/css" rel="stylesheet" href="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/css/jquery-ui.css"/>
+<link type="text/css" rel="stylesheet" href="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/css/jquery.contextmenu.css"/>
+<link type="text/css" rel="stylesheet" href="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/css/popup.css"/>
+<link type="text/css" rel="stylesheet" href="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/css/designer.css"/>
+
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/jquery.contextmenu.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&key="></script><!--AIzaSyBIjoJUMl5xSXYtil4zDHti6MtZM1Qx8A8-->
+<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/popup.js"></script>
+<script type="text/javascript" src="<?=$toolboxIncludeUrl?>module/Designer/view/designer/toolbox/js/designer.js"></script>

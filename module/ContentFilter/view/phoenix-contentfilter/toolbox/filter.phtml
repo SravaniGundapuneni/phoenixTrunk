@@ -1,0 +1,174 @@
+<div id="editBox">
+       
+
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><? echo "Select Filter Criteria"; //= $title ?></div>		
+         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editItemContent">
+        <br/>
+        
+	        <?php		
+	        $form = $this->form;		
+			$form->setAttribute('action', $this->url(NULL,array('controller'=>'Toolbox', 'action' => 'filterControl')));
+			$form->setAttribute('method','post');
+			$form->prepare();		
+			echo $this->form()->openTag($form);	
+	        ?>
+        		 
+   	
+			<table border="0" cellpadding="5" class="table table-compacted" id="example" id="list-wrapper">
+				<tbody>
+				
+				<tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('hotel')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('hotel')); ?> 		
+					      <?php echo $this->formElement($form->get('hotelCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('hotelCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('hotel')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>
+				
+				<tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('roomName')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('roomName')); ?> 		
+					      <?php echo $this->formElement($form->get('roomNameCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('roomNameCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('roomName')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>
+					
+			    <tr>	    
+				    <dt>  
+					<?php echo $this->formLabel($form->get('bedType')); ?></dt>	
+				    <dd>  		
+					      <?php echo $this->formElement($form->get('bedType')); ?> 
+			              <?php echo $this->formElement($form->get('bedTypeCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('bedTypeCheckbox')); ?>	     		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('bedType')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>		
+				
+			    <tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('roomCategories')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('roomCategories')); ?> 		
+					      <?php echo $this->formElement($form->get('roomCategoriesCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('roomCategoriesCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('roomCategories')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>		
+				
+			    <tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('maxOccupancy')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('maxOccupancy')); ?> 		
+					      <?php echo $this->formElement($form->get('maxOccupancyCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('maxOccupancyCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('maxOccupancy')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>		
+				
+			    <tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('roomCode')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('roomCode')); ?> 		
+					      <?php echo $this->formElement($form->get('roomCodeCheckbox')); ?>
+				          <?php echo $this->formElementErrors($form->get('roomCodeCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('roomCode')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>		
+				
+			    <tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('roomId')); ?></dt>	
+				    <dd>  
+					      <?php //echo $this->formElement($form->get('roomId')); ?> 		
+					      <?php //echo $this->formElement($form->get('roomIdCheckbox')); ?>
+				          <?php //echo $this->formElementErrors($form->get('roomIdCheckbox')); ?>
+					
+					
+					      <?php echo $this->formElement($form->get('roomId')); ?> 		
+					      <?php //echo $this->formElement($form->get('roomIdCheckbox')); ?>
+				          <?php //echo $this->formElementErrors($form->get('roomIdCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('roomId')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>		
+				
+			    <tr>	    
+				    <dt>  <?php echo $this->formLabel($form->get('roomDescription')); ?></dt>	
+				    <dd>  
+					      <?php echo $this->formElement($form->get('roomDescription')); ?> 		
+					      <?php //echo $this->formElement($form->get('roomDescriptionCheckbox')); ?>
+				          <?php //echo $this->formElementErrors($form->get('roomDescriptionCheckbox')); ?>		
+					</dd>
+				    <dd>  
+					      <?php echo $this->formElementErrors($form->get('roomDescription')); ?> 
+				    </dd>	   
+				</tr>
+				
+				<tr> &nbsp; &nbsp; &nbsp; </tr>
+				 
+				
+			    <tr align="right">
+				    <dd>  
+					
+					    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+					    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+					
+				        <?php echo $this->formElement($form->get('reset')); ?> 
+				        <?php echo $this->formElementErrors($form->get('reset')); ?> 
+				
+				        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+				
+				        <?php echo $this->formElement($form->get('submit')); ?> 
+				        <?php echo $this->formElementErrors($form->get('submit')); ?> 
+				    </dd>	
+				</tr>
+				
+				<!--<tr> &nbsp; &nbsp; &nbsp; </tr>-->
+						
+			    </tbody>
+			</table>
+  
+    <?php echo $this->form()->closeTag(); ?>
+
+	<div id="editBoxHeader">
+	    <?//= $this->partial('list-module/helpers/edit-list-actions') ?>
+	</div>
+  
+          
+    </div>
+    <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+</div>
+
+

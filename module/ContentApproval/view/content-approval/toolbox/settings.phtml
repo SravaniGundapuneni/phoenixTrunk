@@ -1,0 +1,26 @@
+<h2>Content Approval Settings</h2>
+
+<?php if ($this->message) : ?>
+<div class="alert alert-success">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <?=$this->message ?>
+</div>
+<?php endif ?>
+
+<form method="post">
+<?//= $this->formRow($this->form->get('enabled')); ?>
+<br />
+
+<?php foreach ($components as $component) : ?>
+ <label class="checkbox">
+      <input type="checkbox" name="component[<?=$component->getId()?>]" value="1"<?php if ($component->getCasEnabled()) echo ' checked="checked"'?> /><?= $component->getName() ?>
+    </label>
+<?php endforeach; ?>
+<br />
+
+<a class="btn btn-inverse" href="<?= $this->url('contentApproval-toolbox') ?>">Back</a>
+
+<input type="submit" value="Save" class="btn" />
+
+</form>
+

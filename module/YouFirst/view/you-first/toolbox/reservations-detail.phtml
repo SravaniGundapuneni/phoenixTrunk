@@ -1,0 +1,111 @@
+<?php
+$title = 'Reservations Detail';
+$this->headTitle($title);
+?>
+<h4>Buttons will have to be added later on</h4>
+<?php $form = $this->form;?>
+<div class="editBox">
+ 
+ <div class="editBoxContent">
+ 
+  <h4>Reservations Details: <?php echo $form->reservation; ?></h4>
+  <h4><b>Confirmation Number:</b> <?php echo $form->confirmation; ?></h4>
+ </div>
+ <div class="editBoxContent">
+  <h4>Hotel Information</h4>
+  <table>
+  <tr><td><b><?php echo $form->hotelName; ?></b></td></tr>
+  <tr><td><?php echo $form->address1;?> <?php echo $form->address2; ?></td><td>Phone: <?php echo $form->hotelPhone; ?></td></tr>
+  <tr><td><?php echo $form->city;?>, <?php echo $form->state; ?>, <?php echo $form->zip; ?></td><td>Reservations: <?php echo $this->reservationPhone ?></td>
+  </tr>  
+  </table>
+ <table>
+ <tr><td><b>Arrival</b></td><td><b>Departure</b></td></tr>
+ <tr><td><b><?php echo $form->arrivalDate; ?></b></td><td><b><?php echo $form->departureDate; ?></td></tr>
+ <tr><td><b><?php echo $form->nights; ?> - <u><?php echo $form->adults; ?> Adults, <?php echo $form->kids; ?> Kids</u></b></td></tr>
+ </table>
+ </div>
+  
+ <div class="editBoxContent">
+ <h4>Guest Details</h4>
+ <?php $form = $this->form;?>
+ <h2><?php echo $form->guestName; ?></h2>
+ 
+ <table>
+ <tr>
+ <td><b>Email:</b> <?php echo $form->title; ?>, <?php echo $form->firstName; ?><?php echo $form->middleName; ?><?php echo $this->lastName; ?>
+ <BR>
+ <b><?php echo $form->phoneType; ?> </b> <?php echo $form->$phoneNumber; ?>
+ </td>
+ <td>
+ <b>Home Address</b><BR>
+ <?php echo $form->address1; ?><BR>
+ <?php echo $form->address2; ?><BR>
+ <?php echo $form->city; ?>, <?php echo $form->state; ?> <?php  echo $form->zipCode; ?>
+ </td>
+ </tr>
+ </table>
+ 
+ <b>Guest Preferences</b><BR>
+ <?php $form = $this->form;?>
+ <table>
+  <tr>
+  <td>
+   Floor Preference: <?php echo $form->floorType; ?><BR>
+   Bed Type: <?php echo $form->bedType; ?> <BR>
+   Arrival Time: <?php echo $form->arrivalTime; ?>
+   Newspaper: <?php echo $form->newspaper; ?>
+  </td>
+  <td>
+    <?php
+	  foreach ($form->form as $valForm) {
+	     $valForm->getPrefrences();	
+	  }
+     ?>
+  </td>
+  <td>
+  Other Requests<BR>
+  <?php echo $form->$otherReqeust; ?>
+  
+  </td>
+  </tr> 
+ </table>
+ 
+ <table>
+ <tr>
+ <td><b>Booking on Behalf of</b> <?php echo $form->titleGuest; ?>, <?php echo $form->firstNameGuest; ?><?php echo $form->middleName; ?><?php echo $form->lastNameGuest; ?>
+ </td>
+ </tr>
+ <tr><td>Phone: <?php echo $form->guestNumber ?> Email: <?php echo $form->guestEmail ?> </td></tr>
+ </table>
+ 
+ 
+ 
+ </div>
+  
+  
+  
+ <div class="editBoxContent">
+ <h4>Reservation Details</h4>
+  <?php
+  $form = $this->form;
+  $form->setAttribute('action', $this->url('youfirst-toolbox', array('action' => 'changePassword')));
+  $form->prepare();
+  
+ 
+  
+  foreach ($this->form as $valForm) {
+  ?>
+  <table>
+  
+  
+  
+  
+  </table> 
+<?php
+   }
+  
+   echo $this->form()->closeTag(); 
+  
+  ?>
+</div>

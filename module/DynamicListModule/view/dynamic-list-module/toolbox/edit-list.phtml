@@ -1,0 +1,40 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Select a Module to edit</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="80px">Status</th>
+                        <th width="auto">Options</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php foreach ($items as $index=>$module): ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $module->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('dynamicListModule-toolbox', array('subsite'=> $subsiteRoute, 'action' => 'editItem', 'itemId' => $module->getId())) ?>">
+                                <?= $module->getName() ?>
+                            </a>
+                        </td>
+                        <td><?= $this->displayStatus($module->getStatus()) ?></td>
+                        <td><a href="<?= $this->url('dynamicListModule-fieldsToolbox', array('subsite'=> $subsiteRoute, 'moduleId' => $module->getId())); ?>">Fields</a>
+                            <?php if ($module->getCategories()) : ?>
+                        | <a href="<?= $this->url('categories-toolbox', array('subsite'=> $subsiteRoute, 'moduleId' => $module->getId())); ?>">Categories</a>
+                        <?php endif ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>

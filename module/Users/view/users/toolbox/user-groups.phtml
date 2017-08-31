@@ -1,0 +1,25 @@
+<div id="editBox">
+    <div id="editItemHeader" class="editItemHeader">
+        <h2 id="editItemHeaderTitle"><?= $this->taskTitle ?></h2>
+        <a style='float:right' href="<?= $this->url('users-toolbox', array('action' => 'userAddGroup', 'itemId' => $this->user->getUserEntity()->getId()))?>">Add User to Group&nbsp;&nbsp;</a>
+    </div>
+    <div class="editItemContent">
+        <br/>
+         <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->user->getGroups() as $keyGroup => $valGroup): ?>
+                <tr>
+                    <td><?php echo $valGroup->getName();?></td>
+                    <td><a href="<?php echo $this->url('users-toolbox', array('action' => 'deleteUserGroup', 'itemId' => $keyGroup)) . "?userId={$this->user->getId()}&scope={$this->user->getScope()}";?>">Delete</a></td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

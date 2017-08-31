@@ -1,0 +1,33 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th>ID</th>
+                        <th>User Group</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->items as $page) : ?>
+                    <tr>
+                        <td><input type="checkbox" name="items[]" value="<?= $page->getId() ?>" /></td>
+                        <td><?= $page->getId() ?></td>
+                        <td><a href="<?= $this->url('contentApproval_workflow-toolbox', array('subsite' => $subsiteRoute, 'action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?= $page->getUserGroupName()?></a></td>
+                       <?/* <td><a href="<?= $this->url('heroImages-toolbox', array('subsite' => $subsiteRoute, 'action'=>'editItem', 'itemId'=>$page->getId())) ?>"><?=$page->getTitle()?></a></td> */ ?>
+                       <td class="statusText"><?= $this->displayStatus($page->getEntity()->getStatus()) ?></td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <? //$this->partial('list-module/helpers/edit-list-pagination') ?>
+</div>

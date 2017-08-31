@@ -1,0 +1,88 @@
+.events-calendar .alert-box {
+	margin-bottom: 0;
+}
+
+.events-calendar .row.collapse [class*="block-grid-"] {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.events-calendar .row.collapse [class*="block-grid-"].calendar-header li {
+	padding-bottom: 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.events-calendar .row.collapse [class*="block-grid-"]:not(.calendar-header) li {
+	min-height: 150px;
+	max-height: 150px;
+	padding: 4px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.events-calendar .row.collapse [class*="block-grid-"]:not(.calendar-header) li:nth-child(7n) {
+	border-right: none;
+}
+
+.events-calendar .calendar-navigation {
+	padding: 0.9rem 0.9375rem 0 !important;
+}
+
+.events-calendar .calendar-loader {
+	font-size: 1.2rem;
+	margin: 2px 10px;
+}
+
+.events-calendar .calendar-day .date {
+	font-size: 0.8rem;
+	line-height: 16px;
+}
+
+.events-calendar .calendar-day .fa-plus {
+	padding-top: 2px;
+	color: #43AC6A;
+	cursor: pointer;
+}
+
+.events-calendar .calendar-day small {
+	font-size: 0.8rem;
+	position: relative;
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.events-calendar .calendar-day small .fa {
+	position: absolute;
+	padding: 2px;
+	right: 0;
+	top: 0;
+}
+
+.events-calendar .calendar-day small .fa-times {
+	background-color: rgba(255, 255, 255, 0.8);
+	cursor: pointer;
+	color: #f04124;
+	display: none;
+}
+
+.events-calendar .calendar-day small:hover .fa-times {
+	display: inline-block;
+}
+
+#addEventModal.reveal-modal .button {
+	margin-bottom: 0;
+}
+
+#addEventModal .available-events p {
+	margin-bottom: 0;
+	padding-left: 10px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 33px;
+}

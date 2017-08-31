@@ -1,0 +1,157 @@
+<?php 
+    $templatePath         = SITE_PATH . '/templates/main/layouts/';
+    $headerfile           = SITE_PATH . "/templates/main/edit-templates/header.phtml";
+    $footerfile           = SITE_PATH . "/templates/main/edit-templates/footer.phtml";
+    $globalTemplatesExist = (file_exists($headerfile) && file_exists($footerfile));
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta charset="UTF-8">
+    <title>Phoenix Templates</title>
+    <?php echo $this->headLink(); ?>
+    <?php echo $this->headScript(); ?>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="row template-builder-background"> 
+        <a href="<?=$this->siteroot."toolbox"?>" class="exit button alert tiny has-tip right" title="Back to Dashboard">EXIT</a>
+        <a href='<?=$this->url('layoutEditor-toolbox', array('action' => 'index'))?>' class="button tiny has-tip add-layout-link right" title="Add a new layout from the layout editor">GO TO LAYOUT EDITOR</a>
+
+        <div class="column large-11 medium-11 small-11 large-centered medium-centered">                
+            <div class="row" style="margin-top: 1.2rem;">
+                <div class="column large-5 medium-5 small-5 text-center">
+                    <img class="middle left" src="<?=$this->toolboxIncludeUrl?>module/TemplateBuilder/view/template-builder/toolbox/img/vector.png"/>
+                    <h2 class="middle left" style="margin-top: 0.8rem;margin-left: 0.5rem;">TEMPLATE <strong>BUILDER</strong></h2>
+                </div>
+                <div class="column large-7 medium-7 small-7 text-right">
+                    <!--Wizard Steps-->
+                    <ol class="track-progress middle" data-steps="3">
+                        <li class="done">
+                            <span>Add and Edit Layouts</span>
+                        </li>
+                        <li>
+                            <span>Configure Layout</span>
+                            <i></i>
+                        </li>
+                   </ol><!--End Wizard Steps-->
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="column large-12 medium-12 small-12 text-center">
+                    <div class="page-layout-panel column large-2 panel radius large-centered">
+                        <p>GLOBAL LAYOUTS</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="small-12 columns">
+                    <ul class="global-layouts text-center small-block-grid-4">
+                    <?php foreach ($this->getTemplateFiles($templatePath, 'global') as $index => $file): ?>
+                        <li class="text-center" data-tooltip aria-haspopup="true" class="has-tip" title="The template is exist in the core-template folder. click on preview link to see the current template! "  data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>">
+                            <div class="template-block-wrap">
+                                <p><?=strtoupper(str_replace(".phtml", "", $file))?></p>
+                                <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$this->getTemplateFileImage($file)}"?>" alt="" />
+                                <ul id="tmpl-options">
+                                <?php if (file_exists(SITE_PATH . "/templates/main/{$file}")): ?>
+                                    <li><a href="#" class="edit-page-template has-tip" title="Edit" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon"></i></a></li>
+                                    <li><a href="#" class="delete-page-template has-tip" title="Delete" data-tmpl-file="<?=$file?>"><i class="icon icon-trash-bin"></i></a></li>
+                                    <li class="hide"><a href='#' class="add-page-template" data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon icon-plus"></i></a></li>
+                                <?php else: ?>
+                                    <li><a href='#' class="add-page-template" data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon icon-plus"></i></a></li>
+                                <?php endif; ?>
+                                </ul>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            
+            <?php if($globalTemplatesExist): ?>
+            <div class="page-layouts-wrap">
+                <div class="row">
+                    <div class="column large-12 medium-12 small-12 text-center">
+                        <div class="page-layout-panel column large-2 panel radius large-centered">
+                            <p>PAGE LAYOUTS</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="column large-12 medium-12 small-12 text-right">
+                        <ul class="pagination">
+                        <?php $pageTemplateList = $this->getTemplateFiles($templatePath); ?>
+                        <?php for($i = 1, $j = $this->getTemplatePageNumber(count($pageTemplateList)); $i <= $j; $i++): ?>
+                            <li <?php if ($i === 1) { ?>class="current"<?php } ?> data-page="<?=$i?>"><a href="#"><?=$i?></a></li>
+                        <?php endfor; ?>
+                        </ul>
+                    </div>
+                </div>
+                        
+                <div class="row">
+                    <div class="small-12 columns">
+                        <ul class="page-layouts small-block-grid-4">
+                        <?php foreach ($pageTemplateList as $index => $file): ?>
+                            <li class="text-center" data-page="<?=$this->getTemplatePageNumber($index + 1)?>" data-tooltip aria-haspopup="true" class="has-tip" title="The template is exist in the core-template folder. click on preview link to see the current template! "  data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>">
+                                <div class="template-block-wrap">
+                                    <p><?=strtoupper(str_replace(".phtml", "", $file))?></p>
+                                    <img src="<?=$this->toolboxIncludeUrl . "module/TemplateBuilder/view/template-builder/toolbox/img/{$this->getTemplateFileImage($file)}"?>" alt="" />
+                                    <ul id="tmpl-options">
+                                    <?php if (file_exists(SITE_PATH . "/templates/main/{$file}")): ?>
+                                        <li><a href="#" class="edit-page-template has-tip" title="Edit" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="<?=$this->siteroot . str_replace('.phtml', '', $file);?>" target="_blank" class="preview-page-template has-tip" title="Preview" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon"></i></a></li>
+                                        <li><a href="#" class="delete-page-template has-tip" title="Delete" data-tmpl-file="<?=$file?>"><i class="icon icon-trash-bin"></i></a></li>
+                                        <li class="hide"><a href='#' class="add-page-template" data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon"></i></a></li>
+                                    <?php else: ?>
+                                        <li><a href='#' class="add-page-template" data-tmpl-name="<?=$this->templateID?>" data-tmpl-file="<?=$file?>"><i data-icon="" class="icon"></i></a></li>
+                                    <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <div id="deleteTemplateModal" class="reveal-modal small" data-reveal>
+                <a class="close-reveal-modal">&#215;</a>
+                <h2>Delete Template</h2>
+                <p class="lead">Are you sure you want to delete the template?</p>
+                <ul class="stack-for-small radius secondary button-group right">
+                    <li><a href="#" class="button small cancel-delete-template">Cancel</a></li>
+                    <li><a href="#" class="button small alert delete-template">Delete</a></li>
+                </ul>
+            </div>
+            
+            <div id="myModalOverwrite" class="reveal-modal small" data-reveal>
+                <a class="close-reveal-modal">&#215;</a>
+                <h2>Edit Template</h2>
+                <p class="lead">Are you sure you want to overwrite the existing template?</p>
+                <ul class="stack-for-small radius secondary button-group right">
+                    <li><a href="#" class="button small cancel-overwrite-template">No</a></li>
+                    <li><a href="#" class="button small alert overwrite-template">Yes</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="ajax-loader-overlay" style="display: none;">
+        <div class="ajax-loader-icon text-center">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+        <p class="message"></p>
+    </div>
+
+    <div class="hide" data-tmpl-url="<?=$this->toolboxIncludeUrl?>"></div>
+    <div class="hide" data-sub-tmpl-delete-url="<?=$this->url('templateBuilder-sockets', array('action' => 'deleteTemplate'))?>"></div>
+    <div class="hide" data-widgets-config="<?=$this->url('templateBuilder-toolbox', array('action' => 'pageLayoutConfig'))?>"></div>
+    <div class="hide" data-current-tmpl="<?=$this->templateID?>"></div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+<?php
+
+/**
+ * @package     PhoenixToolbar
+ * @copyright   Copyright (c) 2014 TravelClick, Inc (http://www.travelclick.com)
+ * @license     All Rights Reserved
+ * @version     Release: 1.14
+ * @since       File available since release 1.14
+ * @author      Saurabh Shirgaonkar <sshirgaonkar@travelclick.com>
+ * @filename    settings.phtml
+ */
+
+?>
+
+	<?php
+	$form = $this->form;
+	$form->prepare();
+	$form->setAttribute('action', $this->url(NULL,
+	array('controller'=>'Toolbox', 'action' => 'confirm')));
+	$form->setAttribute('method','post');
+	echo $this->form()->openTag($form);	
+	//$title="Manage Items";
+	?>
+	
+	
+		<?php 
+/*
+		if ($subsite) 
+		{
+        $subsite = substr($subsite, 1);
+        }
+
+*/
+
+if (empty($title)) {
+	$title = 'Social Media Toolbar';
+}
+?>
+<?php echo $this->inlineScript()->appendScript($this->listUpdateStatusScript());?>
+
+<?= $this->headLink()->appendStylesheet($this->toolboxIncludeUrl . 'module/ListModule/view/layout/css/general.css'); ?>
+<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/jquery.simplePagination.js'); ?>
+<?= $this->headScript()->appendFile($this->toolboxIncludeUrl . 'module/ListModule/view/layout/js/list-module.js'); ?>
+
+<div id="moduleName" class="breadcrumb">Social Media Toolbar Settings for Loews Atlanta Hotel<?php // echo $this->escapeHtml($title); ?></div>
+<!-- <div id="taskMenu">
+    <ul id="taskMenu">
+        <li class="<?php //echo ($this->currentTask=='newUser'?'currentTask':''); ?>"><a href="<?php //cho $this->url('users-toolbox', array('action' => 'newUser', 'subsite' => $subsite));?>">Add Users</a></li>
+        <li class="<?php //echo ($this->currentTask=='listUsers'?'currentTask':''); ?>"><a href="<?php //echo $this->url('users-toolbox', array('subsite' => $subsite));?>">Manage Users</a></li>
+        <li class="<?php //echo ($this->currentTask=='ignore-for-now'?'currentTask':''); ?>"><a href="<?php //echo $this->url('users-groups-toolbox', array('action' => 'editList', 'langCode' => 'en', 'subsite' => $subsite));?>">User Groups</a></li>
+        <li class="<?php //echo ($this->currentTask=='ignore-for-now'?'currentTask':''); ?>"><a href="<?php //echo $this->url('users-groups-toolbox', array('action' => 'addItem', 'langCode' => 'en', 'subsite' => $subsite));?>">Add Group</a></li>
+        <li><a target='_blank' href="http://training.travelclick.com/help/Toolbox_Online_Help/Default_CSH.htm#2500">Help</a></li>
+    </ul>&nbsp;
+</div> -->
+<div id="contentFloated">
+    <?php //echo $taskContent; ?>
+</div>
+
+
+	<table border="0" width="100%" align="center" cellpadding="3" cellspacing="30" style="font-family:'Times New Roman';">
+	
+	<!--Widgets Header Line Starts-->
+	<tr>	
+	<td align="center" colspan="2">
+	<!-- <h1> Assetics Configuration </h1> -->
+	</td>	
+    </tr>	
+	<!--Widgets Header line Ends-->
+	
+	<!--Blank Line Goes here Starts-->
+	<tr>	
+	<td align="center" colspan="2">
+    &nbsp; &nbsp;
+	</td>	
+    </tr>
+	<!--Blank Line Goes Here Ends-->
+	
+	<dl class="zend_form">
+	
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt> <?php echo $this->formLabel($form->get('propertyName')); ?></dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('propertyName')); ?> <?php echo sprintf($this->translate('current value : None'));  //echo sprintf($this->translate('current value: %s'), $this->asseticsJsMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('propertyName')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->	
+	
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt> <?php echo $this->formLabel($form->get('toolbarEnabled')); ?></dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('toolbarEnabled')); ?> <?php echo sprintf($this->translate('current value : None'));  //echo sprintf($this->translate('current value: %s'), $this->asseticsJsMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('toolbarEnabled')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+	
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('toolbarMinimize')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('toolbarMinimize')); ?> <?php echo sprintf($this->translate('current value : None'));  //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('toolbarMinimize')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+	
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('facebookUrl')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('facebookUrl')); ?> <?php echo sprintf($this->translate('current value : None')); //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('facebookUrl')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+		
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('twitterUrl')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('twitterUrl')); ?> <?php echo sprintf($this->translate('current value : None')); //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('twitterUrl')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+	
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('youtubeUrl')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('youtubeUrl')); ?> <?php echo sprintf($this->translate('current value : None')); //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('youtubeUrl')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+			
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('toolbarLayout')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('toolbarLayout')); ?> <?php echo sprintf($this->translate('current value : None'));  //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('toolbarLayout')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+			
+	<!--line 05 starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php echo $this->formLabel($form->get('toolbarColor')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('toolbarColor')); ?> <?php echo sprintf($this->translate('current value : None')); //echo sprintf($this->translate('current value : %s'), $this->asseticsCssMinificationEnabled); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('toolbarColor')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--line 05 ends-->
+	
+	<!--Blank Line Goes here Starts-->
+	<tr>	
+	<td align="center" colspan="2">
+    &nbsp; &nbsp;
+	</td>	
+    </tr>	
+	<!--Blank Line Goes Here Ends-->
+		
+ 
+	 <!--Reset and Submit Button Code Starts-->
+    <tr>
+
+    <td>	
+    &nbsp; &nbsp; 
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('reset')); ?> 
+	      <?php echo $this->formElementErrors($form->get('reset')); ?> 
+	
+	      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+	
+	      <?php echo $this->formElement($form->get('submit')); ?> 
+	      <?php echo $this->formElementErrors($form->get('submit')); ?> </dd>
+	</td>
+	
+	</tr>
+	 <!--Reset and Submit Button Code Ends-->
+
+	 
+	 	 
+    <!-- xcd code starts-->
+    <tr>
+
+    <td>	
+	<dt>  <?php //echo $this->formLabel($form->get('fileinput')); ?> </dt>
+	</td>
+	
+	<td>
+	<dd>  <?php echo $this->formElement($form->get('id')); ?> </dd>
+	<dd>  <?php echo $this->formElementErrors($form->get('id')); ?> </dd>
+	</td>
+	
+	</tr>
+	<!--xcd Code Ends-->
+	
+	</dl>
+	
+	</td>
+	</tr>
+	</table>
+	
+	<?php echo $this->form()->closeTag(); ?>
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

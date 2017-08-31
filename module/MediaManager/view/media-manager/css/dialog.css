@@ -1,0 +1,162 @@
+.mmDialog {
+	background-color : #c3bebe  !important;
+	max-width        : none; /* overriding foundation .row */
+	padding          : 9px 10px !important;
+	width            : auto; /* overriding foundation .row */
+}
+
+.noTitleBar .ui-dialog-titlebar {
+	display: none;
+}
+
+.noTitleBar {
+	background-color : #c3bebe;
+	box-shadow       : 5px 10px 20px #554e5c;
+	overflow         : visible;
+	padding          : 0px;
+}
+
+#dialogImageContainer {
+	background-color : #373434;
+	border           : 1px solid #a2a2a2;
+	position         : relative;
+	height           : 344px;
+	width            : 744px;
+}
+
+#dialogImageZoom {
+	color    : #ffffff;
+	position : absolute;
+	right    : 0px;
+}
+
+.jcrop-holder {
+	background-color : #ffffff !important;
+	margin-left      : auto;
+	margin-right     : auto;
+}
+
+.ui-dialog-buttonset .redButton {
+	background-color : #be3838 !important;
+}
+
+.ui-dialog-buttonset .blueButton {
+	background-color : #38a6be !important;
+}
+
+.ui-dialog-buttonset .cropButton {
+	background     : none;
+	border         : 1px solid #a2a2a2;
+	color          : #f9f4f4;
+	font-size      : 12px;
+	margin-left    : 10px !important;
+	margin-right   : 0px  !important;
+	padding-bottom : 8px;
+	padding-top    : 8px;
+	text-transform : uppercase;
+	width          : 128px;
+}
+
+#dialogDropdowns {
+	float       : left;
+	padding-top : 5px;
+}
+
+#cropSize {
+	float      : right;	
+	font-size  : 12px;
+	margin-top : 12px;
+	width      : 350px;
+}
+
+#cropSize > div {
+	float : right;
+}
+
+#targetSize {
+	font-weight : bold;
+	margin-left : 16px;
+}
+
+.betweenDropdownText {
+	color        : #9d9e9b;
+	float        : left;	
+	margin-left  : 10px;
+	margin-right : 10px;
+	margin-top   : 5px;
+}
+
+#cropPresetDropdown-button,
+#cropRatioDropdown-button {	
+	background-color : #6d6d6d;
+	border           : 1px solid #a2a2a2;
+	border-radius    : 5px;
+	color            : #f9f4f4;
+	float            : left;
+	font-size        : 12px;
+	width            : 162px !important;
+}
+
+#cropPresetDropdown-menu,
+#cropRatioDropdown-menu {
+	background-color : #6d6d6d;	
+	border           : 1px solid #a2a2a2;
+	border-radius    : 5px;
+	color            : #f9f4f4;
+	margin-top       : 1px;
+}
+
+#cropPresetDropdown-menu .ui-state-focus,
+#cropRatioDropdown-menu .ui-state-focus {
+	background-color : #d3d3d3;
+	color            : #333333;
+}
+
+/* Don't display default labels as selectable options */
+.noTitlebar #ui-id-2,
+.noTitlebar #ui-id-8 {
+	display : none;
+}
+
+
+#cropRatioDropdown-button .ui-icon-triangle-1-s,
+#cropPresetDropdown-button .ui-icon-triangle-1-s {
+	height       : 7px;
+	margin-right : 4px !important;
+	margin-top   : -4px !important;
+	width        : 13px;
+}
+
+#dialogImageZoom {
+	margin-right : 12px;
+	margin-top   : 6px;
+	z-index      : 10;
+}
+
+#zoomHeading {
+	font-size : 12px;
+}
+
+.zoomControl {
+	background-color : rgba(0,0,0,0.4);
+	color            : #acaaaa;
+	float            : left;
+	height           : 24px;
+	text-align       : center;
+	width            : 31px;
+}
+
+#zoomIn {
+	font-size        : 20px;
+	padding-top      : 4px;
+}
+
+#zoomOut {
+	font-size        : 14px;
+	margin-right     : 5px;
+	padding-top      : 4px;
+}
+
+.media-attachment-item {
+	float : left;
+}

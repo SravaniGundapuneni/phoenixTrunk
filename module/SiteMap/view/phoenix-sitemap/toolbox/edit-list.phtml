@@ -1,0 +1,47 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle">Manage Pages</div>
+        <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Name</th>
+                        <th width="120px">Page Type</th>
+                        <th width="80px">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable">
+                <?php 
+                $replace = array(
+                    "/",
+                    "\\"
+                );
+                foreach ($items as $locationKey=>$subpages): ?>
+                    <tr class="ui-state-default" data-itemId="<?= $subpages->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $subpages->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('siteMap-toolbox', array('subsite' => $subsiteRoute, 'action' => 'editItem', 'itemId' => $subpages->getId())) ?>">
+                                <?= $subpages->getAreaKey() . str_replace($replace, " > ", $subpages->getDataSection()) . " > " . $subpages->getPage() ?>
+                            </a>
+                        </td>
+                        <?php
+                        if($subpages->getDynamicPage()==1)
+                            $type = "Dynamic";
+                        else
+                            $type = "Static";
+                        ?>
+                        <td><?= $type ?></td>
+                        <td><?= $this->displayStatus($subpages->getStatus()) ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial("list-module/helpers/edit-list-pagination") ?>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<link rel='stylesheet' type='text/css' href="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/css/demo_page.css"/>
+<link rel='stylesheet' type='text/css' href="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/css/demo_table.css"/>
+<script type="text/javascript" language="javascript" src="<?php echo $this->toolboxIncludeUrl;?>module/ListModule/view/layout/js/jquery.dataTables.js"></script> 
+<script type="text/javascript" charset="utf-8"> 
+    var listTable;
+    $(document).ready( function () {
+            listTable = $('#example').dataTable( {
+                    bSort: false,
+                    aLengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100,"All"]]
+
+            } );
+    } );
+                        
+ 
+ $(function() {
+    $( "#sortable" ).sortable({
+        start: function(event, ui) {
+            var start_pos = ui.item.index();
+            ui.item.data('start_pos', start_pos);
+        },
+        change: function(event, ui) {
+            var start_pos = ui.item.data('start_pos');
+            var index = ui.placeholder.index();
+            if (start_pos < index) {
+                $('#sortable tr:nth-child(' + index + ')').addClass('highlighted');
+            } else {
+                $('#sortable tr:eq(' + (index + 1) + ')').addClass('highlighted');
+            }
+        },
+        update: function(event, ui) {
+                $('#sortable tr').removeClass('highlighted');
+        }
+    });
+    $( "#sortable" ).sortable({ disabled: true });
+    $( "#sortable" ).disableSelection();
+  });
+</script>
+
+<div class="editListOptionsList">
+    <ul>
+        <?php foreach ($this->editListOptions as $caption => $option) : ?>
+            <li class="editListOption editItemOption-<?= $option ?>" data-action="<?= $option ?>" title="<?= $caption ?>">
+                <img src="<?=$this->toolboxIncludeUrl;?>module/ListModule/view/layout/img/editItem-<?= $option ?>.png" height="26" width="26" alt="<?= $caption ?>">
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

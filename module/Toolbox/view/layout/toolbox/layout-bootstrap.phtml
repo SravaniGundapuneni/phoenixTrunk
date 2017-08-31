@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<?php 
+    if ($subsiteRoute) {
+        $homeUrl = urldecode($this->url('root-subsite', array('subsite' => $subsiteRoute)));
+    } else {
+        $homeUrl = $this->url('home');
+    }
+?>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+    <meta charset="utf-8">
+    <?php echo $this->headTitle() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="shortcut icon" href="<?php echo $this->toolboxIncludeUrl;?>module/Toolbox/view/layout/img/favicon.ico" />
+    <link href="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <link href="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/css/toolbox.css" rel="stylesheet"/>
+    <link href="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/css/datepicker.css" rel="stylesheet"/>
+    <link href="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/css/vendor/jquery.fancybox.css" rel="stylesheet"/>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    <!-- todo: move to toolbox -->
+    <link href="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jquery-ui-1.11.1.custom/jquery-ui.css" rel="stylesheet"/>
+
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/jquery.min.js"></script>
+
+    <!-- todo: download -->
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/bootstrap.min.js"></script>
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/bootstrap-datepicker.js"></script>
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/ckeditor/ckeditor_toolbox.js"></script>
+
+    <script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.ui.position.js"></script>
+    <script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.contextMenu.js"></script>
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/phoenix/attachmentdialog.js"></script>
+        <script>
+            var _site_root = '<?=$homeUrl?>';
+            var toolboxIncludeUrl = '<?=$this->toolboxIncludeUrl?>';
+        </script>
+    <?=$this->headScript();?>
+  </head>
+  <body data-offset="40">
+<!--     Header ================================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <h1 class="span2">
+                    <a href="<?php echo $this->url($toolboxRootRoute, array('subsite' => $subsiteRoute));?>" title="Toolbox CMS">
+                        <img src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/img/toolbarLogo.png" alt="Toolbox CMS" />
+                    </a>
+                </h1>
+                <div class="span10">
+                <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li class="active"><a href="<?php echo $this->url($toolboxRootRoute, array('subsite' => $subsiteRoute));?>">Home    </a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Tools <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $homeUrl;?>">Site Content</a></li>
+                        <!---<li><a href="media.html">Media Manager</a></li>-->
+                        <?php foreach($this->toolList as $toolName => $toolPath):?>
+                            <li><a href="<?php echo $toolboxHomeUrl . $toolPath;?>"><?php echo $toolName;?></a></li>
+                        <?php endforeach;?>
+                    </ul>
+                </li> 
+                <?php if ($this->isAdmin):?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Admin Tools <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <?php foreach($this->adminToolList as $toolName => $toolPath):?>
+                            <?php if($toolName == 'Refresh Cache'):
+                                $socketsUrl = str_replace('/toolbox', '', $toolboxHomeUrl);?>
+                                <li><a href="<?php echo $socketsUrl . $toolPath;?>"><?php echo $toolName;?></a></li>
+                            <?php else:?>
+                                <li><a href="<?php echo $toolboxHomeUrl . $toolPath;?>"><?php echo $toolName;?></a></li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                </li>
+                <?php endif;?>
+                <?php if ($this->isDeveloper):?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Dev Tools <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li> 
+                <?php endif;?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Page Contents <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/venues'; ?>">Venues</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/activities'; ?>">Activities</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/profiles'; ?>">Profiles</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/spas'; ?>">Spas</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/spa-Specials'; ?>">Spa Specials</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/meetings'; ?>">Meetings</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/restaurants'; ?>">Restaurants</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/galleries'; ?>">Galleries</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/reviews'; ?>">Reviews</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/property-Photos'; ?>">Property Photos</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/featured-Destinations'; ?>">Featured Destinations</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/property-Features'; ?>">Property Features</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/annual-Events'; ?>">Annual Events</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/entertainment'; ?>">Entertainment</a></li>
+                                    <li><a href="<?php echo $toolboxHomeUrl . 'tools/featured-Image'; ?>">Featured Image</a></li>
+                                </ul>
+                </li> 
+                <li class=""><a href="tools.html">Help</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Welcome, <?= $this->currentUser['givenName'] ?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo $this->url($toolboxRootRoute, array('subsite' => $subsiteRoute)); ?>tools/users/changeProfile/<?php echo $this->currentUser['userId'] ?>"><i class="icon-user"></i> Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo urldecode($this->url($toolboxRootRoute, array('subsite' => $subsiteRoute))); ?>?logout=1"><i class="icon-off"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+          </div>
+        </div>
+          
+      </div>
+    </div>
+                    <div class="pull-right"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar ================================================== -->
+    
+    <!-- Container =============================================== -->
+    <div class="container contents">
+        <br />
+        <div id="notifications">
+        <?php if ($this->getCasInfo()->getPendingItemCount()>0 && ($this->currentUser['scope']!='site')) : ?>
+        <div class="alert cas-pending"><a href="<?= $this->url('contentApproval-toolbox')?>"><?= $this->getCasInfo()->getPendingItemCount() ?> Pending Change<?php if ($this->getCasInfo()->getPendingItemCount()!=1) echo 's' ?> require<?php if ($this->getCasInfo()->getPendingItemCount()==1) echo 's' ?> approval</a></div>
+        <?php endif ?>
+<?= $this->flashMessenger()->render('default', array('alert alert-info'))?> 
+<?= $this->flashMessenger()->render('success', array('alert alert-success'))?> 
+<?= $this->flashMessenger()->render('info', array('alert alert-warning'))?> 
+<?= $this->flashMessenger()->render('error', array('alert alert-danger'))?> 
+        </div>
+<? /**/ ?>
+        <!-- Contents ================================================ -->
+        <?php echo $this->content; ?>
+        <!-- Toolbox-wide handlebars templates -->
+        <?php
+            echo $this->partial('errorNotification');
+            echo $this->partial('successNotification');
+        ?>
+        <!-- Attachments Dialog ====================================== -->
+        <?php if (!$attachmentsDisabled):?>
+            <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+            <script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.ui.position.js"></script>
+            <script src="<?=$toolboxIncludeUrl?>module/MediaManager/view/media-manager/js/jQuery-contextMenu/src/jquery.contextMenu.js"></script>
+            <style>
+                /** stopgap */
+                #attachmentDialog {
+                    display : none;
+                }
+            </style>
+            <div id="attachmentDialog" class="mmDialog">
+                <?= $this->partial('mediaManager', array(
+                    'toolboxIncludeUrl' => $this->toolboxIncludeUrl,
+                    'isAttachments' => 'true',
+                    'readOnly' => 'false')); // get this from a helper
+                ?>
+            </div> 
+        <?php endif; ?>
+        <!-- Footer ================================================== -->
+        <footer class="footer">
+            <hr class=""/>
+            <p>
+                <a href="http://www.travelclick.net/" title="Visit Trav" target="_blank">
+                    <img class="img_tc_footer" src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/img/travelclick_footer_logo.png" alt="TravelCLICK Logo">
+                </a>
+
+                &copy; Copyright - All Rights Reserved <?=date('Y');?> <strong>Version: <?php echo PHOENIX_VERSION . '-' . PHOENIX_VERSION_DATE;?></strong>
+
+                <!-- Hide for now
+                <span class="pull-right">
+                    <a class="btn btn-primary" href="#">t</a> 
+                    <a class="btn btn-danger" href="#">g+</a> 
+                    <a class="btn btn-primary" href="#">f</a> 
+                </span>
+                -->
+            </p>
+            <br/><br/>
+        </footer>
+    </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/bootstrap.min.js"></script>
+    <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/hover-dropdown.js"></script>
+     <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/fancybox/jquery.fancybox.js"></script>
+   <script src="<?php echo $this->toolboxIncludeUrl;?>/module/Toolbox/view/layout/js/fancybox-init.js"></script>
+<script>
+    function addNewButton(element) {
+        var newButton = $('<input type="button" name="btnAdd" value="Add Rate" class="add-new" id="addNew"/>');
+        newButton.appendTo(element);             
+    }
+
+    $( document ).ready(function() {
+        addNewButton($('.selectRates'));
+        $('.selectRate').first().children('.up-button').hide();
+        $('.selectRate').last().children('.down-button').hide();
+
+        $('#addNew').on('click', function(){
+            resetButtons($('.selectRate').last());
+            var newRate = $('.selectRate').last().clone();
+            // newRate.children('.up-button').click(moveUp(newRate.children('.up-button')));
+            // newRate.children('.down-button').click(moveDown(newRate.children('.down-button')));
+            // newRate.children('.delete-button').click(deleteRow(newRate.children('.delete-button')));
+            newRate.insertAfter($('.selectRate').last());
+            resetFirstLastButtons();
+            enableButtons();            
+        });
+
+        $('.up-button').click(function(){
+            var upClicked = $(this).parent('.selectRate').insertBefore($(this).parent('.selectRate').prev());
+            resetButtons($(this).parent('.selectRate').next());        
+            resetButtons(upClicked);
+            resetFirstLastButtons();
+        });
+
+        $('.down-button').click(function(){
+            var downClicked = $(this).parent('.selectRate').insertAfter($(this).parent('.selectRate').next());
+            resetButtons(downClicked);
+            resetButtons($(this).parent('.selectRate').prev());        
+            resetFirstLastButtons();
+        });
+
+        $('.delete-button').click(function(){
+           $(this).parent('.selectRate').remove();
+           resetFirstLastButtons(); 
+        });
+    });
+
+    function enableButtons()
+    {
+        var lastRow = $('.selectRate').last();
+        lastRow.children('.up-button').click(function(){
+            var upClicked = $(this).parent('.selectRate').insertBefore($(this).parent('.selectRate').prev());
+            resetButtons($(this).parent('.selectRate').next());        
+            resetButtons(upClicked);
+            resetFirstLastButtons();
+        });
+
+        lastRow.children('.down-button').click(function(){
+            var downClicked = $(this).parent('.selectRate').insertAfter($(this).parent('.selectRate').next());
+            resetButtons(downClicked);
+            resetButtons($(this).parent('.selectRate').prev());        
+            resetFirstLastButtons();
+        });
+
+        lastRow.children('.delete-button').click(function(){
+           $(this).parent('.selectRate').remove();
+           resetFirstLastButtons(); 
+        });
+    }
+
+    function resetButtons(resetElement)
+    {
+        resetElement.children('.up-button').show();
+        resetElement.children('.down-button').show();
+    }
+
+    function resetFirstLastButtons()
+    {
+      $('.selectRate').first().children('.up-button').hide();
+      $('.selectRate').first().children('.down-button').show();
+      $('.selectRate').last().children('.up-button').show();
+      $('.selectRate').last().children('.down-button').hide();        
+    }
+
+    function moveUp(element)
+    {
+        var upClicked = element.parent('.selectRate').insertBefore(element.parent('.selectRate').prev());
+        resetButtons(element.parent('.selectRate').next());        
+        resetButtons(upClicked);
+        resetFirstLastButtons();        
+    }
+
+    function moveDown(element)
+    {
+        var downClicked = element.parent('.selectRate').insertAfter(element.parent('.selectRate').next());
+        resetButtons(downClicked);
+        resetButtons(element.parent('.selectRate').prev());        
+        resetFirstLastButtons();      
+    }
+
+    function deleteRow(element)
+    {
+       element.parent('.selectRate').remove();
+       resetFirstLastButtons();         
+    }    
+
+</script>  
+<?=$this->inlineScript();?>  
+  </body>
+</html>

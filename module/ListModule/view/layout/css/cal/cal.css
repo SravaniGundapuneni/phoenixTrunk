@@ -1,0 +1,25 @@
+/********************************BOF CLASSES USED IN EVEN TRAY DIV **************************************/
+p.eventTitleP{
+
+display:inline-block;
+margin:5px;
+padding:5px;
+
+width:100%;
+
+}
+#eventtray.eventtrayTitle{
+
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size:10px;
+	 text-transform:initial;
+	 font-variant: normal;
+	 
+	 
+}
+/****************************EOF CLASSES USED IN EVEN TRAY DIV  *****************************************/
+
+#eventtray{
+    overflow:auto;
+    /* other styles here */
+}

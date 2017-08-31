@@ -1,0 +1,39 @@
+<div id="editBox">
+    <h3>Robots Files List</h3>
+    <div class="editListContent">
+
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="list-wrapper">
+                <?php
+                $val = count($this->items);
+                if ($val > 0) {
+                    ?>
+                    <thead>
+                        <tr>
+                            <th width="auto">File Name</th>
+                            <th width="350px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->items as $index => $seofileUpload): ?>
+                            <tr>
+                                <td>
+                                    <?= $seofileUpload->getName() ?>
+                                </td>
+                                <td> <a href="<?= $this->siteroot . str_replace(SITE_PATH, '', $seofileUpload->getPath()) .  $seofileUpload->getName();?>" target="_blank">View</a>
+                                    <a href="<?= $this->url('seoFileUpload-toolbox', array('subsite' => $subsiteRoute, 'action' => 'delete', 'itemId' => $seofileUpload->getId())) ?>">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                        <?php
+                    }else {
+                        echo "<tr><td>No Files Listed</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</div>

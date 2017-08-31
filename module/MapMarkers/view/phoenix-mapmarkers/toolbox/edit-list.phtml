@@ -1,0 +1,42 @@
+<div id="editBox">
+    <div id="editBoxHeader">
+        <div id="editItemHeaderTitle"><?= $title ?></div>
+         <?= $this->partial('list-module/helpers/edit-list-actions') ?>
+    </div>
+    <div class="editListContent">
+        <form method="POST">
+            <input type="hidden" name="action" value="" />
+            <table class="table table-compacted" id="example">
+                <thead>
+                    <tr>
+                        <th width="20px"></th>
+                        <th width="auto">Title</th>
+                        <th width="80px">Latitude</th>
+                        <th width="80px">Longitude</th>
+                        <th width="80px">Status</th>
+                        <th width="90px">Category</th>
+                    </tr>
+                </thead>
+                <tbody id="sortable"> 
+                <?php foreach($this->items as $mapMarker): ?> 
+                    <tr class="ui-state-default" data-itemId="<?= $mapMarker->getId() ?>">
+                        <td><input type="checkbox" name="items[]" value="<?= $mapMarker->getId() ?>" /></td>
+                        <td>
+                            <a href="<?= $this->url('mapMarkers-toolbox', array('subsite'=> $subsiteRoute, 'action'=>'editItem', 'itemId'=>$mapMarker->getId())) ?>">
+                                <?= $mapMarker->getTitle() ?>
+                            </a>
+                        </td>
+                        <td><?= $mapMarker->getLatitude() ?></td>
+                        <td><?= $mapMarker->getLongitude() ?></td>
+                        <td><?= $this->displayStatus($mapMarker->getStatus()) ?></td>
+                        <td><?= $mapMarker->getCategory()?></td>
+                        
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </form>
+        <?= $this->partial('list-module/helpers/edit-list-pagination') ?>
+    </div>
+</div>
+

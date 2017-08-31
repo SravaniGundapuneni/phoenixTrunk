@@ -1,0 +1,60 @@
+<!-- this should be a handlebars template -->
+<div id="editDialog" title="Editor" class="mmDialog row">
+	<div class="column small-12">Edit Image Information</div>
+	<div class="column small-12">
+		<div class="row">
+			<div class="column small-5 end">
+				<label>Alt Text</label> 
+				<input id="editDialogAltText" value="" type="text" name="alt"/>
+			</div>
+		</div>
+	</div>
+	<form id="openGraphForm">
+		<div class="column small-12">
+			<div class="row">
+				<div class="column small-10 end text-center">Open Graph</div>
+			</div>
+			<div class="row">
+				<div class="column small-5">Property:</div>
+				<div class="column small-5 end">Content:</div>
+			</div>
+		</div>
+		<div class="column small-12" id="openGraphList" data-repeater-list="opengraphlist">
+			<div data-repeater-item class="openGraphItem row">
+				<div class="column small-5">
+					<input name='ogproperty' class='opengraphProperty' type='text' value=''/>
+				</div>
+				<div class="column small-5">
+					<input name='content' class='opengraphContent' type='text' value=''/>
+				</div>
+				<div class="column small-2">
+					<input data-repeater-delete type='button' value='Delete'/>
+				</div>
+			</div>
+		</div>
+		<div class="column small-12">
+			<div class="row">
+				<div class="column small-2 small-offset-10">
+					<input data-repeater-create type="button" value="Add"/>
+				</div>
+			</div>
+		</div>
+	</form>
+	<form id="schemaDotOrgForm">
+		<div class="column small-12">
+			<div class="row">
+				<div class="column small-10 end text-center">Schema.org</div>
+			</div>
+			<div class="row">
+				<div class="column small-5 end">itemprop:</div>
+			</div>
+		</div>
+		<div class="column small-12" id="schemaDotOrgList">
+			<div class="schemaDotOrgItem row">
+				<div class="column small-5">
+					<input name='itemprop' class='schemaDotOrgProperty' type='text' value=''/>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
